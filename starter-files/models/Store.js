@@ -29,6 +29,15 @@ const storeSchema = new mongoose.Schema({
     }
 });
 
+storeSchema.index({
+    name: 'text',
+    description: 'text'
+});
+
+storeSchema.index({
+    location: '2dsphere'
+});
+
 storeSchema.pre('save', async function(next){
     if(this.isModified('name'))
     {
@@ -56,4 +65,42 @@ storeSchema.statics.getTagsList = function(){
         { $sort: {count: -1}}
     ]);  
 };
+
+storeSchema.virtual('reviews', 
+    {ref: 'Review',
+    localField: '_id',
+    foreignField: 'store'    
+});
+
+storeSchema.statics.getTopStores = function(){
+    return this.aggregate([
+
+        {$lookup: {
+            from: 'reviews',
+            localField: '_id',
+            foreignField: 'store',
+            as: 'reviews'}
+        },
+        {$match: {'reviews.1': {$exists: true}}},
+        {$project: {
+            photo: '$$ROOT.photo',
+            name: '$$ROOT.name',
+            reviews: '$$ROOT.reviews',
+            slug: '$$ROOT.slug',
+            averageRating: {$avg: '$reviews.rating'}
+        }},
+        {$sort:{averageRating: -1}},
+        {$limit: 10}
+
+    ]);
+};
+
+function autopopulate(next){
+    this.populate('reviews');
+    next();
+}
+
+storeSchema.pre('find',autopopulate);
+storeSchema.pre('findOne',autopopulate);
+
 module.exports = mongoose.model('Store', storeSchema);

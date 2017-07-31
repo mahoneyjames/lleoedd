@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Store = mongoose.model('Store');
+const User = mongoose.model('User');
 const multer = require('multer');
 const multerOptions = {
     storage: multer.memoryStorage(),
@@ -64,11 +65,31 @@ exports.createStore = async (req, res)=> {
 
 exports.getStores = async (req, res)=>{
 
-     const stores = await Store.find();
+    const page = req.params.page || 1;
+    const limit = 4;
+
+    const skip = (page*limit) - limit;
+
+     const storesPromise = Store
+     .find()
+     .skip(skip)
+     .limit(limit)
+     .sort({created: 'desc'});
     
+    const countPromise = Store.count();
+
+    const [stores,count] = await Promise.all([storesPromise, countPromise]);
     //query the db for a list of all stores
 
-    res.render('stores', {title:"Stores", stores});
+    const pages =Math.ceil(count/limit);
+
+    if(!stores.length && skip)
+    {
+        req.flash('info', `Hey! You asked for page ${page}.`)
+        res.redirect(`/stores/page/${pages}`);
+        return;
+    }
+    res.render('stores', {title:"Stores", stores, count, page, pages });
 
 };
 
@@ -121,7 +142,7 @@ exports.updateStore = async (req, res)=>{
 exports.displayStore = async (req, res, next) =>{
 
 
-    const store = await(Store.findOne({slug: req.params.slug})).populate('author'); 
+    const store = await(Store.findOne({slug: req.params.slug})).populate('author reviews'); 
     if(!store)
     {
         return next();        
@@ -139,4 +160,61 @@ exports.getStoresByTag = async (req, res) =>{
 
 
     res.render('tag', {tags, stores, title: 'Tags', selectedTag: tag});
+};
+
+exports.searchStores = async (req, res)=>{
+
+    const stores = await Store
+        .find({$text: {$search: req.query.q}}, {score: {$meta: 'textScore'}})
+        .sort({score: { $meta: 'textScore'}})
+        .limit(5);
+        res.json(stores);
+};
+
+
+exports.mapStores = async(req, res)=>{
+    const coordinates = [req.query.lng, req.query.lat].map(parseFloat);
+    const q = {
+        location:{
+            $near: {
+                $geometry:{
+                    type: 'Point',
+                    coordinates},
+                $maxDistance: 10000 //10km
+            }
+        }
+
+    };
+
+    const stores = await Store.find(q).select('slug name description location photo').limit(10);
+    res.json(stores);
+};
+
+exports.mapPage = (req, res)=>{
+    res.render('map',{title:'Map'});
+};
+
+exports.heartStore = async (req, res)=>{
+    console.log(req.user._id);
+    const hearts = req.user.hearts.map(obj=>obj.toString());
+    const operator = hearts.includes(req.params.id) ? '$pull' : '$addToSet';
+
+    const user = await User
+    .findByIdAndUpdate(req.user._id,
+        { [operator]: {hearts: req.params.id}},
+        {new:true}
+        );
+    res.json(user);
+};
+
+exports.hearts = async(req, res)=>{
+
+    const stores = await Store.find({_id: {$in: req.user.hearts}});
+    res.render('hearts', {title: 'Hearted stores', stores});
+};
+
+exports.getTopStores = async(req, res)=>{
+    const stores = await Store.getTopStores();
+    res.render('top',{title: 'Top stores', stores});
+    
 };
