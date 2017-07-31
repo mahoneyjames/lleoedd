@@ -14,7 +14,7 @@ const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
 require('./handlers/passport.js');
 
-console.log("here");
+console.log(process.env));
 
 // create our Express app
 const app = express();
