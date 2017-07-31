@@ -2,18 +2,18 @@ import axios from 'axios';
 import { $} from './bling';
 
 const mapOptions = {
-    center: {lat:43.2, lng:-79.8},
+    center: {lat:51.590642, lng:-3.000698},
     zoom: 2
-};
+}; 
 
-function loadPlaces(map, lat=43.2, lng = -79.8)
+function loadPlaces(map, lat=51.590642, lng = -3.000698)
 {
     axios.get(`/api/stores/near?lat=${lat}&lng=${lng}`)
         .then(res=>{
             const places = res.data;
             if(!places.length)
             {
-                alert("no places found");
+                //alert("no places found");
                 return;
             }
 

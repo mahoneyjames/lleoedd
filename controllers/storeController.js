@@ -27,7 +27,7 @@ exports.homePage = (req, res) => {
 
 exports.addStore = (req, res)=> {
 
-    res.render('editStore', {title: 'Add store'});
+    res.render('editStore', {title: 'Add place'});
 };
 
 exports.upload = multer(multerOptions).single('photo');
@@ -89,14 +89,14 @@ exports.getStores = async (req, res)=>{
         res.redirect(`/stores/page/${pages}`);
         return;
     }
-    res.render('stores', {title:"Stores", stores, count, page, pages });
+    res.render('stores', {title:"Places", stores, count, page, pages });
 
 };
 
 const confirmStoreOwner = (store, user)=>{
     if(!store.author.equals(user._id))
     {
-        throw Error('You must own a store in order to edit it');
+        throw Error('You must own a place in order to edit it');
     }
 }
 exports.editStore = async (req, res)=>{
@@ -109,7 +109,7 @@ exports.editStore = async (req, res)=>{
      confirmStoreOwner(store, req.user);
      //3 render out the edit form so the user can update their store
 //res.json(req.params);
-res.render('editStore',{title:"Edit store",store});
+res.render('editStore',{title:"Edit place",store});
      
 
 
@@ -180,7 +180,7 @@ exports.mapStores = async(req, res)=>{
                 $geometry:{
                     type: 'Point',
                     coordinates},
-                $maxDistance: 10000 //10km
+                $maxDistance: 100000 //10km
             }
         }
 
@@ -210,11 +210,11 @@ exports.heartStore = async (req, res)=>{
 exports.hearts = async(req, res)=>{
 
     const stores = await Store.find({_id: {$in: req.user.hearts}});
-    res.render('hearts', {title: 'Hearted stores', stores});
+    res.render('hearts', {title: 'Hearted places', stores});
 };
 
 exports.getTopStores = async(req, res)=>{
     const stores = await Store.getTopStores();
-    res.render('top',{title: 'Top stores', stores});
+    res.render('top',{title: 'Top places', stores});
     
 };
