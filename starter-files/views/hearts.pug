@@ -1,0 +1,12 @@
+extends layout
+include mixins/_storeCard
+
+block content
+    .inner 
+        h2= title        
+        .stores 
+            if stores.length
+                each store in stores
+                    +storeCard(store)
+            else
+                p No hearted stores
