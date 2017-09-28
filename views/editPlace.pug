@@ -1,0 +1,10 @@
+extends layout
+include mixins/_placeForm
+include mixins/_placeFormFriendly
+block content
+    .inner
+        
+        if wizardMode
+            +placeFormFriendly(place)
+        else
+            +placeForm(place)

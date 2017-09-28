@@ -24,6 +24,7 @@ require('./models/Store');
 require('./models/User');
 
 require('./models/Review');
+require('./models/Place');
 
 // Start our app!
 const app = require('./app');

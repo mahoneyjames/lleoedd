@@ -1,4 +1,4 @@
-function autoComplete(input, latInput, lngInput)
+function autoComplete(input, latInput, lngInput,googleUrlInput)
 {
     console.log(input, latInput, lngInput);
     if(!input) return;
@@ -9,6 +9,9 @@ function autoComplete(input, latInput, lngInput)
         console.log(place);
         latInput.value = place.geometry.location.lat();
         lngInput.value = place.geometry.location.lng();
+
+        if(googleUrlInput)
+            googleUrlInput.value=place.url;
     });
 
     input.on('keydown', (e) => {

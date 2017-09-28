@@ -8,7 +8,7 @@ const mapOptions = {
 
 function loadPlaces(map, lat=51.590642, lng = -3.000698)
 {
-    axios.get(`/api/stores/near?lat=${lat}&lng=${lng}`)
+    axios.get(`/api/places/near?lat=${lat}&lng=${lng}`)
         .then(res=>{
             const places = res.data;
             if(!places.length)
@@ -35,10 +35,10 @@ function loadPlaces(map, lat=51.590642, lng = -3.000698)
             markers.forEach(marker => marker.addListener('click', function(){
                 const html = `
                     <div class="popup">
-                        <a href="/store/${this.place.slug}">
-                            <img src="/uploads/${this.place.photo || 'store.png'}" alt="${this.place.name}"/>
-                            <p>${this.place.name} - ${this.place.location.address}></p>
+                        <a href="/place/${this.place.slug}">                            
+                            <h1>${this.place.name}</h1>
                         </a>
+                        <p>${this.place.summary}</p>                        
                     </div>`;
                 infoWindow.setContent(html);
                 infoWindow.open(map, marker);

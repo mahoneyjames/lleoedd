@@ -1,0 +1,49 @@
+body
+{ 
+  margin:0;
+}
+main
+{
+  
+}
+header{
+  position: fixed;
+  
+  width: 100%;
+  background-color: azure;  
+  display:flexbox;
+  
+}
+header ul
+{
+  justify-content: center;
+  display:flex;
+  list-style: none;
+  margin: 0;
+  margin: 0;      
+  align-items:center;
+  
+}
+
+header ul li
+{
+  text-align:center;
+  border-right: 1px solid #fff;
+  
+  margin: 5px;
+  
+}
+
+header a:link, .main-nav a:visited {
+  text-decoration: none;
+  
+  display: block;
+  padding: 10px;
+}
+
+.content {
+  padding-top:5em;
+  width: 640px;
+  margin: 0 auto;
+}
+

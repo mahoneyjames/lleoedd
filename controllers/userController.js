@@ -24,6 +24,8 @@ exports.validateRegister = async (req, res, next)=>{
     req.checkBody('password-confirm', 'Confirm password cannot be blank').notEmpty();
     req.checkBody('password-confirm', 'Your passwords do not match').equals(req.body.password);
 
+    //simple check to prevent joe public from trying to register
+    req.checkBody('secret', 'Invalid secret').equals(process.env.SECRET);
     const errors = req.validationErrors();
 
     if(errors)

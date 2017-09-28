@@ -1,0 +1,27 @@
+extends layout
+include mixins/_storeCard
+include mixins/_pagination
+
+block content
+    
+    .inner 
+
+
+        .places
+            table
+                thead
+                    tr
+                        td Name
+                        td Summary
+                        td Region
+                tbody
+                    each place in places
+                        tr
+                            td 
+                                a(href=`/place/${place.slug}`) #{place.name} 
+                                //- if user                         
+                                //-     a(href=`/places/${place._id}/edit`) edit
+                            td #{place.summary}
+                            td #{place.region}
+
+        +pagigation(page, pages, count)

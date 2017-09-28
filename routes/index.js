@@ -4,27 +4,29 @@ const storeController = require('../controllers/storeController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const reviewController = require('../controllers/reviewController');
+const placeController = require('../controllers/placeController');
 
 const {catchErrors} = require('../handlers/errorHandlers');
 // Do work here
-router.get('/',  catchErrors(storeController.getStores));
-router.get('/stores',  catchErrors(storeController.getStores));
-router.get('/stores/page/:page',  catchErrors(storeController.getStores));
-router.get('/add', authController.isLoggedIn, storeController.addStore);
-router.post('/add', 
-                storeController.upload, 
-                catchErrors(storeController.resize) ,
-                catchErrors(storeController.createStore));
+router.get('/',  catchErrors(placeController.getPlaces));
+router.get('/places',  catchErrors(placeController.getPlaces));
+router.get('/places/page/:page',  catchErrors(placeController.getPlaces));
+router.get('/places/add', authController.isLoggedIn, placeController.addPlace);
+router.post('/places/add', 
+                placeController.upload, 
+                catchErrors(placeController.resize) ,
+                catchErrors(placeController.createPlace));
+router.post('/places/add/:id', 
+                placeController.upload,    
+                catchErrors(placeController.resize) ,
+                catchErrors(placeController.updatePlace));
+router.get('/places/:id/edit', catchErrors(placeController.editPlace));
 
-router.post('/add/:id', 
-                storeController.upload,    
-                catchErrors(storeController.resize) ,
-                catchErrors(storeController.updateStore));
+router.get('/place/:slug', catchErrors(placeController.displayPlace));
 
-router.get('/stores/:id/edit', catchErrors(storeController.editStore));
+router.get('/api/places/near', catchErrors(placeController.mapPlaces));
 
-router.get('/store/:slug', catchErrors(storeController.displayStore));
-
+//old stuff after this
 router.get('/tags/', catchErrors(storeController.getStoresByTag));
 router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
 
@@ -62,6 +64,6 @@ router.get('/top', storeController.getTopStores);
 //API endpoints
 
 router.get('/api/search', catchErrors(storeController.searchStores));
-router.get('/api/stores/near', catchErrors(storeController.mapStores));
+
 router.post('/api/stores/:id/heart', catchErrors(storeController.heartStore));
 module.exports = router;

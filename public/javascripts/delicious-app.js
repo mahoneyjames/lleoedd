@@ -7,7 +7,7 @@ import typeAhead from './modules/typeAhead';
 import makeMap from './modules/map';
 import ajaxHeart from './modules/heart';
 
-autoComplete($('#address'), $('#lat'), $('#lng'));
+autoComplete($('#address'), $('#lat'), $('#lng'), $('#googleUrl'));
 typeAhead($('.search'));
 makeMap($('#map'));
 const heartForms = $$('form.heart');

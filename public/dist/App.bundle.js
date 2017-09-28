@@ -962,7 +962,7 @@ process.umask = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-function autoComplete(input, latInput, lngInput) {
+function autoComplete(input, latInput, lngInput, googleUrlInput) {
     console.log(input, latInput, lngInput);
     if (!input) return;
 
@@ -972,6 +972,8 @@ function autoComplete(input, latInput, lngInput) {
         console.log(place);
         latInput.value = place.geometry.location.lat();
         lngInput.value = place.geometry.location.lng();
+
+        if (googleUrlInput) googleUrlInput.value = place.url;
     });
 
     input.on('keydown', function (e) {
@@ -1051,7 +1053,7 @@ function loadPlaces(map) {
     var lat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 51.590642;
     var lng = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -3.000698;
 
-    _axios2.default.get('/api/stores/near?lat=' + lat + '&lng=' + lng).then(function (res) {
+    _axios2.default.get('/api/places/near?lat=' + lat + '&lng=' + lng).then(function (res) {
         var places = res.data;
         if (!places.length) {
             //alert("no places found");
@@ -1079,7 +1081,7 @@ function loadPlaces(map) {
         //when someone clicks on a marker, show details
         markers.forEach(function (marker) {
             return marker.addListener('click', function () {
-                var html = '\n                    <div class="popup">\n                        <a href="/store/' + this.place.slug + '">\n                            <img src="/uploads/' + (this.place.photo || 'store.png') + '" alt="' + this.place.name + '"/>\n                            <p>' + this.place.name + ' - ' + this.place.location.address + '></p>\n                        </a>\n                    </div>';
+                var html = '\n                    <div class="popup">\n                        <a href="/place/' + this.place.slug + '">                            \n                            <h1>' + this.place.name + '</h1>\n                        </a>\n                        <p>' + this.place.summary + '</p>                        \n                    </div>';
                 infoWindow.setContent(html);
                 infoWindow.open(map, marker);
             });
@@ -2835,7 +2837,7 @@ var _heart2 = _interopRequireDefault(_heart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _autoComplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
+(0, _autoComplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'), (0, _bling.$)('#googleUrl'));
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
 (0, _map2.default)((0, _bling.$)('#map'));
 var heartForms = (0, _bling.$$)('form.heart');

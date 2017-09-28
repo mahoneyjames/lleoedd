@@ -1,0 +1,35 @@
+mixin placeForm(place ={})
+    form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+        .step
+            label(for="name") Title
+            input(type="text" name="name" value=place.name required)
+            label(for="summary") Summary
+            input(type="text" name="summary" value=place.summary required)
+        
+        .step 
+            h1 More details
+            label(for="description") Description
+            textarea(name="description")= place.description
+            label(for="link") Website
+            input(type="text" name="link" value=place.link)
+            br
+            label(for="photo") Photo      
+            br      
+            input(type="file" name="photo" id="photo" accept="image/gif,image/png,image/jpeg")
+            if place.photo
+                img(src=`/uploads/${place.photo}` alt=place.name width=200)
+        
+        .step
+            h1 Address
+            
+            
+            label(for="address") Address
+            input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) required)            
+            p You can edit the Lat and Lng if needed e.g. because the location recorded by Google is not quite correct...
+            label(for="lng") Address lng
+            input(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
+            label(for="lat") Address lat
+            input(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
+            label(for="googleUrl") Google Url
+            input(type="text" id="googleUrl" name="googleUrl" value=(place.googleUrl))
+        input(type="submit" value="Save" class="button")
