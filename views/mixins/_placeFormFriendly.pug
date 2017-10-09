@@ -1,3 +1,4 @@
+include _regionSelect
 mixin placeFormFriendly(place ={})
     form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
@@ -16,8 +17,7 @@ mixin placeFormFriendly(place ={})
             textarea(name="summary" required)= place.summary
         .step
             h1 Step 3 - Pick a region
-            label(for="region") Region
-            input(type="text" name="region" value=place.region required)
+            +regionSelect(place)
         .step
             h1 Step 4 - Optional extras
             label(for="description") More details

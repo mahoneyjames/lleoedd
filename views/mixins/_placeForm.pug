@@ -1,11 +1,14 @@
+include _regionSelect
 mixin placeForm(place ={})
+    -//pre=h.dump(place)
     form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             label(for="name") Title
             input(type="text" name="name" value=place.name required)
             label(for="summary") Summary
             input(type="text" name="summary" value=place.summary required)
-        
+            +regionSelect(place)
+
         .step 
             h1 More details
             label(for="description") Description
