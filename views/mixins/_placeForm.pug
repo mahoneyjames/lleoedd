@@ -14,13 +14,7 @@ mixin placeForm(place ={})
             label(for="description") Description
             textarea(name="description")= place.description
             label(for="link") Website
-            input(type="text" name="link" value=place.link)
-            br
-            label(for="photo") Photo      
-            br      
-            input(type="file" name="photo" id="photo" accept="image/gif,image/png,image/jpeg")
-            if place.photo
-                img(src=`/uploads/${place.photo}` alt=place.name width=200)
+            input(type="text" name="link" value=place.link)        
         
         .step
             h1 Address

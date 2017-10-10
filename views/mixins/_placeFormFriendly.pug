@@ -3,18 +3,19 @@ mixin placeFormFriendly(place ={})
     form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             h1 Step 1 - Find the place
-            p Enter as much of the address as you know in the box below. Hopefully Google will have heard of it...
-            p Pick the place you're interested in from the list that appears
-            -//label(for="address") Where is it?
-            input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) required)
+            .input-group
+                span.input-addon Location
+                input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) placeholder="Start typing..." required)
             a(href="#") Can't find what you're looking for?
         .step
             h1 Step 2 - set a title and summary
-            p Keep the summary short, say 15 words or less. 
-            label(for="name") Title
-            input(type="text" name="name" value=place.name required)
-            label(for="summary") Summary
-            textarea(name="summary" required)= place.summary
+            p Keep the summary short, say 15 words or less.
+            .input-group
+                span.input-addon Title                             
+                input(type="text" name="name" value=place.name required)
+            .input-group
+                span.input-addon Summary
+                input(type="text" name="summary" required value=place.summary)
         .step
             h1 Step 3 - Pick a region
             +regionSelect(place)
@@ -25,10 +26,6 @@ mixin placeFormFriendly(place ={})
             label(for="link") Do they have a website?
             input(type="text" name="link" value=place.link)
             
-            label(for="photo") Photo
-                input(type="file" name="photo" id="photo" accept="image/gif,image/png,image/jpeg")
-                if place.photo
-                    img(src=`/uploads/${place.photo}` alt=place.name width=200)
         
         .step 
             h1 Dev stuff

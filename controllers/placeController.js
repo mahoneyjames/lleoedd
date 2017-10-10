@@ -66,7 +66,7 @@ exports.createPlace = async (req, res)=> {
 exports.getPlaces = async (req, res)=>{
 
     const page = req.params.page || 1;
-    const limit = 4;
+    const limit = 15;
 
     const skip = (page*limit) - limit;
 

@@ -2,31 +2,34 @@ extends layout
 include mixins/_reviewForm
 include mixins/_review
 
-block content    
-    .single
-        .single__hero        
-            -//img.single__image(src=`/uploads/${place.photo || 'place.png'}` alt=place.name width=200)
-            h2.title.title--single
-                a(href=`/place/${place.slug}`) #{place.name}
-            p #{place.summary}
+block content   
+    .inner
+        if user
+            a(href=`/places/${place._id}/edit`) edit
+        .card
+            .single
+                .single__hero        
+                    -//img.single__image(src=`/uploads/${place.photo || 'place.png'}` alt=place.name width=200)
+                    h2.title.title--single
+                        a(href=`/place/${place.slug}`) #{place.name}
+                    p #{place.summary}
 
-            if user
-                a(href=`/places/${place._id}/edit`) edit
+                    
 
-    .single__details.inner
-        if place.googleUrl
-            a(href=`${place.googleUrl}` target="_blank")
-                img.single__map(src=h.staticMap(place.location.coordinates))
-        else
-            img.single__map(src=h.staticMap(place.location.coordinates))
+            .single__details
+                if place.googleUrl
+                    a(href=`${place.googleUrl}` target="_blank")
+                        img.single__map(src=h.staticMap(place.location.coordinates))
+                else
+                    img.single__map(src=h.staticMap(place.location.coordinates))
 
-        p.single__location= place.location.address
+                p.single__location= place.location.address
 
-        if place.description
-            h2 More details
-            p= place.description
+                if place.description
+                    h2 More details
+                    p= place.description
 
-        if place.link
-            h3 Website
-            a(href=`${place.link}` target="_blank") #{place.link}
-        
+                if place.link
+                    h3 Website
+                    a(href=`${place.link}` target="_blank") #{place.link}
+                

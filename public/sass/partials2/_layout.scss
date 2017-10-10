@@ -61,3 +61,19 @@
 
   padding: 10px;
 }
+
+.inner {
+  max-width:900px;
+  margin: 0 auto;
+  @media all and (max-width: 900px) {
+    padding: 2rem;
+  }
+}
+
+
+
+body
+{
+  background: $purple;
+  background:#efefef;
+}
