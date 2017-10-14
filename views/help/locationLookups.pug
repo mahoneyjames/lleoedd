@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    .inner
+    h1 Finding a location
+    p The site uses Google map data to try and fill in as much information as possible
+    h2 Here's how it works
+    p Type as much of the address as you know. Select your chosen location from the list that appears
+    p This is used to fill out details such as the title of the place, its postcode, and its location details
+    p You might need to tweak these details a little e.g. the title of the place might be repeated in the address, or the postcode might be incomplete
+    p Whatever you change these details to is what will be saved for this place
+    p You can change this information to whatever you need or want it to be
+
+    h2 What's all this "dev" stuff? Things like lat and lng
+    p This is a bunch of meta data used to plot locations on the map, or link to a place in Google maps
+    p If you know what you're doing you can tweak this information. If not, best leave it alone!
+
+    h2 Google doesn't know the thing I'm searching for
+    p If that happens, just fill out the address and postcode as best you're able. Pick the closest location that you can find to the place you're looking for
+    p At least this will let us plot it on the map
+    p 
+        | Then 
+        a(href="/about") get in touch 
+        | to ask for help in getting the location details corrected on the map 

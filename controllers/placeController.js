@@ -139,7 +139,7 @@ exports.displayPlace = async (req, res, next) =>{
     {
         return next();        
     }    
-    res.render("displayPlace", {place, title: place.title});
+    res.render("displayPlace", {place, title: place.name});
 };
 
 

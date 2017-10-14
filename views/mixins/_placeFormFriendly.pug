@@ -3,19 +3,22 @@ mixin placeFormFriendly(place ={})
     form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             h1 Step 1 - Find the place
-            .input-group
-                span.input-addon Location
+            a(href="/help/address" target="_blank") Need help?
+            .input-field
+                label(for="address") Location
                 input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) placeholder="Start typing..." required)
-            a(href="#") Can't find what you're looking for?
+            .input-field
+                label(for="postcode") Postcode
+                input(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
         .step
             h1 Step 2 - set a title and summary
             p Keep the summary short, say 15 words or less.
-            .input-group
-                span.input-addon Title                             
-                input(type="text" name="name" value=place.name required)
-            .input-group
-                span.input-addon Summary
-                input(type="text" name="summary" required value=place.summary)
+            .input-field
+                label(for="name") Title                             
+                input(type="text" id="name" name="name" value=place.name required)
+            .input-field
+                label(for="summary") Summary
+                input(type="text" id="summary" name="summary" required value=place.summary)
         .step
             h1 Step 3 - Pick a region
             +regionSelect(place)
@@ -34,7 +37,12 @@ mixin placeFormFriendly(place ={})
             input(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
             label(for="lat") Address lat
             input(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
-            label(for="googleUrl") Google Url
-            input(type="text" id="googleUrl" name="googleUrl" value=(place.googleUrl))
+            label(for="google.url") Google Url
+            input.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
+
+            
+            label(for="google.placeId")
+                a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
+            input.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
 
         input(type="submit" value="Save" class="button")

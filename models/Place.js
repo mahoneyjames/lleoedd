@@ -21,9 +21,13 @@ const placeSchema = new mongoose.Schema({
         address: {
             type: String, 
             required: "You must supply an address"
-        }
+        },
+        postcode: {type: String}
     },
-    googleUrl: String,
+    google:{
+        url: String,
+        placeId: String
+    },
     link: String,
     photo:String,
     createdBy: {

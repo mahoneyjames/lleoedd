@@ -1,32 +1,52 @@
 include _regionSelect
 mixin placeForm(place ={})
+    h1 Edit #{place.name}
     -//pre=h.dump(place)
     form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
-            label(for="name") Title
-            input(type="text" name="name" value=place.name required)
-            label(for="summary") Summary
-            input(type="text" name="summary" value=place.summary required)
+            .input-field
+                label(for="name") Title
+                input(type="text" name="name" value=place.name required)
+            .input-field
+                label(for="summary") Summary
+                input(type="text" name="summary" value=place.summary required)
             +regionSelect(place)
 
         .step 
             h1 More details
-            label(for="description") Description
-            textarea(name="description")= place.description
-            label(for="link") Website
-            input(type="text" name="link" value=place.link)        
+            .input-field
+                label(for="description") Description
+                textarea(name="description")= place.description
+            .input-field                
+                label(for="link") Website
+                input(type="text" name="link" value=place.link)        
         
         .step
-            h1 Address
+            h1 Location
+            a(href="/help/address" target="_blank") Need help?
             
+            .input-field
+                label(for="address") Address
+                input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) required)
             
-            label(for="address") Address
-            input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) required)            
-            p You can edit the Lat and Lng if needed e.g. because the location recorded by Google is not quite correct...
-            label(for="lng") Address lng
-            input(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
-            label(for="lat") Address lat
-            input(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
-            label(for="googleUrl") Google Url
-            input(type="text" id="googleUrl" name="googleUrl" value=(place.googleUrl))
+            .input-field
+                label(for="postcode") Postcode
+                input(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
+            
+
+            .input-field
+                label(for="lng") Address lng
+                input(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
+            .input-field
+                label(for="lat") Address lat
+                input(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
+            .input-field
+                label(for="google.url") Google Url
+                input.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
+
+            .input-field
+                label(for="google.placeId")
+                    a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
+                input.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
+
         input(type="submit" value="Save" class="button")

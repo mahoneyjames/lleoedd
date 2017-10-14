@@ -5,6 +5,7 @@ const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const reviewController = require('../controllers/reviewController');
 const placeController = require('../controllers/placeController');
+const siteController = require('../controllers/siteController');
 
 const {catchErrors} = require('../handlers/errorHandlers');
 // Do work here
@@ -25,6 +26,9 @@ router.get('/places/:id/edit', catchErrors(placeController.editPlace));
 router.get('/place/:slug', catchErrors(placeController.displayPlace));
 
 router.get('/api/places/near', catchErrors(placeController.mapPlaces));
+
+router.get('/about', siteController.about);
+router.get('/help/:what', siteController.help);
 
 //old stuff after this
 router.get('/tags/', catchErrors(storeController.getStoresByTag));

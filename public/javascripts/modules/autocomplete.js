@@ -1,6 +1,6 @@
-function autoComplete(input, latInput, lngInput,googleUrlInput)
+function autoComplete(input, latInput, lngInput,googleUrlInput, googlePlaceIdInput, postcodeInput, nameInput)
 {
-    console.log(input, latInput, lngInput);
+    console.log(googleUrlInput, googlePlaceIdInput, postcodeInput);
     if(!input) return;
 
     const dropdown = new google.maps.places.Autocomplete(input);
@@ -12,11 +12,34 @@ function autoComplete(input, latInput, lngInput,googleUrlInput)
 
         if(googleUrlInput)
             googleUrlInput.value=place.url;
+
+        if(googlePlaceIdInput)
+            googlePlaceIdInput.value=place.place_id;     
+        if(place.name && nameInput && nameInput.value.length==0)
+        {
+            nameInput.value=place.name;
+        }
+
+        if(postcodeInput)
+        {
+            place.address_components.forEach((part)=>
+            {
+                if(part.long_name && part.types && part.types.length>0 && part.types[0]==="postal_code")
+                {
+                    postcodeInput.value = part.long_name;                    
+                }
+            });
+
+        }  
+
+  
     });
 
     input.on('keydown', (e) => {
         if(e.keyCode===13) e.preventDefault();
     })
+
+
 
 }
 

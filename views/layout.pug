@@ -19,7 +19,9 @@ html
                   -//!= h.icon(item.icon)
                   span #{item.title}
           
+
           .nav__section.nav__section--user
+            li.nav__item: a.nav__link(href="/about") about
             if user
               li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))
                 -//!= h.icon('logout')
@@ -47,6 +49,9 @@ html
 
     footer
       block footer
+
     block scripts
       script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
       script(src="/dist/App.bundle.js")
+
+    block pageScripts

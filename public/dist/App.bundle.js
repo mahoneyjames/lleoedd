@@ -962,8 +962,8 @@ process.umask = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-function autoComplete(input, latInput, lngInput, googleUrlInput) {
-    console.log(input, latInput, lngInput);
+function autoComplete(input, latInput, lngInput, googleUrlInput, googlePlaceIdInput, postcodeInput, nameInput) {
+    console.log(googleUrlInput, googlePlaceIdInput, postcodeInput);
     if (!input) return;
 
     var dropdown = new google.maps.places.Autocomplete(input);
@@ -974,6 +974,19 @@ function autoComplete(input, latInput, lngInput, googleUrlInput) {
         lngInput.value = place.geometry.location.lng();
 
         if (googleUrlInput) googleUrlInput.value = place.url;
+
+        if (googlePlaceIdInput) googlePlaceIdInput.value = place.place_id;
+        if (place.name && nameInput && nameInput.value.length == 0) {
+            nameInput.value = place.name;
+        }
+
+        if (postcodeInput) {
+            place.address_components.forEach(function (part) {
+                if (part.long_name && part.types && part.types.length > 0 && part.types[0] === "postal_code") {
+                    postcodeInput.value = part.long_name;
+                }
+            });
+        }
     });
 
     input.on('keydown', function (e) {
@@ -2837,7 +2850,7 @@ var _heart2 = _interopRequireDefault(_heart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _autoComplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'), (0, _bling.$)('#googleUrl'));
+(0, _autoComplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'), (0, _bling.$)('.googleUrl'), (0, _bling.$)('.googlePlaceId'), (0, _bling.$)('#postcode'), (0, _bling.$)('#name'));
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
 (0, _map2.default)((0, _bling.$)('#map'));
 var heartForms = (0, _bling.$$)('form.heart');

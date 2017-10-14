@@ -17,8 +17,8 @@ block content
                     
 
             .single__details
-                if place.googleUrl
-                    a(href=`${place.googleUrl}` target="_blank")
+                if place.google.url
+                    a(href=`${place.google.url}` target="_blank")
                         img.single__map(src=h.staticMap(place.location.coordinates))
                 else
                     img.single__map(src=h.staticMap(place.location.coordinates))
