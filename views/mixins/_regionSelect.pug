@@ -1,7 +1,11 @@
-mixin regionSelect(place ={})
+mixin regionSelect(place ={})    
+        
     - const regions = ["","south-east","cardiff","south-west","mid", "north-west","north-east"]
-    label(for="region") Region
-    select(name="region" value=place.region required)
-        each region in regions
-            option(value=region selected=region===place.region) #{region}
+    .input-field
+        label(for="region") Region
+        span  
+        a(href="/help/region" target="_blank") [help]    
+        select(name="region" value=place.region required)
+            each region in regions
+                option(value=region selected=region===place.region) #{region}
                 

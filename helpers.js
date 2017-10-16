@@ -27,3 +27,4 @@ exports.menu = [
   { slug: '/places/add', title: 'Add', icon: 'add', },
   
 ];
+
