@@ -28,3 +28,13 @@ exports.menu = [
   
 ];
 
+exports.environment = () => 
+{
+  return "haro";
+}
+
+
+exports.version = () => 
+{
+  return "harold";
+}
