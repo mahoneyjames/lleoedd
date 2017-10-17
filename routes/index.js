@@ -12,6 +12,8 @@ const {catchErrors} = require('../handlers/errorHandlers');
 router.get('/',  catchErrors(placeController.getPlaces));
 router.get('/places',  catchErrors(placeController.getPlaces));
 router.get('/places/page/:page',  catchErrors(placeController.getPlaces));
+router.get('/places/:region',  catchErrors(placeController.getPlaces));
+router.get('/places/:region/page/:page',  catchErrors(placeController.getPlaces));
 router.get('/places/add', authController.isLoggedIn, placeController.addPlace);
 router.post('/places/add', 
                 placeController.upload, 

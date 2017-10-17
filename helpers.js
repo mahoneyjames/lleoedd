@@ -28,3 +28,15 @@ exports.menu = [
   
 ];
 
+exports.localise = (value) =>
+{
+  if(typeof(value)==="string")
+  {
+    return value;
+  }
+  else
+  {    
+    return value["en"];
+  }
+};
+

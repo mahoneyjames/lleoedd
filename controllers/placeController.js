@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
+const Region = mongoose.model('Region');
 const User = mongoose.model('User');
 const multer = require('multer');
 const multerOptions = {
@@ -27,7 +28,7 @@ exports.homePage = (req, res) => {
 
 exports.addPlace = (req, res)=> {
 
-    res.render('editPlace', {title: 'Add place',wizardMode: true});
+    res.render('editPlace', {title: 'Add place',wizardMode: true, regions: Region.listRegions() });
 };
 
 exports.upload = multer(multerOptions).single('photo');
@@ -67,13 +68,16 @@ exports.getPlaces = async (req, res)=>{
 
     const page = req.params.page || 1;
     const limit = 15;
+    const region = req.params.region;
+    const regionQuery = region ? {region:{$eq:req.params.region}} : null;
 
+    console.log(req.params.region);
     const skip = (page*limit) - limit;
-
+    
      const promise = Place
-     .find()
+     .find(regionQuery)
      .skip(skip)
-     .limit(limit)
+     //.limit(limit)
      .sort({created: 'desc'});
     
     const countPromise = Place.count();
@@ -89,7 +93,7 @@ exports.getPlaces = async (req, res)=>{
         res.redirect(`/places/page/${pages}`);
         return;
     }
-    res.render('places', {title:"Places", places, count, page, pages });
+    res.render('places', {title:"Places", places, count, page, pages, currentRegion: region, regions: Region.listRegions() });
 
 };
 
@@ -101,7 +105,7 @@ exports.editPlace = async (req, res)=>{
      
      //2 render out the edit form so the user can update their store
 
-    res.render('editPlace',{title:"Edit place",place});
+    res.render('editPlace',{title:"Edit place",place, regions: Region.listRegions() });
      
 
 

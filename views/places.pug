@@ -1,12 +1,17 @@
 extends layout
 include mixins/_storeCard
 include mixins/_pagination
+include mixins/_regionSelect
 
 block content
     
+    
     .inner 
-
-
+        .filter
+            a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) all
+            each region in regions
+                a.badge(href=`/places/${region.id}` class=(currentRegion!=region.id ? 'badge-secondary' : '')) #{h.localise(region.shortName)}
+                                    
         .places
             table
                 thead
@@ -22,6 +27,11 @@ block content
                                 //- if user                         
                                 //-     a(href=`/places/${place._id}/edit`) edit
                             td #{place.summary}
-                            td #{place.region}
+                            td 
+                                a(href=`/places/${place.region}`) #{place.region}
 
-        +pagigation(page, pages, count)
+        -//+pagigation(page, pages, count)
+            if places.length===0
+                p Aw, no results found!                
+
+block pageScripts

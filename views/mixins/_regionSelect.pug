@@ -1,11 +1,10 @@
-mixin regionSelect(place ={})    
-        
-    - const regions = ["","south-east","cardiff","south-west","mid", "north-west","north-east"]
+mixin regionSelect(place ={})                
     .input-field
         label(for="region") Region
         span  
         a(href="/help/region" target="_blank") [help]    
-        select(name="region" value=place.region required)
+        select(id="region" name="region" value=place.region required)
+            option(value=)
             each region in regions
-                option(value=region selected=region===place.region) #{region}
+                option(value=region.id selected=region.id===place.region) #{h.localise(region.name)}
                 

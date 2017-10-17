@@ -216,4 +216,13 @@ label {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
   padding: 20px; }
 
+/* stuff to be moved ...
+*/
+div.filter > a {
+  text-transform: lowercase; }
+
+div.filter {
+  border-bottom: dashed silver 1px;
+  padding-bottom: 4px; }
+
 /*# sourceMappingURL=style.css.map*/

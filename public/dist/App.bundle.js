@@ -2848,6 +2848,10 @@ var _heart = __webpack_require__(11);
 
 var _heart2 = _interopRequireDefault(_heart);
 
+var _pagePlaces = __webpack_require__(40);
+
+var _pagePlaces2 = _interopRequireDefault(_pagePlaces);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _autoComplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'), (0, _bling.$)('.googleUrl'), (0, _bling.$)('.googlePlaceId'), (0, _bling.$)('#postcode'), (0, _bling.$)('#name'));
@@ -2855,6 +2859,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _map2.default)((0, _bling.$)('#map'));
 var heartForms = (0, _bling.$$)('form.heart');
 heartForms.on('submit', _heart2.default);
+
+/***/ }),
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function selectPlacesByRegion(dropdown) {
+    alert("here");
+}
+
+exports.default = selectPlacesByRegion;
 
 /***/ })
 /******/ ]);
