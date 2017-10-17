@@ -1,5 +1,5 @@
 extends layout
-
+include mixins/_version
 block content
     .inner
         .card
@@ -13,4 +13,4 @@ block content
             h1 Info
             p Mae'r byd yn fawr
             p Environment: #{h.environment()}
-            p Version: #{h.version()}
+            +version()

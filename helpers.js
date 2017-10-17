@@ -44,8 +44,3 @@ exports.environment = () =>
 {
   return process.env.NODE_ENV;
 }
-
-exports.version = () => 
-{
-  return process.env.VERSION;
-}
