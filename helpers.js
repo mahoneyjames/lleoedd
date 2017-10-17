@@ -30,11 +30,10 @@ exports.menu = [
 
 exports.environment = () => 
 {
-  return "haro";
+  return process.env.NODE_ENV;
 }
-
 
 exports.version = () => 
 {
-  return "harold";
+  return process.env.VERSION;
 }
