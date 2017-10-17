@@ -1,3 +1,4 @@
+var JsFunctions =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2876,6 +2877,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _map2.default)((0, _bling.$)('#map'));
 var heartForms = (0, _bling.$$)('form.heart');
 heartForms.on('submit', _heart2.default);
+
+module.exports = { bob: function bob() {
+    console.log("library");
+  } };
 
 /***/ })
 /******/ ]);

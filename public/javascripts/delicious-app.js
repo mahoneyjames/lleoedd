@@ -14,3 +14,6 @@ makeMap($('#map'));
 const heartForms = $$('form.heart');
 heartForms.on('submit', ajaxHeart);
 
+
+
+module.exports = {bob: function(){console.log("library");}}

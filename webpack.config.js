@@ -61,7 +61,9 @@ const config = {
     path: path.resolve(__dirname, 'public', 'dist'),
     // we can use "substitutions" in file names like [name] and [hash]
     // name will be `App` because that is what we used above in our entry
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
+    libraryTarget:'var',
+    library:'JsFunctions'
   },
 
   // remember we said webpack sees everthing as modules and how different loaders are responsible for different file types? Here is is where we implement them. Pass it the rules for our JS and our styles
