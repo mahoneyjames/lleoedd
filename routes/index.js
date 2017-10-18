@@ -30,8 +30,8 @@ router.get('/api/places/near', catchErrors(placeController.mapPlaces));
 router.get('/about', siteController.about);
 router.get('/help/:what', siteController.help);
 
-router.get('/admin/manage', siteController.management);
-router.post('/admin/manage',catchErrors( siteController.runManagementAction));
+router.get('/admin/manage', authController.isLoggedIn, siteController.management);
+router.post('/admin/manage',authController.isLoggedIn, catchErrors( siteController.runManagementAction));
 
 //old stuff after this
 router.get('/tags/', catchErrors(storeController.getStoresByTag));
