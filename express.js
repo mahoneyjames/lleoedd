@@ -53,9 +53,20 @@ app.use(flash());
 
 // pass variables to our templates + all requests
 app.use((req, res, next) => {
+  
   res.locals.h = helpers;
   res.locals.flashes = req.flash();
+  
   res.locals.user = req.user || null;
+  //TODO support a cookie for the language?
+  let language = 'en';
+  
+  if(req.user && req.user.language)
+  {
+    language=req.user.language;
+  }
+  
+  res.locals.label = (category,id)=>helpers.languageLabel(language, category,id);
   res.locals.currentPath = req.path;
   next();
 });

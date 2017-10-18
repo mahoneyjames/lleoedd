@@ -5,6 +5,8 @@
 // FS is a built in module to node that let's us read files from the system we're running on
 const fs = require('fs');
 
+const labels = require('./labels.json');
+
 // moment.js is a handy library for displaying dates. We need this in our templates to display things like "Posted 5 minutes ago"
 exports.moment = require('moment');
 
@@ -21,10 +23,10 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.siteName = `Places`;
 
 exports.menu = [
-  { slug: '/map', title: 'Map', icon: 'map', },
-  { slug: '/places', title: 'Places', icon: 'store', },  
+  { slug: '/map', title: 'map', icon: 'map', },
+  { slug: '/places', title: 'places', icon: 'store', },  
   //{ slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/places/add', title: 'Add', icon: 'add', },
+  { slug: '/places-add', title: 'add', icon: 'add', },
   
 ];
 
@@ -44,3 +46,35 @@ exports.environment = () =>
 {
   return process.env.NODE_ENV;
 }
+
+exports.labels = labels;
+
+function label(category,id)
+{
+    const cat = labels[category];
+    
+    if(cat!=null)
+    {
+      if(cat[id] && cat[id].cy)
+      {
+        return cat[id].cy;
+      }            
+    }
+    return `${category}:${id}-noLabel`;
+}
+exports.label = label;
+
+function languageLabel(language,category,id)
+{
+    const cat = labels[category];    
+    if(cat!=null)
+    {
+      if(cat[id] && cat[id][language])
+      {
+        return cat[id][language];
+      }            
+    }
+    return `${category}:${id}:${language}-noLabel`;
+}
+
+exports.languageLabel = languageLabel;

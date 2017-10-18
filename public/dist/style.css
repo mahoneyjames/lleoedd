@@ -225,4 +225,7 @@ div.filter {
   border-bottom: dashed silver 1px;
   padding-bottom: 4px; }
 
+.step.dev {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map*/

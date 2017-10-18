@@ -4,8 +4,16 @@ block content
     .inner
         h2=title
         form(action="/account" method="POST")
-            label(for="name") Name
-            input(type="text" name="name" value=user.name)
-            label(for="email") Email
-            input(type="email" name="email" value=user.email)
+            .input-field
+                label(for="name") Name
+                input(type="text" name="name" value=user.name)
+            .input-field
+                label(for="email") Email
+                input(type="email" name="email" value=user.email)
+            .input-field
+                label(for="language") #{h.label('account','language')}
+                select(name="language" value=user.language)
+                    option(value= selected=user.language==null)
+                    option(value="cy" selected=user.language=="cy") Cymraeg
+                    option(value="en" selected=user.language=="en") English
             input.button(type="submit" value="Update my account")

@@ -2,7 +2,7 @@ include _regionSelect
 mixin placeForm(place ={})
     h1 Edit #{place.name}
     -//pre=h.dump(place)
-    form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+    form(action=`/places-add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             .input-field
                 label(for="name") Title

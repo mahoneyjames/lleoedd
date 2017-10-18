@@ -93,7 +93,7 @@ exports.getPlaces = async (req, res)=>{
         res.redirect(`/places/page/${pages}`);
         return;
     }
-    res.render('places', {title:"Places", places, count, page, pages, currentRegion: region, regions: Region.listRegions() });
+    res.render('places', {title:"places", places, count, page, pages, currentRegion: region, regions: Region.listRegions() });
 
 };
 

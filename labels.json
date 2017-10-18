@@ -1,0 +1,84 @@
+{
+  "title": {
+    "home": {
+      "en": "Home",
+      "cy": "Cartref"
+    },
+    "places": {
+      "en": "Places",
+      "cy": "Lleoedd"
+    }
+  },
+  "nav": {
+    "places": {
+      "en": "Places",
+      "cy": "Lleoedd"
+    },
+    "map": {
+      "en": "Map",
+      "cy": "Map"
+    },
+    "add": {
+      "en": "Add",
+      "cy": "Ychwanegi"
+    },
+    "about": {
+      "en": "About",
+      "cy": "Amdani"
+    },
+    "register": {
+      "en": "Register",
+      "cy": "Cofrestru"
+    },
+    "login": {
+      "en": "Login",
+      "cy": "Login"
+    },
+    "account": {
+      "en": "My Account",
+      "cy": "Cyrif"
+    },
+    "logout": {
+      "en": "Logout",
+      "cy": "Logout"
+    }
+  },
+  "login": {
+    "title": {
+      "en": "Login",
+      "cy": "Login"
+    },
+    "email": {
+      "en": "Email",
+      "cy": "Ebost"
+    },
+    "password": {
+      "en": "Password",
+      "cy": "Password"
+    },
+    "submit": {
+      "en": "Login",
+      "cy": "Login"
+    }
+  },
+  "message": {
+    "notLoggedIn": {
+      "en": "You must be logged in!",
+      "cy": "CY: You must be logged in!"
+    }
+  },
+  "account": {
+    "language": {
+      "en": "Language/Iaith",
+      "cy": "Language/Iaith"
+    },
+    "langCy": {
+      "en": "Welsh",
+      "cy": "Cymraeg"
+    },
+    "langEn": {
+      "en": "English",
+      "cy": "Saesneg"
+    }
+  }
+}

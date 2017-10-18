@@ -1,6 +1,6 @@
 include _regionSelect
 mixin placeFormFriendly(place ={})
-    form(action=`/places/add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+    form(action=`/places-add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             h1 Step 1 - Find the place
             a(href="/help/address" target="_blank") Need help?
@@ -30,7 +30,7 @@ mixin placeFormFriendly(place ={})
             input(type="text" name="link" value=place.link)
             
         
-        .step 
+        .step.dev
             h1 Dev stuff
                 //-lat and long
             label(for="lng") Address lng

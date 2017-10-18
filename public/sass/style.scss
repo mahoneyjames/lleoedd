@@ -38,3 +38,9 @@ div.filter
     border-bottom: dashed silver 1px;
     padding-bottom: 4px;
 }
+
+//hide the dev details on the friendly add place page
+.step.dev
+{
+    display:none;
+}

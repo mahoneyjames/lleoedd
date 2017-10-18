@@ -14,12 +14,12 @@ router.get('/places',  catchErrors(placeController.getPlaces));
 router.get('/places/page/:page',  catchErrors(placeController.getPlaces));
 router.get('/places/:region',  catchErrors(placeController.getPlaces));
 router.get('/places/:region/page/:page',  catchErrors(placeController.getPlaces));
-router.get('/places/add', authController.isLoggedIn, placeController.addPlace);
-router.post('/places/add', 
+router.get('/places-add', authController.isLoggedIn, placeController.addPlace);
+router.post('/places-add', 
                 placeController.upload, 
                 catchErrors(placeController.resize) ,
                 catchErrors(placeController.createPlace));
-router.post('/places/add/:id', 
+router.post('/places-add/:id', 
                 placeController.upload,    
                 catchErrors(placeController.resize) ,
                 catchErrors(placeController.updatePlace));
