@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
 const blob  = require('../models/Blob-S3');
 const helpers = require('../helpers.js');
+const moment = require('moment');
 exports.about =  (req, res)=>{
      res.render('about',{title:"About"});
 };
@@ -44,7 +45,7 @@ async function exportPlaceData()
     const env = process.env.NODE_ENV;
 
     //TODO - use the helper function to get the env once it is merged from dev
-    const result = await blob.saveBlob(`xxxblahsadfasccadmin-${env}`, "data.json", JSON.stringify(places));
+    const result = await blob.saveBlob(`ccadmin-${env}`, `${new moment()}-places.json`, JSON.stringify(places));
 
     if(result.success===true)
     {

@@ -1,39 +1,63 @@
 var AWS = require('aws-sdk');
+/*
+    This code is - quite frankly - terrible. 
+    I don't know enough about promises, async and the AWS sdk (which is terrible itself)
+    But it does allow us to backup place data into s3 storage...
+
+*/
+function getAccessKey(){
+
+    return {
+        accessKeyId:process.env.BLOB_ID, 
+        secretAccessKey :process.env.BLOB_SECRET,
+        region: "eu-west-2"
+    };
+}
+
+async function putBlob (s3, bucketName, key, jsonData)
+{
+    console.log("put blob");
+    let errDetails =null;
+    var putPromise = s3.putObject({Bucket: bucketName, Key: key, Body: jsonData}).promise().catch((err)=>errDetails=err);
+
+    console.log("after promise");
+    await putPromise;
+    console.log("after await");
+    console.log(errDetails);
+    return errDetails;
+}
+
 
 exports.saveBlob = async (root, path, data) =>
 {
-    try{
+    try
+    {
+        console.log("saveBlob-before");
+        var s3 = new AWS.S3(getAccessKey());
 
-    
-    var s3 = new AWS.S3(getAccessKey());
-
-    const bucketParams = {Bucket: root};
-
-    var bucketResponse = s3.headBucket(bucketParams).promise(); 
-    
-    bucketResponse.then(()=>{console.log("bucket exists")}).catch((err)=>{
-        //ugh. horrid coding model. an error to say that something doesn't exist???
-        //why bother to check then? Put the blob, and if it fails, create the bucket, then call the same code again?
-
-        if(err.code=='NotFound')
+        const jsonData = data;
+        const createResponse = await putBlob(s3, root, path, jsonData);
+        console.log("saveBlob-after put blob");
+        if(createResponse!=null)
         {
-            console.log("creating bucket");
-            s3.createBucket(bucketParams).promise().then((data)=>console.log("bucket created"));
-        }        
-    
-        else
-        {
-            console.log("head buccket errr");
-            console.log(err);
+            if(createResponse.code==='NoSuchBucket')
+            {
+                //bucket does not exist...
+                const createResponse2 =  s3.createBucket({Bucket: root}).promise().then(()=>{
+                    console.log("saveBlob-create bucket, before put blob 2");
+                    const createResponse2 = putBlob(s3, root, path, jsonData);
+                    console.log("saveBlob - after put blob 2");
+                });
+
+                await createResponse2;
+                console.log("blah");
+            }
+            else
+            {
+                return{success:false, err:createResponse.err};
+            }
         }
-});
-
-    await bucketResponse;
-    console.log("we have awaited the bucketResponse");
-    const params = {Bucket: root};
-    //var response = await s3.createBucket(params).promise();
-    //console.log(response);
-
+        console.log("saveBlob-after");
         return {success: true, msg:"Blob saved!"};
     }
     catch(err)
@@ -44,12 +68,3 @@ exports.saveBlob = async (root, path, data) =>
     }
 
 };
-
-function getAccessKey(){
-
-    return {
-        accessKeyId:process.env.BLOB_ID, 
-        secretAccessKey :process.env.BLOB_SECRET,
-        region: "eu-west-2"
-    };
-}
