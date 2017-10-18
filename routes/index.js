@@ -30,6 +30,9 @@ router.get('/api/places/near', catchErrors(placeController.mapPlaces));
 router.get('/about', siteController.about);
 router.get('/help/:what', siteController.help);
 
+router.get('/admin/manage', siteController.management);
+router.post('/admin/manage',catchErrors( siteController.runManagementAction));
+
 //old stuff after this
 router.get('/tags/', catchErrors(storeController.getStoresByTag));
 router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
