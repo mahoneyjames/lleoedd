@@ -3,9 +3,10 @@
 */
 
 // FS is a built in module to node that let's us read files from the system we're running on
-const fs = require('fs');
 
 const labels = require('./labels.json');
+
+//const readAFileReturnPromise = util.promisify(readFile);
 
 // moment.js is a handy library for displaying dates. We need this in our templates to display things like "Posted 5 minutes ago"
 exports.moment = require('moment');
@@ -78,3 +79,11 @@ function languageLabel(language,category,id)
 }
 
 exports.languageLabel = languageLabel;
+
+// exports.htmlFromMarkdown = async (filename)=>
+// {
+//   const md = await readAFileReturnPromise(filename,'UTF-8');
+//   const markdownToHtmlConvertor = new marked.Renderer();
+//   return marked(md, {renderer: markdownToHtmlConvertor});
+  
+// }
