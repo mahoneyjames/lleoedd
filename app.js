@@ -26,6 +26,7 @@ require('./models/User');
 require('./models/Review');
 require('./models/Place');
 require('./models/Region');
+require('./models/Event');
 // Start our app!
 const app = require('./express');
 app.set('port', process.env.PORT || 7777);

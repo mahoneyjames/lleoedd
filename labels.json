@@ -108,5 +108,33 @@
       "en": "English",
       "cy": "Saesneg"
     }
+  },
+  "forms": {
+    "enLong": {
+      "en": "English",
+      "cy": "Saesneg"
+    },
+    "enShort": {
+      "en": "EN",
+      "cy": "EN"
+    },
+    "cyLong": {
+      "en": "Welsh",
+      "cy": "Cymraeg"
+    },
+    "cyShort": {
+      "en": "CY",
+      "cy": "CY"
+    }
+  },
+  "eventForm": {
+    "name": {
+      "en": "Name",
+      "cy": "Enw"
+    },
+    "about": {
+      "en": "About",
+      "cy": "Amdani"
+    }
   }
 }

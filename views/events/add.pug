@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    .inner
+        form(action=`/events-add/${event._id || ''}` method="POST" class="card")
+            h1 #{label('eventForm','name')}                    
+            .input-group
+                span.input-addon #{label('forms','enShort')}
+                input(type="text" id="name.en" name="name[en]" value=(event.name && event.name.en))
+            .input-group
+                span.input-addon #{label('forms','cyShort')}
+                input(type="text" id="name.cy" name="name[cy]" value=(event.name && event.name.cy))      
+            h1 #{label('eventForm','about')}
+            .input-field
+                p.input-hint #{label('forms','enLong')}
+                input(type="text" id="about.en" name="about[en]" value=(event.about && event.about.en))
+            .input-field
+                p.input-hint #{label('forms','cyLong')}
+                input(type="text" id="about.cy" name="about[cy]" value=(event.about && event.about.cy))
+                
+
+                
+                
+
+            input(type="submit" value="Save" class="button")

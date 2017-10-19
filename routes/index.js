@@ -6,6 +6,7 @@ const authController = require('../controllers/authController');
 const reviewController = require('../controllers/reviewController');
 const placeController = require('../controllers/placeController');
 const siteController = require('../controllers/siteController');
+const eventController = require('../controllers/eventController');
 
 const {catchErrors} = require('../handlers/errorHandlers');
 // Do work here
@@ -15,15 +16,15 @@ router.get('/places/page/:page',  catchErrors(placeController.getPlaces));
 router.get('/places/:region',  catchErrors(placeController.getPlaces));
 router.get('/places/:region/page/:page',  catchErrors(placeController.getPlaces));
 router.get('/places-add', authController.isLoggedIn, placeController.addPlace);
-router.post('/places-add', 
+router.post('/places-add', authController.isLoggedIn,
                 placeController.upload, 
                 catchErrors(placeController.resize) ,
                 catchErrors(placeController.createPlace));
-router.post('/places-add/:id', 
+router.post('/places-add/:id', authController.isLoggedIn,
                 placeController.upload,    
                 catchErrors(placeController.resize) ,
                 catchErrors(placeController.updatePlace));
-router.get('/places/:id/edit', catchErrors(placeController.editPlace));
+router.get('/places/:id/edit',authController.isLoggedIn, catchErrors(placeController.editPlace));
 
 router.get('/place/:slug', catchErrors(placeController.displayPlace));
 
@@ -34,6 +35,11 @@ router.get('/help/:what', siteController.help);
 
 router.get('/admin/manage', authController.isLoggedIn, siteController.management);
 router.post('/admin/manage',authController.isLoggedIn, catchErrors( siteController.runManagementAction));
+
+
+router.get('/events-add', authController.isLoggedIn, eventController.addEvent);
+router.post('/events-add', authController.isLoggedIn, eventController.createEvent);
+router.post('/events-add/:id', authController.isLoggedIn, eventController.createEvent);
 
 //old stuff after this
 router.get('/tags/', catchErrors(storeController.getStoresByTag));
