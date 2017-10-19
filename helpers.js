@@ -21,7 +21,7 @@ exports.staticMap = ([lng, lat]) => `https://maps.googleapis.com/maps/api/static
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
 // Some details about the site
-exports.siteName = `Places`;
+exports.siteName = `Admin - chat.cymru [${process.env.NODE_ENV}]`;
 
 exports.menu = [
   { slug: '/map', title: 'map', icon: 'map', },

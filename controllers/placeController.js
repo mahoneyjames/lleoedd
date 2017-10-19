@@ -3,6 +3,7 @@ const Place = mongoose.model('Place');
 const Region = mongoose.model('Region');
 const User = mongoose.model('User');
 const multer = require('multer');
+const moment = require('moment');
 const multerOptions = {
     storage: multer.memoryStorage(),
     fileFilter(req, file, next){
@@ -28,7 +29,7 @@ exports.homePage = (req, res) => {
 
 exports.addPlace = (req, res)=> {
 
-    res.render('editPlace', {title: 'Add place',wizardMode: true, regions: Region.listRegions() });
+    res.render('editPlace', {titleLabel: 'addPlace',wizardMode: true, regions: Region.listRegions() });
 };
 
 exports.upload = multer(multerOptions).single('photo');
@@ -93,7 +94,7 @@ exports.getPlaces = async (req, res)=>{
         res.redirect(`/places/page/${pages}`);
         return;
     }
-    res.render('places', {title:"places", places, count, page, pages, currentRegion: region, regions: Region.listRegions() });
+    res.render('places', {titleLabel:"places", places, count, page, pages, currentRegion: region, regions: Region.listRegions() });
 
 };
 
@@ -105,7 +106,7 @@ exports.editPlace = async (req, res)=>{
      
      //2 render out the edit form so the user can update their store
 
-    res.render('editPlace',{title:"Edit place",place, regions: Region.listRegions() });
+    res.render('editPlace',{titleLabel:"editPlace",place, regions: Region.listRegions() });
      
 
 
@@ -113,6 +114,8 @@ exports.editPlace = async (req, res)=>{
 
 exports.updatePlace = async (req, res)=>{
     req.body.location.type = 'Point';
+    req.body.lastModifiedBy = req.user._id;
+    req.body.modified = moment();
      //1 find the store based on the id
      const place = await Place.findOneAndUpdate(
          {_id: req.params.id}, 
@@ -166,7 +169,7 @@ exports.mapPlaces = async(req, res)=>{
 };
 
 exports.mapPage = (req, res)=>{
-    res.render('map',{title:'Map'});
+    res.render('map',{titleLabel:'map'});
 };
 
 /*

@@ -34,7 +34,12 @@ const placeSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'User',
         required: "You must supply an author"
-    }
+    },
+    lastModifiedBy: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User'
+    },
+    modified: {type: Date}
 });
 
 placeSchema.index({

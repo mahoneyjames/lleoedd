@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title= `${label('title',title)} | ${h.siteName}`
+    title= `${title ? title: label('title',titleLabel)} | ${h.siteName}`
     link(rel='stylesheet', href='/dist/style.css')
     link(ref="preload" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css" as="style" crossorigin)
     link(rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css")    

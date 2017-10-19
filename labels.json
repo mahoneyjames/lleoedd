@@ -7,6 +7,34 @@
     "places": {
       "en": "Places",
       "cy": "Lleoedd"
+    },
+    "editPlace": {
+      "en": "Edit place",
+      "cy": "CY: Edit place"
+    },
+    "addPlace": {
+      "en": "Add place",
+      "cy": "CY: Add place"
+    },
+    "map": {
+      "en": "Map",
+      "cy": "CY: Map"
+    },
+    "account": {
+      "en": "Account",
+      "cy": "CY: Account"
+    },
+    "login": {
+      "en": "Login",
+      "cy": "CY: Login"
+    },
+    "register": {
+      "en": "Register",
+      "cy": "CY: Register"
+    },
+    "about": {
+      "en": "About",
+      "cy": "CY: About"
     }
   },
   "nav": {
