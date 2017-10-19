@@ -1,15 +1,21 @@
 include _regionSelect
 mixin placeForm(place ={})
     h1 Edit #{place.name}
-    -//pre=h.dump(place)
+    pre=h.dump(place)
     form(action=`/places-add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             .input-field
                 label(for="name") Title
                 input(type="text" name="name" value=place.name required)
-            .input-field
-                label(for="summary") Summary
-                input(type="text" name="summary" value=place.summary required)
+            h2 Summary                            
+                p.input-hint Keep the summary short, say 15 words or less.  
+                .input-group
+                    span.input-addon English
+                    input(type="text" id="summary.en" name="summary[en]" required value=(place.summary && place.summary.en))                    
+                .input-group
+                    span.input-addon Welsh
+                    input(type="text" id="summary.cy" name="summary[cy]" value=(place.summary && place.summary.cy))
+                     
             +regionSelect(place)
 
         .step 

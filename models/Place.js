@@ -6,6 +6,7 @@ const placeSchema = new mongoose.Schema({
     name: {type:String, trim:true, required:'Please enter a name'},
     slug: String,
     summary: String,
+    summary_new:{en:{type:String, trim:true}, cy:{type:String,trim:true}},
     description: {type:String, trim:true},
     tags: [String],
     region: String,

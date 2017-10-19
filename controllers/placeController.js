@@ -102,7 +102,50 @@ exports.getPlaces = async (req, res)=>{
 exports.editPlace = async (req, res)=>{
 
      //1 find the store based on the id
-     const place = await(Place.findOne({_id: req.params.id}));
+     let place = await(Place.findOne({_id: req.params.id}));
+
+console.log("dit" + place.summary_new);
+     if(place.summary_new.en===undefined)
+     {
+         place = place.toObject();
+         
+         
+         const summary_new = {en:place.summary};
+         place.summary = summary_new;  
+/*
+console.log(summary_new);
+        const newPlace = {};
+        
+        for(var k in place) 
+        {
+            
+            if(k==="summary")
+            {
+            console.log("ad" + k);    
+                newPlace["summary"] = summary_new;
+            }
+            else
+            {
+                
+                newPlace[k]=place[k];
+            }
+        }
+
+
+        place=null;
+        place=newPlace;*/
+
+     }
+
+     
+        if(place.summary===null)
+        {
+            console.log("no summary");
+            place=place.toObject();
+            place.summary = place.summary_new;
+        }
+
+
      
      //2 render out the edit form so the user can update their store
 
@@ -116,6 +159,8 @@ exports.updatePlace = async (req, res)=>{
     req.body.location.type = 'Point';
     req.body.lastModifiedBy = req.user._id;
     req.body.modified = moment();
+    req.body.summary_new=req.body.summary;
+    req.body.summary=null;
      //1 find the store based on the id
      const place = await Place.findOneAndUpdate(
          {_id: req.params.id}, 
