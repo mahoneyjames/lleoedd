@@ -60,10 +60,10 @@ exports.createPlace = async (req, res)=> {
     req.body.createdBy = req.user._id;
 
     req.body.summary_new=req.body.summary;
-    req.body.summary=null;
+    req.body.summary=req.body.summary_new.en;
 
     req.body.description_new = req.body.description;
-    req.body.description = null;
+    req.body.description = req.body.description_new.en;
     const place = await( new Place(req.body).save());
 
     
@@ -75,19 +75,21 @@ exports.createPlace = async (req, res)=> {
 function handleSummaryLocalisation(place)
 {
     place = place.toObject();
-         
-    if(place.summary===null)
+
+     if(place.summary_new!=undefined && place.summary_new.en!=undefined)
     {
+        place.summary = undefined;
         place.summary = place.summary_new;
     }
     else
     {         
-         const summary_new = {en:place.summary};
+         const summary_new = {en:place.summary};         
          place.summary = summary_new;  
     }
 
-     if(place.description===null)
+     if(place.description_new!=undefined && place.description_new.en!=undefined)
     {
+        place.description=undefined;
         place.description = place.description_new;
     }
     else
@@ -152,14 +154,15 @@ exports.editPlace = async (req, res)=>{
 };
 
 exports.updatePlace = async (req, res)=>{
+    console.log(req.body);
     req.body.location.type = 'Point';
     req.body.lastModifiedBy = req.user._id;
     req.body.modified = moment();
     req.body.summary_new=req.body.summary;
-    req.body.summary=null;
+    req.body.summary=req.body.summary_new.en;
 
     req.body.description_new = req.body.description;
-    req.body.description = null;
+    req.body.description = req.body.description_new.en;
      //1 find the store based on the id
      const place = await Place.findOneAndUpdate(
          {_id: req.params.id}, 

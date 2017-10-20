@@ -2,24 +2,24 @@ include _regionSelect
 include _bilingualText
 mixin placeForm(place ={})
     h1 Edit #{place.name}
-    -//pre=h.dump(place)
+    pre=h.dump(place)
     form(action=`/places-add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             .input-field
-                label(for="name") Title
-                input(type="text" name="name" value=place.name required)
-            +bilingualText('summary','summary',place.summary,'summaryHint')
+                label(for="name") #{label('page.place.edit.form.title')}
+                input(type="text" name="name" value=place.name required)            
+            +bilingualText(label('page.place.edit.summary'),'summary',place.summary,label('page.place.edit.summary.hint'))
             +regionSelect(place)
 
         .step 
-            h1 More details
-            +bilingualText('description','description',place.description,'descriptionHint')
+            h1 #{label('page.place.edit.more')}
+            +bilingualText(label('page.place.edit.description'),'description',place.description,label('page.place.edit.description.hint'))
             .input-field                
                 label(for="link") Website
                 input(type="text" name="link" value=place.link)        
         
         .step
-            h1 Location
+            h1 #{label('page.place.edit.location')}
             a(href="/help/address" target="_blank") Need help?
             
             .input-field
@@ -46,4 +46,4 @@ mixin placeForm(place ={})
                     a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
                 input.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
 
-        input(type="submit" value="Save" class="button")
+        input(type="submit" value=`${label('page.place.edit.form.save')}` class="button")

@@ -1,140 +1,274 @@
 {
-  "title": {
-    "home": {
-      "en": "Home",
-      "cy": "Cartref"
-    },
-    "places": {
-      "en": "Places",
-      "cy": "Lleoedd"
-    },
-    "editPlace": {
-      "en": "Edit place",
-      "cy": "CY: Edit place"
-    },
-    "addPlace": {
-      "en": "Add place",
-      "cy": "CY: Add place"
-    },
-    "map": {
-      "en": "Map",
-      "cy": "CY: Map"
-    },
-    "account": {
-      "en": "Account",
-      "cy": "CY: Account"
-    },
-    "login": {
-      "en": "Login",
-      "cy": "CY: Login"
-    },
-    "register": {
-      "en": "Register",
-      "cy": "CY: Register"
-    },
-    "about": {
-      "en": "About",
-      "cy": "CY: About"
-    }
+  "page.home.title.title": {
+    "en": "Home",
+    "cy": "Cartref"
   },
-  "nav": {
-    "places": {
-      "en": "Places",
-      "cy": "Lleoedd"
-    },
-    "map": {
-      "en": "Map",
-      "cy": "Map"
-    },
-    "add": {
-      "en": "Add",
-      "cy": "Ychwanegu"
-    },
-    "about": {
-      "en": "About",
-      "cy": "Amdani"
-    },
-    "register": {
-      "en": "Register",
-      "cy": "Cofrestru"
-    },
-    "login": {
-      "en": "Login",
-      "cy": "Login"
-    },
-    "account": {
-      "en": "My Account",
-      "cy": "Cyfrif"
-    },
-    "logout": {
-      "en": "Logout",
-      "cy": "Logout"
-    }
+  "page.places.title.title": {
+    "en": "Places",
+    "cy": "Lleoedd"
   },
-  "login": {
-    "title": {
-      "en": "Login",
-      "cy": "Login"
-    },
-    "email": {
-      "en": "Email",
-      "cy": "Ebost"
-    },
-    "password": {
-      "en": "Password",
-      "cy": "Password"
-    },
-    "submit": {
-      "en": "Login",
-      "cy": "Login"
-    }
+  "nav.places": {
+    "en": "Places",
+    "cy": "Lleoedd"
   },
-  "message": {
-    "notLoggedIn": {
-      "en": "You must be logged in!",
-      "cy": "CY: You must be logged in!"
-    }
+  "nav.map": {
+    "en": "Map",
+    "cy": "Map"
   },
-  "account": {
-    "language": {
-      "en": "Language/Iaith",
-      "cy": "Language/Iaith"
-    },
-    "langCy": {
-      "en": "Welsh",
-      "cy": "Cymraeg"
-    },
-    "langEn": {
-      "en": "English",
-      "cy": "Saesneg"
-    }
+  "nav.add": {
+    "en": "Add",
+    "cy": "Ychwanegu"
   },
-  "forms": {
-    "enLong": {
-      "en": "English",
-      "cy": "Saesneg"
-    },
-    "enShort": {
-      "en": "EN",
-      "cy": "EN"
-    },
-    "cyLong": {
-      "en": "Welsh",
-      "cy": "Cymraeg"
-    },
-    "cyShort": {
-      "en": "CY",
-      "cy": "CY"
-    }
+  "nav.about": {
+    "en": "About",
+    "cy": "Amdani"
   },
-  "eventForm": {
-    "name": {
-      "en": "Name",
-      "cy": "Enw"
-    },
-    "about": {
-      "en": "About",
-      "cy": "Amdani"
-    }
+  "nav.register": {
+    "en": "Register",
+    "cy": "Cofrestru"
+  },
+  "nav.login": {
+    "en": "Login",
+    "cy": "Login"
+  },
+  "nav.account": {
+    "en": "My Account",
+    "cy": "Cyfrif"
+  },
+  "page.login.title": {
+    "en": "Login",
+    "cy": "Login"
+  },
+  "page.login.form.email": {
+    "en": "Email",
+    "cy": "Ebost"
+  },
+  "page.login.form.password": {
+    "en": "Password",
+    "cy": "Password"
+  },
+  "page.login.form.submit": {
+    "en": "Login",
+    "cy": "Login"
+  },
+  "message.notLoggedIn": {
+    "en": "You must be logged in!",
+    "cy": "You must be logged in! [CY ar goll]"
+  },
+  "nav.logout": {
+    "en": "Logout",
+    "cy": "Logout"
+  },
+  "page.account.form.language": {
+    "en": "Language/Iaith",
+    "cy": "Iaith/Language"
+  },
+  "page.account.form.language.cy": {
+    "en": "Welsh",
+    "cy": "Cymraeg"
+  },
+  "page.account.form.language.en": {
+    "en": "English",
+    "cy": "Saesneg"
+  },
+  "page.place.edit.title": {
+    "en": "Edit place",
+    "cy": "Edit place [CY ar goll]"
+  },
+  "page.place.add.title": {
+    "en": "Title",
+    "cy": "Teitl"
+  },
+  "page.map.title": {
+    "en": "Map",
+    "cy": "Map"
+  },
+  "page.account.title": {
+    "en": "Account",
+    "cy": "Account [CY ar goll]"
+  },
+  "page.register.title": {
+    "en": "Register",
+    "cy": "Register [CY ar goll]"
+  },
+  "page.about.title": {
+    "en": "About",
+    "cy": "About [CY ar goll]"
+  },
+  "forms.language.en.long": {
+    "en": "English",
+    "cy": "Saesneg"
+  },
+  "forms.language.en.short": {
+    "en": "EN",
+    "cy": "EN"
+  },
+  "forms.language.cy.long": {
+    "en": "Welsh",
+    "cy": "Cymraeg"
+  },
+  "forms.language.cy.short": {
+    "en": "CY",
+    "cy": "CY"
+  },
+  "page.event.name": {
+    "en": "Name",
+    "cy": "Enw"
+  },
+  "page.event.about": {
+    "en": "About",
+    "cy": "Amdani"
+  },
+  "page.places.regions.all": {
+    "en": "all",
+    "cy": "pob"
+  },
+  "page.places.th.name": {
+    "en": "Name",
+    "cy": "Enw"
+  },
+  "page.places.th.summary": {
+    "en": "Summary",
+    "cy": "CY: Summary"
+  },
+  "page.places.th.region": {
+    "en": "Region",
+    "cy": "Ardal"
+  },
+  "page.map.where": {
+    "en": "Where would you like to go to siarad Cymraeg?",
+    "cy": "Ble hoffet ti fynd er moyn siarad Cymraeg?"
+  },
+  "page.place.add.step1": {
+    "en": "Step 1 - find the place",
+    "cy": "Step 1 - find the place [CY ar goll]"
+  },
+  "page.place.add.help": {
+    "en": "help?",
+    "cy": "help?"
+  },
+  "page.place.add.location": {
+    "en": "Location",
+    "cy": "Ble"
+  },
+  "page.place.add.startTyping": {
+    "en": "Start typing...",
+    "cy": "Dechrau teipio..."
+  },
+  "page.place.add.postcode": {
+    "en": "Postcode",
+    "cy": "cy: postcode"
+  },
+  "page.place.add.step2": {
+    "en": "Step 2 - set a title and summary",
+    "cy": "Step 2 - set a title and summary [CY ar goll]"
+  },
+  "page.place.add.summary": {
+    "en": "Summary",
+    "cy": "Summary [CY ar goll]"
+  },
+  "page.place.add.summary.hint": {
+    "en": "Keep it brief - perhaps 15 words or less",
+    "cy": "Keep it brief - perhaps 15 words or less [CY ar goll]"
+  },
+  "forms.region": {
+    "en": "Region",
+    "cy": "Ardal"
+  },
+  "page.place.add.step3": {
+    "en": "Step 3 - Pick a region",
+    "cy": "Step 3 - Pick a region [CY ar goll]"
+  },
+  "page.place.add.step4": {
+    "en": "Step 4 - Optional extras",
+    "cy": "Step 4 - Optional extras [CY ar goll]"
+  },
+  "page.place.add.description": {
+    "en": "Description",
+    "cy": "Description [CY ar goll]"
+  },
+  "page.place.add.description.hint": {
+    "en": "",
+    "cy": " [CY ar goll]"
+  },
+  "page.place.add.url": {
+    "en": "Website?",
+    "cy": "Wefan?"
+  },
+  "page.place.show.more": {
+    "en": "More details",
+    "cy": "Mwy o wybodaeth"
+  },
+  "page.place.show.editPlace": {
+    "en": "edit",
+    "cy": "edit [CY ar goll]"
+  },
+  "page.place.edit.heading.main": {
+    "en": "Edit",
+    "cy": "Edit [CY ar goll]"
+  },
+  "page.place.edit.summary": {
+    "en": "Summary",
+    "cy": "Summary [CY ar goll]"
+  },
+  "page.place.edit.summary.hint": {
+    "en": "Keep it brief - perhaps 15 words or less",
+    "cy": "Keep it brief - perhaps 15 words or less [CY ar goll]"
+  },
+  "page.place.edit.description": {
+    "en": "Description",
+    "cy": "Description [CY ar goll]"
+  },
+  "page.place.edit.description.hint": {
+    "en": "",
+    "cy": " [CY ar goll]"
+  },
+  "page.place.edit.url": {
+    "en": "Website?",
+    "cy": "Wefan?"
+  },
+  "page.place.edit.save": {
+    "en": "Save",
+    "cy": "Save [CY ar goll]"
+  },
+  "page.account.form.name": {
+    "en": "Name",
+    "cy": "Enw"
+  },
+  "page.account.form.email": {
+    "en": "Email",
+    "cy": "Ebost"
+  },
+  "page.account.form.save": {
+    "en": "Update my account",
+    "cy": "Update my account [CY ar goll]"
+  },
+  "page.account.message.updated": {
+    "en": "Profile updated!",
+    "cy": "Profile updated! [CY ar goll]"
+  },
+  "page.place.add.save": {
+    "en": "Save",
+    "cy": "Save [CY ar goll]"
+  },
+  "page.places.none": {
+    "en": "Aw, no places found!",
+    "cy": "Dim byd ar gael!"
+  },
+  "page.map.loading": {
+    "en": "Loading...",
+    "cy": "Loading... [CY ar goll]"
+  },
+  "page.place.show.website": {
+    "en": "Website",
+    "cy": "Wefan"
+  },
+  "page.place.edit.form.title": {
+    "en": "Title",
+    "cy": "teitl"
+  },
+  "page.place.edit.form.save": {
+    "en": "Save",
+    "cy": "Save [CY ar goll]"
   }
 }

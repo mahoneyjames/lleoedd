@@ -8,7 +8,7 @@ block content
     
     .inner 
         .filter
-            a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) all
+            a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
             each region in regions
                 a.badge(href=`/places/${region.id}` class=(currentRegion!=region.id ? 'badge-secondary' : '')) #{h.localise(region.shortName)}
                                     
@@ -16,9 +16,9 @@ block content
             table
                 thead
                     tr
-                        td Name
-                        td Summary
-                        td Region
+                        td #{label('page.places.th.name')}
+                        td #{label('page.places.th.summary')}
+                        td #{label('page.places.th.region')}
                 tbody
                     each place in places
                         tr
@@ -30,9 +30,8 @@ block content
                             td 
                                 a(href=`/places/${place.region}`) #{place.region}
 
-        -//+pagigation(page, pages, count)
             if places.length===0
-                p Aw, no results found!                
+                p #{label('page.places.none')}                
 
 block pageScripts
     script.

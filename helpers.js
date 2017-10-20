@@ -50,8 +50,8 @@ exports.environment = () =>
 }
 
 exports.labels = labels;
-
-function label(category,id)
+/*
+function label(what)
 {
     const cat = labels[category];
     
@@ -65,18 +65,18 @@ function label(category,id)
     return `${category}:${id}-noLabel`;
 }
 exports.label = label;
-
-function languageLabel(language,category,id)
+*/
+function languageLabel(language,what)
 {
-    const cat = labels[category];    
+    const cat = labels[what];    
     if(cat!=null)
     {
-      if(cat[id] && cat[id][language])
+      if(cat[language])
       {
-        return cat[id][language];
+        return cat[language];
       }            
     }
-    return `${category}:${id}:${language}-noLabel`;
+    return `${what}:${language}-noLabel`;
 }
 
 exports.languageLabel = languageLabel;

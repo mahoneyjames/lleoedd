@@ -5,7 +5,7 @@ include mixins/_review
 block content   
     .inner
         if user
-            a(href=`/places/${place._id}/edit`) edit
+            a(href=`/places/${place._id}/edit`) #{label('page.place.show.edit')}
         .card
             .single
                 .single__hero        
@@ -17,7 +17,7 @@ block content
                     
 
             .single__details
-                if place.google.url
+                if place.google && place.google.url
                     a(href=`${place.google.url}` target="_blank")
                         img.single__map(src=h.staticMap(place.location.coordinates))
                 else
@@ -26,10 +26,10 @@ block content
                 p.single__location= place.location.address
 
                 if place.description
-                    h2 More details
+                    h2 #{label('page.place.show.more')}
                     p= localise(place.description)
 
                 if place.link
-                    h3 Website
+                    h3 #{label('page.place.show.website')}
                     a(href=`${place.link}` target="_blank") #{place.link}
                 

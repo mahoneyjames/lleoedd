@@ -12,15 +12,7 @@ axios.all([axios.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vT24almm6O
         csvToJson().fromString(results[0].data)
         .on('json', (json)=>
         {
-            console.log(json);
-            let category = labels[`${json.cat}`];
-            if(category==null)
-            {
-                labels[`${json.cat}`] = {};
-                category = labels[`${json.cat}`];
-            } 
-            
-            category[json.id] = {en: json.en, cy: json.cy!='' ? json.cy : 'CY: ' + json.en};
+            labels[json.cat + '.' + json.id] = {en: json.en, cy: json.cy!='' ? json.cy :  json.en + ' [CY ar goll]'};
         })
         .on('done',()=>{
             console.log(labels);

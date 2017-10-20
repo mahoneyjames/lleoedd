@@ -1,44 +1,37 @@
 include _regionSelect
+include _bilingualText
 mixin placeFormFriendly(place ={})
     
     form(action=`/places-add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
-            h1 Step 1 - Find the place
+            h1 #{label('page.place.add.step1')}
             a(href="/help/address" target="_blank") Need help?
             .input-field
-                label(for="address") Location
+                label(for="address") #{label('page.place.add.location')}
                 input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) placeholder="Start typing..." required)
             .input-field
-                label(for="postcode") Postcode
+                label(for="postcode") #{label('page.place.add.postcode')}
                 input(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
         .step
-            h1 Step 2 - set a title and summary
+            h1 #{label('page.place.add.step2')}
             
             .input-field
-                label(for="name") Title                             
+                label(for="name") #{label('page.place.add.title')}                             
                 input(type="text" id="name" name="name" value=place.name required)
-            h2 Summary                            
-                p.input-hint Keep the summary short, say 15 words or less.  
-                .input-group
-                    span.input-addon English
-                    input(type="text" id="summary.en" name="summary[en]" required value=(place.summary && place.summary.en))                    
-                .input-group
-                    span.input-addon Welsh
-                    input(type="text" id="summary.cy" name="summary[cy]" value=(place.summary && place.summary.cy))
-                          
+            +bilingualText(label('page.place.add.summary'),'summary',place.summary,label('page.place.add.summary.hint'))
+
         .step
-            h1 Step 3 - Pick a region            
+            h1 #{label('page.place.add.step3')}          
             +regionSelect(place)
         .step
-            h1 Step 4 - Optional extras
-            label(for="description") More details
-            textarea(name="description")= place.description
-            label(for="link") Do they have a website?
+            h1 #{label('page.place.add.step4')}
+            +bilingualText(label('page.place.add.description'),'description',place.description,label('page.place.add.description.hint'))
+            label(for="link") #{label('page.place.add.url')}
             input(type="text" name="link" value=place.link)
             
         
         .step.dev
-            h1 Dev stuff
+            h1 #{label('page.place.add.dev')}
                 //-lat and long
             label(for="lng") Address lng
             input(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
@@ -52,4 +45,4 @@ mixin placeFormFriendly(place ={})
                 a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
             input.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
 
-        input(type="submit" value="Save" class="button")
+        input(type="submit" value=`${label('page.place.add.save')}` class="button")

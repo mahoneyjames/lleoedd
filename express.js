@@ -66,7 +66,10 @@ app.use((req, res, next) => {
     language=req.user.language;
   }
   
-  res.locals.label = (category,id)=>helpers.languageLabel(language, category,id);
+  res.locals.label = (what)=>{
+    return helpers.languageLabel(language, what);
+    
+  };
 
   res.locals.localise = (what)=>{
 

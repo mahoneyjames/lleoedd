@@ -2,9 +2,9 @@ extends layout
 
 block content
     .inner 
-        h2= title
+        h2 #{label('page.map.title')}
         .map
             .autocomplete
-                input.autocomplete__input(type="text" placeholder="Where would you like to go to siarad Cymraeg?" name="geolocate")
+                input.autocomplete__input(type="text" placeholder=`${label('page.map.where')}` name="geolocate")
             #map
-                p Loading map...
+                p #{label('page.map.loading')}
