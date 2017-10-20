@@ -44,3 +44,45 @@ div.filter
 {
     display:none;
 }
+
+p.hint{
+    //padding-left:10px;
+    font-style: italic;
+}
+
+.step{
+    //border-bottom: solid 1px black;
+    margin-bottom:20px;
+}
+
+.step h4{
+    color: red;
+    border: solid 1px azure;
+    background-color: azure;
+    padding: 2px;
+}
+
+.card
+{
+    border-top: solid 6px blue;
+    border-radius: 8px;
+}
+
+.card{
+    padding:0px;
+}
+.card .single
+{
+    //background-color: pink;
+    padding:10px;
+}
+
+.card .single__details
+{
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.step{
+    padding:10px;
+}

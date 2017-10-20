@@ -1,7 +1,6 @@
 mixin regionSelect(place ={})                
     .input-field
-        label(for="region") Region
-        span  
+        h4 #{label('forms.region')}
         a(href="/help/region" target="_blank") [help]    
         select(id="region" name="region" value=place.region required)
             option(value=)

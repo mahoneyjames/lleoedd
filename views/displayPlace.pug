@@ -12,11 +12,9 @@ block content
                     -//img.single__image(src=`/uploads/${place.photo || 'place.png'}` alt=place.name width=200)
                     h2.title.title--single
                         a(href=`/place/${place.slug}`) #{place.name}
-                    p #{localise(place.summary)}
-
-                    
 
             .single__details
+                p #{localise(place.summary)}
                 if place.google && place.google.url
                     a(href=`${place.google.url}` target="_blank")
                         img.single__map(src=h.staticMap(place.location.coordinates))

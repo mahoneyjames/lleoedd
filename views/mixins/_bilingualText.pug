@@ -1,11 +1,11 @@
 mixin bilingualText(heading,name, field={en:"", cy: ""}, hint)
-    h2 #{heading} 
-        if hint                           
-            p.input-hint #{hint}
-        .input-group
-            span.input-addon #{label('forms.language.en.short')}
-            input(type="text" id=`${name}.en` name=`${name}[en]` value=(field && field.en))                    
-        .input-group
-            span.input-addon #{label('forms.language.cy.short')}
-            input(type="text" id=`${name}.cy` name=`${name}[cy]` value=(field && field.cy))
+    h4 #{heading} 
+    if hint                           
+        p.hint #{hint}
+    .input-group
+        span.input-addon #{label('forms.language.en.short')}
+        input(type="text" id=`${name}.en` name=`${name}[en]` value=(field && field.en))                    
+    .input-group
+        span.input-addon #{label('forms.language.cy.short')}
+        input(type="text" id=`${name}.cy` name=`${name}[cy]` value=(field && field.cy))
                 
