@@ -12,7 +12,7 @@ block content
                     -//img.single__image(src=`/uploads/${place.photo || 'place.png'}` alt=place.name width=200)
                     h2.title.title--single
                         a(href=`/place/${place.slug}`) #{place.name}
-                    p #{place.summary}
+                    p #{localise(place.summary)}
 
                     
 
@@ -27,7 +27,7 @@ block content
 
                 if place.description
                     h2 More details
-                    p= place.description
+                    p= localise(place.description)
 
                 if place.link
                     h3 Website

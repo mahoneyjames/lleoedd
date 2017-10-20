@@ -1,28 +1,19 @@
 include _regionSelect
+include _bilingualText
 mixin placeForm(place ={})
     h1 Edit #{place.name}
-    pre=h.dump(place)
+    -//pre=h.dump(place)
     form(action=`/places-add/${place._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         .step
             .input-field
                 label(for="name") Title
                 input(type="text" name="name" value=place.name required)
-            h2 Summary                            
-                p.input-hint Keep the summary short, say 15 words or less.  
-                .input-group
-                    span.input-addon English
-                    input(type="text" id="summary.en" name="summary[en]" required value=(place.summary && place.summary.en))                    
-                .input-group
-                    span.input-addon Welsh
-                    input(type="text" id="summary.cy" name="summary[cy]" value=(place.summary && place.summary.cy))
-                     
+            +bilingualText('summary','summary',place.summary,'summaryHint')
             +regionSelect(place)
 
         .step 
             h1 More details
-            .input-field
-                label(for="description") Description
-                textarea(name="description")= place.description
+            +bilingualText('description','description',place.description,'descriptionHint')
             .input-field                
                 label(for="link") Website
                 input(type="text" name="link" value=place.link)        

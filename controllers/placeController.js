@@ -58,6 +58,12 @@ exports.resize = async (req, res, next)=>{
 
 exports.createPlace = async (req, res)=> {
     req.body.createdBy = req.user._id;
+
+    req.body.summary_new=req.body.summary;
+    req.body.summary=null;
+
+    req.body.description_new = req.body.description;
+    req.body.description = null;
     const place = await( new Place(req.body).save());
 
     
@@ -65,6 +71,33 @@ exports.createPlace = async (req, res)=> {
     res.redirect(`/place/${place.slug}`);
 };
 
+
+function handleSummaryLocalisation(place)
+{
+    place = place.toObject();
+         
+    if(place.summary===null)
+    {
+        place.summary = place.summary_new;
+    }
+    else
+    {         
+         const summary_new = {en:place.summary};
+         place.summary = summary_new;  
+    }
+
+     if(place.description===null)
+    {
+        place.description = place.description_new;
+    }
+    else
+    {         
+         const _new = {en:place.description};
+         place.description = _new;  
+    }
+
+    return place;
+}
 exports.getPlaces = async (req, res)=>{
 
     const page = req.params.page || 1;
@@ -76,16 +109,19 @@ exports.getPlaces = async (req, res)=>{
     const skip = (page*limit) - limit;
     
      const promise = Place
-     .find(regionQuery)
+     .find(regionQuery)     
+     .select('slug name summary summary_new region')
      .skip(skip)
      //.limit(limit)
      .sort({created: 'desc'});
-    
     const countPromise = Place.count();
 
-    const [places,count] = await Promise.all([promise, countPromise]);
+    let [places,count] = await Promise.all([promise, countPromise]);
     //query the db for a list of all stores
 
+
+    places = places.map((place)=>handleSummaryLocalisation(place));
+    
     const pages =Math.ceil(count/limit);
 
     if(!places.length && skip)
@@ -104,48 +140,8 @@ exports.editPlace = async (req, res)=>{
      //1 find the store based on the id
      let place = await(Place.findOne({_id: req.params.id}));
 
-console.log("dit" + place.summary_new);
-     if(place.summary_new.en===undefined)
-     {
-         place = place.toObject();
-         
-         
-         const summary_new = {en:place.summary};
-         place.summary = summary_new;  
-/*
-console.log(summary_new);
-        const newPlace = {};
-        
-        for(var k in place) 
-        {
-            
-            if(k==="summary")
-            {
-            console.log("ad" + k);    
-                newPlace["summary"] = summary_new;
-            }
-            else
-            {
-                
-                newPlace[k]=place[k];
-            }
-        }
-
-
-        place=null;
-        place=newPlace;*/
-
-     }
-
-     
-        if(place.summary===null)
-        {
-            console.log("no summary");
-            place=place.toObject();
-            place.summary = place.summary_new;
-        }
-
-
+    console.log("dit" + place.summary_new);
+    place = handleSummaryLocalisation(place);
      
      //2 render out the edit form so the user can update their store
 
@@ -161,6 +157,9 @@ exports.updatePlace = async (req, res)=>{
     req.body.modified = moment();
     req.body.summary_new=req.body.summary;
     req.body.summary=null;
+
+    req.body.description_new = req.body.description;
+    req.body.description = null;
      //1 find the store based on the id
      const place = await Place.findOneAndUpdate(
          {_id: req.params.id}, 
@@ -186,11 +185,12 @@ exports.updatePlace = async (req, res)=>{
 exports.displayPlace = async (req, res, next) =>{
 
 
-    const place = await(Place.findOne({slug: req.params.slug})); 
+    let place = await(Place.findOne({slug: req.params.slug})); 
     if(!place)
     {
         return next();        
     }    
+    place = handleSummaryLocalisation(place);
     res.render("displayPlace", {place, title: place.name});
 };
 

@@ -1,0 +1,11 @@
+mixin bilingualText(label,name, field={en:"", cy: ""}, hint)
+    h2 #{label} 
+        if hint                           
+            p.input-hint #{hint}
+        .input-group
+            span.input-addon English
+            input(type="text" id=`${name}.en` name=`${name}[en]` value=(field && field.en))                    
+        .input-group
+            span.input-addon Welsh
+            input(type="text" id=`${name}.cy` name=`${name}[cy]` value=(field && field.cy))
+                

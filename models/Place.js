@@ -8,6 +8,7 @@ const placeSchema = new mongoose.Schema({
     summary: String,
     summary_new:{en:{type:String, trim:true}, cy:{type:String,trim:true}},
     description: {type:String, trim:true},
+    description_new:{en:{type:String, trim:true}, cy:{type:String,trim:true}},
     tags: [String],
     region: String,
     created: {type: Date,default: Date.now},

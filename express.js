@@ -67,6 +67,30 @@ app.use((req, res, next) => {
   }
   
   res.locals.label = (category,id)=>helpers.languageLabel(language, category,id);
+
+  res.locals.localise = (what)=>{
+
+    if(what===undefined)
+    {
+      return '';
+    }
+
+    if(typeof(what)==='String')
+    {
+      return what;
+    }
+    else
+    {
+      const value = what[language];
+      if(value===null)
+      {
+        value = what.en;
+      }
+
+      return value;
+    }
+
+  };
   res.locals.currentPath = req.path;
   next();
 });
