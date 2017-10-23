@@ -59,6 +59,14 @@ app.use((req, res, next) => {
   
   res.locals.user = req.user || null;
   //TODO support a cookie for the language?
+
+  /*
+    Language rules     
+     - if they have set a cookie, use that
+     - otherwise pick up from the user, if present
+     - otherwise, default to en
+
+  */
   let language = 'en';
   
   if(req.user && req.user.language)

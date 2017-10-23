@@ -20,7 +20,12 @@ html(lang="en")
                   span #{label('nav.' + item.title)}
           
 
-      
+          ul.navbar-nav.float-right
+            //- li.nav-item.dropdown
+            //-   a.nav-link.dropdown-toggle(data-toggle="dropdown" id="dropdownLanguage" aria-haspopup="true" aria-expanded="false") Iaith: Cymraeg
+            //-   div.dropdown-menu.dropdown-menu-right(aria-labelledby="dropdownLanguage")
+            //-     a.dropdown-item.active(href="/") English
+            //-     a.dropdown-item(href="/") Welsh
             li.nav-item: a.nav-link(href="/about",class=(currentPath.startsWith('/about') ? 'active' : '')) #{label('nav.about')} 
             if user
               li.nav-item: a.nav-link(href="/logout", class=(currentPath.startsWith('/logout') ? 'active' : ''))
@@ -55,6 +60,9 @@ html(lang="en")
       block footer
 
     block scripts
+      script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous")
       script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
       script(src="/dist/App.bundle.js")
 

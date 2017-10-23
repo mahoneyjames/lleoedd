@@ -4,17 +4,22 @@ extends layout
 
 block content
     .inner        
-        form.form(action="/register" method="POST")
+        form(action="/register" method="POST")
             h2=title
-            label(for="name") Name
-            input(type="text" name="name")
-            label(for="email") Email
-            input(type="email" name="email")
-            label(for="password") Password
-            input(type="password" name="password")
-            label(for="confirm-password") Confirm password
-            input(type="password" name="password-confirm")
-            label(for="secret") Secret...
-            input(type="password" name="secret")
+            .form-group   
+                label(for="name") Name
+                input.form-control(type="text" name="name")
+            .form-group   
+                label(for="email") Email
+                input.form-control(type="email" name="email")
+            .form-group   
+                label(for="password") Password
+                input.form-control(type="password" name="password")
+            .form-group   
+                label(for="confirm-password") Confirm password
+                input.form-control(type="password" name="password-confirm")
+            .form-group   
+                label(for="secret") Secret...
+                input.form-control(type="password" name="secret")
             
-            input.button(type="submit" value="Register")
+            input.btn.btn-primary(type="submit" value="Register")
