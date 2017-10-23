@@ -4,34 +4,31 @@ include mixins/_pagination
 include mixins/_regionSelect
 
 block content
-    
-    
-    .inner 
-        .filter
-            a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
-            each region in regions
-                a.badge(href=`/places/${region.id}` class=(currentRegion!=region.id ? 'badge-secondary' : '')) #{h.localise(region.shortName)}
-                                    
-        .places
-            table
-                thead
+    .filter
+        a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
+        each region in regions
+            a.badge(href=`/places/${region.id}` class=(currentRegion!=region.id ? 'badge-secondary' : '')) #{h.localise(region.shortName)}
+                                
+    .places
+        table.table.table-striped
+            thead
+                tr
+                    th(scope="col") #{label('page.places.th.name')}
+                    th(scope="col") #{label('page.places.th.summary')}
+                    th(scope="col") #{label('page.places.th.region')}
+            tbody
+                each place in places
                     tr
-                        td #{label('page.places.th.name')}
-                        td #{label('page.places.th.summary')}
-                        td #{label('page.places.th.region')}
-                tbody
-                    each place in places
-                        tr
-                            td 
-                                a(href=`/place/${place.slug}`) #{place.name} 
-                                //- if user                         
-                                //-     a(href=`/places/${place._id}/edit`) edit
-                            td #{localise(place.summary)}
-                            td 
-                                a(href=`/places/${place.region}`) #{place.region}
+                        td 
+                            a(href=`/place/${place.slug}`) #{place.name} 
+                            //- if user                         
+                            //-     a(href=`/places/${place._id}/edit`) edit
+                        td #{localise(place.summary)}
+                        td 
+                            a(href=`/places/${place.region}`) #{place.region}
 
-            if places.length===0
-                p #{label('page.places.none')}                
+        if places.length===0
+            p #{label('page.places.none')}                
 
 block pageScripts
     script.

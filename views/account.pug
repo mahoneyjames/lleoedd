@@ -4,16 +4,16 @@ block content
     .inner
         h2=title
         form(action="/account" method="POST")
-            .input-field
+            .form-group  
                 label(for="name") #{label('page.account.form.name')}
-                input(type="text" name="name" value=user.name)
-            .input-field
+                input.form-control(type="text" name="name" value=user.name)
+            .form-group  
                 label(for="email") #{label('page.account.form.email')}
-                input(type="email" name="email" value=user.email)
-            .input-field
+                input.form-control(type="email" name="email" value=user.email)
+            .form-group  
                 label(for="language") #{label('page.account.form.language')}
-                select(name="language" value=user.language)
+                select.form-control(name="language" value=user.language)
                     option(value= selected=user.language==null)
                     option(value="cy" selected=user.language=="cy") #{label('forms.language.cy.long')}
                     option(value="en" selected=user.language=="en") #{label('forms.language.en.long')}
-            input.button(type="submit" value=`${label('page.account.form.save')}`) 
+            input.btn.btn-primary(type="submit" value=`${label('page.account.form.save')}`) 

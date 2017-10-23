@@ -1,19 +1,17 @@
 extends layout
 include mixins/_version
 block content
-    .inner
-        .card
-            h1 What's all this then? / Beth ydy hwn?
-            p
-                | For now, 
-                a(href="https://forum.saysomethingin.com/t/welsh-spoken-here-use-your-welsh-here-app") go here
-                | , to learn more
+    h1 What's all this then? / Beth ydy hwn?
+    p
+        | For now, 
+        a(href="https://forum.saysomethingin.com/t/welsh-spoken-here-use-your-welsh-here-app") go here
+        | , to learn more
 
-            //- h1 Updates
+    //- h1 Updates
 
-            //- div= h.htmlFromMarkdown('./readme.md');
+    //- div= h.htmlFromMarkdown('./readme.md');
 
-            h1 Info
-            p Mae'r byd yn fawr
-            p Environment: #{h.environment()}
-            +version()
+    h1 Info
+    p Mae'r byd yn fawr
+    p Environment: #{h.environment()}
+    +version()

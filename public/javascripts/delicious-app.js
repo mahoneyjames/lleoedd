@@ -1,4 +1,4 @@
-import '../sass/style.scss';
+import '../sass/bootstrap.scss';
 
 import { $, $$ } from './modules/bling';
 

@@ -1,8 +1,10 @@
 mixin login()
-    form.form(action="/login" method="POST")
-        h2 Login
-        label(for="email") Email
-        input(type="email" name="email")
-        label(for="password") Password
-        input(type="password" name="password")
-        input.button(type="submit" value="Login")
+    form(action="/login" method="POST")
+        h1.bd-title Login
+        .form-group        
+            label(for="email") Email
+            input.form-control(type="email" name="email")
+        .form-group
+            label(for="password") Password
+            input.form-control(type="password" name="password")
+        input.btn.btn-primary(type="submit" value="Login")

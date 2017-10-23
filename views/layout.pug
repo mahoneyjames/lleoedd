@@ -1,51 +1,55 @@
 doctype html
-html
+html(lang="en")
   head
     title= `${title ? title: label('title.' + titleLabel)} | ${h.siteName}`
     link(rel='stylesheet', href='/dist/style.css')
-    link(ref="preload" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css" as="style" crossorigin)
-    link(rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css")    
 
+    meta(charset="utf-8")
     link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
   body
     block header
-      header.top
-        nav.nav
-          .nav__section.nav__section--pages
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href="/") admin
+        div.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto         
             each item in h.menu
-              li.nav__item
-                a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
+              li.nav-item
+                a.nav-link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'active' : ''))
                   -//!= h.icon(item.icon)
                   span #{label('nav.' + item.title)}
           
 
-          .nav__section.nav__section--user
-            li.nav__item: a.nav__link(href="/about") #{label('nav.about')} 
+      
+            li.nav-item: a.nav-link(href="/about",class=(currentPath.startsWith('/about') ? 'active' : '')) #{label('nav.about')} 
             if user
-              li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))
+              li.nav-item: a.nav-link(href="/logout", class=(currentPath.startsWith('/logout') ? 'active' : ''))
                 -//!= h.icon('logout')
                 span #{label('nav.logout')} 
-              li.nav__item: a.nav__link(href="/account", class=(currentPath.startsWith('/account') ? 'nav__link--active' : ''))
+              li.nav-item: a.nav-link(href="/account", class=(currentPath.startsWith('/account') ? 'active' : ''))
                 span #{label('nav.account')} 
             else
-              li.nav__item: a.nav__link(href="/register", class=(currentPath.startsWith('/register') ? 'nav__link--active' : '')) #{label('nav.register')} 
-              li.nav__item: a.nav__link(href="/login", class=(currentPath.startsWith('/login') ? 'nav__link--active' : '')) #{label('nav.login')} 
+              li.nav-item: a.nav-link(href="/register", class=(currentPath.startsWith('/register') ? 'active' : '')) #{label('nav.register')} 
+              li.nav-item: a.nav-link(href="/login", class=(currentPath.startsWith('/login') ? 'active' : '')) #{label('nav.login')} 
+
+      
 
     
-    block messages
-      if locals.flashes      
-        .inner
-          .flash-messages
-            - const categories = Object.keys(locals.flashes)
-            each category in categories
-              each message in flashes[category]
-                .flash(class=`flash--${category}`)
-                  p.flash__text!= message
-                  button.flash__remove(onClick="this.parentElement.remove()") &times;
-    .content
-      block content
-        p This is the default content
+    div.container
+      block messages
+        if locals.flashes      
+          .inner
+            .flash-messages
+              - const categories = Object.keys(locals.flashes)
+              each category in categories
+                each message in flashes[category]
+                  .flash(class=`alert alert-${category}`)
+                    p.flash__text!= message
+                    button.flash__remove(onClick="this.parentElement.remove()") &times;    
+      
+      main(role="main")
+        block content
+          p This is the default content
 
     footer
       block footer

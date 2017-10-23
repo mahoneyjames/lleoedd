@@ -5,6 +5,6 @@ block content
         h2 #{label('page.map.title')}
         .map
             .autocomplete
-                input.autocomplete__input(type="text" placeholder=`${label('page.map.where')}` name="geolocate")
+                input.form-control.autocomplete__input(type="text" placeholder=`${label('page.map.where')}` name="geolocate")
             #map
                 p #{label('page.map.loading')}

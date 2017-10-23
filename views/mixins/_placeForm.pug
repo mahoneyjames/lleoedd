@@ -5,48 +5,48 @@ mixin placeForm(place ={})
     -//pre=h.dump(place)
     form(action=`/places-add/${place._id || ''}` method="POST" class="" enctype="multipart/form-data")
         h1 #{place.name}
-        .step.card
+        .step
             h2 Overview   
-            .input-field
+            .form-group 
                 h4 #{label('page.place.edit.form.title')}
-                input(type="text" name="name" value=place.name required)      
+                input.form-control(type="text" name="name" value=place.name required)      
                 
             +bilingualText(label('page.place.edit.summary'),'summary',place.summary,label('page.place.edit.summary.hint'))
             +regionSelect(place)
 
 
             +bilingualText(label('page.place.edit.description'),'description',place.description,label('page.place.edit.description.hint'))
-            .input-field                
+            .form-group                
                 h4 #{label('page.place.edit.form.url')}
-                input(type="text" name="link" value=place.link)    
-            input(type="submit" value=`${label('page.place.edit.form.save')}` class="button")                    
+                input.form-control(type="text" name="link" value=place.link)    
+            input.btn.btn-primary(type="submit" value=`${label('page.place.edit.form.save')}` class="button")                    
         
         h1 #{label('page.place.edit.location')}
-        .step.card            
+        .step            
             a(href="/help/address" target="_blank") Need help?
             
-            .input-field
+            .form-group 
                 label(for="address") Address
-                input(type="text" id="address" name="location[address]" value=(place.location && place.location.address) required)
+                input.form-control(type="text" id="address" name="location[address]" value=(place.location && place.location.address) required)
             
-            .input-field
+            .form-group 
                 label(for="postcode") Postcode
-                input(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
+                input.form-control(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
             
 
-            .input-field
+            .form-group 
                 label(for="lng") Address lng
-                input(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
-            .input-field
+                input.form-control(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
+            .form-group 
                 label(for="lat") Address lat
-                input(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
-            .input-field
+                input.form-control(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
+            .form-group 
                 label(for="google.url") Google Url
-                input.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
+                input.form-control.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
 
-            .input-field
+            .form-group 
                 label(for="google.placeId")
                     a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
-                input.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
+                input.form-control.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
 
-            input(type="submit" value=`${label('page.place.edit.form.save')}` class="button")
+            input.form-control.btn.btn-primary(type="submit" value=`${label('page.place.edit.form.save')}`)

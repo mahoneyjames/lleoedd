@@ -1,0 +1,5 @@
+@import '../bootstrap/scss/functions';
+@import 'customVariables';
+@import '../bootstrap/scss/bootstrap';
+$shad: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+@import 'partials2/map'
