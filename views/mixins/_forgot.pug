@@ -1,9 +1,9 @@
 mixin forgotForm()
-
-    form(action="/account/forgot" method="POST")
-        h2 I forgot my password
-        .form-group
-            label(for="email") Email
-            input.form-control(type="email" name="email")
-        input.btn.btn-secondary(type="submit" value="Send a reset")
+    .mute-card
+        p.centre Forgotten your password?
+        form(action="/account/forgot" method="POST")            
+            .form-group
+                label(for="email") Email
+                input.form-control(type="email" name="email")
+            input.btn.btn-secondary(type="submit" value="Send a reset")
         

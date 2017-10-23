@@ -6343,4 +6343,29 @@ a.text-dark:focus, a.text-dark:hover {
   .popup img {
     width: 100%; }
 
+body {
+  background: #f4f4f4; }
+
+.main-card {
+  background: white;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
+
+.mute-card {
+  border: grey solid 1px;
+  margin: 10px;
+  padding: 10px; }
+
+.page-header {
+  padding: 10px; }
+
+.login {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto; }
+
+.centre {
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map*/

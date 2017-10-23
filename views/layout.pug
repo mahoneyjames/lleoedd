@@ -34,7 +34,7 @@ html(lang="en")
               li.nav-item: a.nav-link(href="/account", class=(currentPath.startsWith('/account') ? 'active' : ''))
                 span #{label('nav.account')} 
             else
-              li.nav-item: a.nav-link(href="/register", class=(currentPath.startsWith('/register') ? 'active' : '')) #{label('nav.register')} 
+              -//li.nav-item: a.nav-link(href="/register", class=(currentPath.startsWith('/register') ? 'active' : '')) #{label('nav.register')} 
               li.nav-item: a.nav-link(href="/login", class=(currentPath.startsWith('/login') ? 'active' : '')) #{label('nav.login')} 
 
       

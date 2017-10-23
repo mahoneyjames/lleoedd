@@ -4,12 +4,13 @@ include mixins/_pagination
 include mixins/_regionSelect
 
 block content
-    .filter
+    
+    .filter.page-header
         a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
         each region in regions
             a.badge(href=`/places/${region.id}` class=(currentRegion!=region.id ? 'badge-secondary' : '')) #{h.localise(region.shortName)}
                                 
-    .places
+    .places.main-card
         table.table.table-striped
             thead
                 tr

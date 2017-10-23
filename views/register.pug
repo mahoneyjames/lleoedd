@@ -3,7 +3,9 @@ extends layout
 //-include mixins/_login
 
 block content
-    .inner        
+    .page-header
+        h1 Register
+    .main-card        
         form(action="/register" method="POST")
             h2=title
             .form-group   

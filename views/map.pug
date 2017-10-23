@@ -1,10 +1,10 @@
 extends layout
 
 block content
-    .inner 
+    .page-header
         h2 #{label('page.map.title')}
-        .map
-            .autocomplete
-                input.form-control.autocomplete__input(type="text" placeholder=`${label('page.map.where')}` name="geolocate")
-            #map
-                p #{label('page.map.loading')}
+    .map
+        .autocomplete
+            input.form-control.autocomplete__input(type="text" placeholder=`${label('page.map.where')}` name="geolocate")
+        #map
+            p #{label('page.map.loading')}

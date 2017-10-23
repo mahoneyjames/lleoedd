@@ -4,5 +4,14 @@ include mixins/_login
 include mixins/_forgot
 
 block content
-    +login()
-    +forgotForm()
+    .login
+        .page-header
+            h1 Login
+        +login()
+        div.centre
+            p Don't have an account?
+            a(href="/register") Create one here
+        
+        
+        +forgotForm()
+        

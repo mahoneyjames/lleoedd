@@ -2,4 +2,43 @@
 @import 'customVariables';
 @import '../bootstrap/scss/bootstrap';
 $shad: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
-@import 'partials2/map'
+@import 'partials2/map';
+
+body
+{
+    background: #f4f4f4;
+}
+
+.main-card
+{
+    background: white;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: $shad;
+}
+
+.mute-card
+{
+    border: grey solid 1px;
+        margin: 10px;
+    padding: 10px;
+}
+
+.page-header
+{
+    padding: 10px;
+}
+
+.login
+{
+        
+  
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.centre
+{
+    text-align: center;
+}

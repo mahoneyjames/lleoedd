@@ -3,31 +3,27 @@ include mixins/_reviewForm
 include mixins/_review
 
 block content   
-    .inner
-        if user
-            a(href=`/places/${place._id}/edit`) #{label('page.place.show.edit')}
-        .card
-            .single
-                .single__hero        
-                    -//img.single__image(src=`/uploads/${place.photo || 'place.png'}` alt=place.name width=200)
-                    h2.title.title--single
-                        a(href=`/place/${place.slug}`) #{place.name}
+    .page-header
+        h2.title.title--single
+            a(href=`/place/${place.slug}`) #{place.name}
+    if user
+        a(href=`/places/${place._id}/edit`) #{label('page.place.show.edit')}
 
-            .single__details
-                p #{localise(place.summary)}
-                if place.google && place.google.url
-                    a(href=`${place.google.url}` target="_blank")
-                        img.single__map(src=h.staticMap(place.location.coordinates))
-                else
-                    img.single__map(src=h.staticMap(place.location.coordinates))
+    .main-card
+        p #{localise(place.summary)}
+        if place.google && place.google.url
+            a(href=`${place.google.url}` target="_blank")
+                img.single__map(src=h.staticMap(place.location.coordinates))
+        else
+            img.single__map(src=h.staticMap(place.location.coordinates))
 
-                p.single__location= place.location.address
+        p.single__location= place.location.address
 
-                if place.description
-                    h2 #{label('page.place.show.more')}
-                    p= localise(place.description)
+        if place.description
+            h2 #{label('page.place.show.more')}
+            p= localise(place.description)
 
-                if place.link
-                    h3 #{label('page.place.show.website')}
-                    a(href=`${place.link}` target="_blank") #{place.link}
-                
+        if place.link
+            h3 #{label('page.place.show.website')}
+            a(href=`${place.link}` target="_blank") #{place.link}
+        

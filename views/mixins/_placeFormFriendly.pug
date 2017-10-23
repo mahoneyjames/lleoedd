@@ -1,48 +1,48 @@
 include _regionSelect
 include _bilingualText
 mixin placeFormFriendly(place ={})
-    
-    form(action=`/places-add/${place._id || ''}` method="POST" class="" enctype="multipart/form-data")
-        .step
-            h1 #{label('page.place.add.step1')}
-            a(href="/help/address" target="_blank") Need help?
-            .form-group 
-                label(for="address") #{label('page.place.add.location')}
-                input.form-control(type="text" id="address" name="location[address]" value=(place.location && place.location.address) placeholder="Start typing..." required)
-            .form-group 
-                label(for="postcode") #{label('page.place.add.postcode')}
-                input.form-control(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
-        .step
-            h1 #{label('page.place.add.step2')}
-            
-            .form-group 
-                label(for="name") #{label('page.place.add.title')}                             
-                input.form-control(type="text" id="name" name="name" value=place.name required)
-            +bilingualText(label('page.place.add.summary'),'summary',place.summary,label('page.place.add.summary.hint'))
+    .main-card
+        form(action=`/places-add/${place._id || ''}` method="POST" class="" enctype="multipart/form-data")
+            .step
+                h1 #{label('page.place.add.step1')}
+                a(href="/help/address" target="_blank") Need help?
+                .form-group 
+                    label(for="address") #{label('page.place.add.location')}
+                    input.form-control(type="text" id="address" name="location[address]" value=(place.location && place.location.address) placeholder="Start typing..." required)
+                .form-group 
+                    label(for="postcode") #{label('page.place.add.postcode')}
+                    input.form-control(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
+            .step
+                h1 #{label('page.place.add.step2')}
+                
+                .form-group 
+                    label(for="name") #{label('page.place.add.title')}                             
+                    input.form-control(type="text" id="name" name="name" value=place.name required)
+                +bilingualText(label('page.place.add.summary'),'summary',place.summary,label('page.place.add.summary.hint'))
 
-        .step
-            h1 #{label('page.place.add.step3')}          
-            +regionSelect(place)
-        .step
-            h1 #{label('page.place.add.step4')}
-            +bilingualText(label('page.place.add.description'),'description',place.description,label('page.place.add.description.hint'))
-            label(for="link") #{label('page.place.add.url')}
-            input.form-control(type="text" name="link" value=place.link)
+            .step
+                h1 #{label('page.place.add.step3')}          
+                +regionSelect(place)
+            .step
+                h1 #{label('page.place.add.step4')}
+                +bilingualText(label('page.place.add.description'),'description',place.description,label('page.place.add.description.hint'))
+                label(for="link") #{label('page.place.add.url')}
+                input.form-control(type="text" name="link" value=place.link)
+                
             
-        
-        .step.dev
-            h1 #{label('page.place.add.dev')}
-                //-lat and long
-            label(for="lng") Address lng
-            input.form-control(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
-            label(for="lat") Address lat
-            input.form-control(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
-            label(for="google.url") Google Url
-            input.form-control.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
+            .step.dev
+                h1 #{label('page.place.add.dev')}
+                    //-lat and long
+                label(for="lng") Address lng
+                input.form-control(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
+                label(for="lat") Address lat
+                input.form-control(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
+                label(for="google.url") Google Url
+                input.form-control.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
 
-            
-            label(for="google.placeId")
-                a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
-            input.form-control.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
+                
+                label(for="google.placeId")
+                    a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
+                input.form-control.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))
 
-        input.btn.btn-primary(type="submit" value=`${label('page.place.add.save')}` class="button")
+            input.btn.btn-primary(type="submit" value=`${label('page.place.add.save')}` class="button")
