@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    .inner
+        table
+            thead
+                tr
+                    th Key
+                    th EN
+                    th CY
+            tbody
+                each label in labels
+                    tr
+                        td #{label}
+                        td #{label.en}
+                        td #{label.cy}
+            

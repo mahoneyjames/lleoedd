@@ -6,7 +6,7 @@ mixin regionSelect(place ={})
             select.form-control(id="region" name="region" value=place.region required)
                 option(value=)
                 each region in regions
-                    option(value=region.id selected=region.id===place.region) #{h.localise(region.name)}
+                    option(value=region.id selected=region.id===place.region) #{localise(region.name)}
             a(data-toggle="collapse" href="#regionhelp" aria-expanded="false" aria-controls="regionhelp") What's a region?
             .collapse(id="regionhelp")
                 +helpRegion()                    

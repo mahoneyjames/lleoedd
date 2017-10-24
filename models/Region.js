@@ -24,4 +24,9 @@ regionSchema.statics.listRegions = function()
         
     return regions;
 }
+
+regionSchema.statics.getRegion = (id) =>
+{
+    return regionSchema.statics.listRegions().find((region)=>region.id===id);
+}
 module.exports = mongoose.model('Region', regionSchema);

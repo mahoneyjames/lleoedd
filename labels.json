@@ -1,9 +1,9 @@
 {
-  "page.home.title.title": {
+  "titles.home": {
     "en": "Home",
     "cy": "Cartref"
   },
-  "page.places.title.title": {
+  "titles.places": {
     "en": "Places",
     "cy": "Lleoedd"
   },
@@ -35,7 +35,7 @@
     "en": "My Account",
     "cy": "Cyfrif"
   },
-  "page.login.title": {
+  "titles.login": {
     "en": "Login",
     "cy": "Login"
   },
@@ -53,7 +53,7 @@
   },
   "message.notLoggedIn": {
     "en": "You must be logged in!",
-    "cy": "You must be logged in! [CY ar goll]"
+    "cy": null
   },
   "nav.logout": {
     "en": "Logout",
@@ -71,29 +71,29 @@
     "en": "English",
     "cy": "Saesneg"
   },
-  "page.place.edit.title": {
+  "titles.edit": {
     "en": "Edit place",
-    "cy": "Edit place [CY ar goll]"
+    "cy": null
   },
-  "page.place.add.title": {
-    "en": "Title",
-    "cy": "Teitl"
+  "titles.add": {
+    "en": "Add place",
+    "cy": null
   },
-  "page.map.title": {
+  "titles.map": {
     "en": "Map",
-    "cy": "Map"
+    "cy": null
   },
-  "page.account.title": {
+  "titles.account": {
     "en": "Account",
-    "cy": "Account [CY ar goll]"
+    "cy": null
   },
-  "page.register.title": {
+  "titles.register": {
     "en": "Register",
-    "cy": "Register [CY ar goll]"
+    "cy": null
   },
-  "page.about.title": {
+  "titles.about": {
     "en": "About",
-    "cy": "About [CY ar goll]"
+    "cy": null
   },
   "forms.language.en.long": {
     "en": "English",
@@ -139,9 +139,13 @@
     "en": "Where would you like to go to siarad Cymraeg?",
     "cy": "Ble hoffet ti fynd er moyn siarad Cymraeg?"
   },
+  "pagetitle.map": {
+    "en": "Map",
+    "cy": "Map"
+  },
   "page.place.add.step1": {
     "en": "Step 1 - find the place",
-    "cy": "Step 1 - find the place [CY ar goll]"
+    "cy": null
   },
   "page.place.add.help": {
     "en": "help?",
@@ -161,15 +165,19 @@
   },
   "page.place.add.step2": {
     "en": "Step 2 - set a title and summary",
-    "cy": "Step 2 - set a title and summary [CY ar goll]"
+    "cy": null
+  },
+  "page.place.add.title": {
+    "en": "Title",
+    "cy": "Teitl"
   },
   "page.place.add.summary": {
     "en": "Summary",
-    "cy": "Summary [CY ar goll]"
+    "cy": null
   },
   "page.place.add.summary.hint": {
     "en": "Keep it brief - perhaps 15 words or less",
-    "cy": "Keep it brief - perhaps 15 words or less [CY ar goll]"
+    "cy": null
   },
   "forms.region": {
     "en": "Region",
@@ -177,19 +185,19 @@
   },
   "page.place.add.step3": {
     "en": "Step 3 - Pick a region",
-    "cy": "Step 3 - Pick a region [CY ar goll]"
+    "cy": null
   },
   "page.place.add.step4": {
     "en": "Step 4 - Optional extras",
-    "cy": "Step 4 - Optional extras [CY ar goll]"
+    "cy": null
   },
   "page.place.add.description": {
     "en": "Description",
-    "cy": "Description [CY ar goll]"
+    "cy": null
   },
   "page.place.add.description.hint": {
     "en": "",
-    "cy": " [CY ar goll]"
+    "cy": null
   },
   "page.place.add.url": {
     "en": "Website?",
@@ -201,27 +209,27 @@
   },
   "page.place.show.edit": {
     "en": "edit",
-    "cy": "edit [CY ar goll]"
+    "cy": null
   },
   "page.place.edit.heading.main": {
     "en": "Edit",
-    "cy": "Edit [CY ar goll]"
+    "cy": null
   },
   "page.place.edit.summary": {
     "en": "Summary",
-    "cy": "Summary [CY ar goll]"
+    "cy": null
   },
   "page.place.edit.summary.hint": {
     "en": "Keep it brief - perhaps 15 words or less",
-    "cy": "Keep it brief - perhaps 15 words or less [CY ar goll]"
+    "cy": null
   },
   "page.place.edit.description": {
     "en": "Description",
-    "cy": "Description [CY ar goll]"
+    "cy": null
   },
   "page.place.edit.description.hint": {
     "en": "",
-    "cy": " [CY ar goll]"
+    "cy": null
   },
   "page.place.edit.form.url": {
     "en": "Website?",
@@ -229,7 +237,7 @@
   },
   "page.place.edit.save": {
     "en": "Save",
-    "cy": "Save [CY ar goll]"
+    "cy": null
   },
   "page.account.form.name": {
     "en": "Name",
@@ -241,15 +249,15 @@
   },
   "page.account.form.save": {
     "en": "Update my account",
-    "cy": "Update my account [CY ar goll]"
+    "cy": null
   },
   "page.account.message.updated": {
     "en": "Profile updated!",
-    "cy": "Profile updated! [CY ar goll]"
+    "cy": null
   },
   "page.place.add.save": {
     "en": "Save",
-    "cy": "Save [CY ar goll]"
+    "cy": null
   },
   "page.places.none": {
     "en": "Aw, no places found!",
@@ -257,7 +265,7 @@
   },
   "page.map.loading": {
     "en": "Loading...",
-    "cy": "Loading... [CY ar goll]"
+    "cy": null
   },
   "page.place.show.website": {
     "en": "Website",
@@ -269,10 +277,10 @@
   },
   "page.place.edit.form.save": {
     "en": "Save",
-    "cy": "Save [CY ar goll]"
+    "cy": null
   },
   "page.place.edit.location": {
     "en": "Location",
-    "cy": "Location [CY ar goll]"
+    "cy": null
   }
 }

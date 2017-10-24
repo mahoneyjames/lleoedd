@@ -73,34 +73,13 @@ app.use((req, res, next) => {
   {
     language=req.user.language;
   }
-  
-  res.locals.label = (what)=>{
-    return helpers.languageLabel(language, what);
-    
+  res.locals.labels = helpers.labels;
+  res.locals.label = (what)=>{    
+    return helpers.localiseLabel(language, what);    
   };
-
+  
   res.locals.localise = (what)=>{
-
-    if(what===undefined)
-    {
-      return '';
-    }
-
-    if(typeof(what)==='String')
-    {
-      return what;
-    }
-    else
-    {
-      const value = what[language];
-      if(value===null)
-      {
-        value = what.en;
-      }
-
-      return value;
-    }
-
+    return helpers.localiseString(language, what)
   };
   res.locals.currentPath = req.path;
   next();

@@ -4,7 +4,10 @@
 
 // FS is a built in module to node that let's us read files from the system we're running on
 
+//const labelHelper = require('./labelRuntime.js');
 const labels = require('./labels.json');
+
+
 
 //const readAFileReturnPromise = util.promisify(readFile);
 
@@ -31,60 +34,90 @@ exports.menu = [
   
 ];
 
-exports.localise = (value) =>
-{
-  if(typeof(value)==="string")
-  {
-    return value;
-  }
-  else
-  {    
-    //console.log(user);
-    return value["en"];
-  }
-};
-
 exports.environment = () => 
 {
   return process.env.NODE_ENV;
 }
 
 exports.labels = labels;
+
+//Returns a localised label
+exports.localiseLabel = (preferenceLanguage, what) =>
+{
+  const result = exports.localise(preferenceLanguage, labels[what], what);
+  if(result.found && result.fallback==false)
+  {
+    return result.text;
+  }
+  else if (result.found && result.fallback==true)
+  {
+    console.log(`Fallback label '${what}' for '${preferenceLanguage}'`);
+    return `${result.text} [${result.language}]`;
+  }
+  else
+  {      
+    console.log(`Label not found for '${what}'`);
+    return `${what}-notFound`;
+  }    
+}
+
+//Returns a single string out of one of our localisation objects
+exports.localiseString = (preferenceLanguage, what)=>
+{
+  const result = exports.localise(preferenceLanguage, what);
+  if(result.found && result.fallback)
+  {
+    return `${result.text} [${result.language}]`;
+  }
+  else
+  {
+    return result.text;
+  }
+}
+
 /*
-function label(what)
-{
-    const cat = labels[category];
-    
-    if(cat!=null)
-    {
-      if(cat[id] && cat[id].cy)
-      {
-        return cat[id].cy;
-      }            
-    }
-    return `${category}:${id}-noLabel`;
-}
-exports.label = label;
+  Return a single language version out of this structure
+
+  { en: 'english', cy:'cymraeg'}
+
 */
-function languageLabel(language,what)
+exports.localise = (preferenceLanguage, what, debug)=>
 {
-    const cat = labels[what];    
-    if(cat!=null)
+    if(what===undefined)
     {
-      if(cat[language])
-      {
-        return cat[language];
-      }            
+      return {text:'', found:true, debug};
     }
-    return `${what}:${language}-noLabel`;
+
+    if(typeof(what)==='String')
+    {
+      return {text:what,found:true, debug};
+    }
+    else
+    {
+      const getLocal = (languageRequired, otherLanguage, what) =>
+      {
+        if(what[languageRequired]!=null)
+        {
+          return {text:what[languageRequired], language:languageRequired, found:true, fallback:false,debug};
+        }
+        else if(what[otherLanguage]!=null)
+        {
+          return {text:what[otherLanguage], language:otherLanguage, found:true, fallback:true,debug};
+        }
+        else
+        {
+          return {text:'', language:languageRequired, found:false, fallback:false,debug};
+        }
+      };
+
+      if(preferenceLanguage=="en")
+      {
+        return getLocal("en","cy", what);
+      }
+      else
+      {
+        return getLocal("cy","en", what);
+      }
+    }
+
 }
-
-exports.languageLabel = languageLabel;
-
-// exports.htmlFromMarkdown = async (filename)=>
-// {
-//   const md = await readAFileReturnPromise(filename,'UTF-8');
-//   const markdownToHtmlConvertor = new marked.Renderer();
-//   return marked(md, {renderer: markdownToHtmlConvertor});
-  
-// }

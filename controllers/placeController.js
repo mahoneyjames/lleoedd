@@ -21,6 +21,7 @@ const jimp = require('jimp');
 const uuid = require('uuid');
 
 
+
 exports.homePage = (req, res) => {
 
     req.flash('error', 'Something happend');
@@ -132,7 +133,7 @@ exports.getPlaces = async (req, res)=>{
         res.redirect(`/places/page/${pages}`);
         return;
     }
-    res.render('places', {titleLabel:"places", places, count, page, pages, currentRegion: region, regions: Region.listRegions() });
+    res.render('places', {titleLabel:"places", places, count, page, pages, currentRegion: Region.getRegion(region), regions: Region.listRegions() });
 
 };
 

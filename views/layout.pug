@@ -1,13 +1,14 @@
 doctype html
 html(lang="en")
   head
-    title= `${title ? title: label('title.' + titleLabel)} | ${h.siteName}`
+    title= `${title ? title: label('titles.' + titleLabel)} | ${h.siteName}`
     link(rel='stylesheet', href='/dist/style.css')
 
     meta(charset="utf-8")
     link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
   body
+    
     block header
       nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a.navbar-brand(href="/") admin

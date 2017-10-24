@@ -21,6 +21,9 @@ exports.help = (req, res)=>{
         case "region":
             res.render('help/region', {title: "Help: Regions"});
             break;
+            case "labels":
+            res.render('help/labels', {title: "Help: Labels"});
+            break;
         default:
             res.render('help/default', {title: "Help"});
             break;

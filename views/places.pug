@@ -4,6 +4,8 @@ include mixins/_pagination
 include mixins/_regionSelect
 
 block content
+
+    
     
     //- .filter.page-header
     //-     a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
@@ -12,11 +14,11 @@ block content
 
     .page-header.page-menu
         .dropdown
-            button.btn.btn-secondary.dropdown-toggle(id="dropDownRegion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Region: #{currentRegion ? currentRegion : 'all'}
+            button.btn.btn-secondary.dropdown-toggle(id="dropDownRegion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Region: #{currentRegion ? localise(currentRegion.shortName) : 'all'}
             .dropdown-menu( aria-labelledby="dropdownMenuButton")
                 a.dropdown-item(href="/places") all
                 each region in regions
-                    a.dropdown-item(href=`/places/${region.id}`) #{h.localise(region.shortName)}
+                    a.dropdown-item(href=`/places/${region.id}`) #{localise(region.name)}
         a.btn.btn-primary(href="/places-add" data-role="button") Add place
 
     .places.main-card
@@ -32,7 +34,7 @@ block content
                         td 
                             a(href=`/place/${place.slug}`) #{place.name} 
                             //- if user                         
-                            //-     a(href=`/places/${place._id}/edit`) edit
+                            //-     a(href=`/places/${place._id}/edit`) edit                        
                         td #{localise(place.summary)}
                         td 
                             a(href=`/places/${place.region}`) #{place.region}
