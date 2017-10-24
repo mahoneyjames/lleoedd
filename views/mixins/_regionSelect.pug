@@ -1,10 +1,13 @@
+include _helpRegion
 mixin regionSelect(place ={})                
     .input-field
         h4 #{label('forms.region')}
-        a(href="/help/region" target="_blank") [help]
         .form-group     
             select.form-control(id="region" name="region" value=place.region required)
                 option(value=)
                 each region in regions
                     option(value=region.id selected=region.id===place.region) #{h.localise(region.name)}
+            a(data-toggle="collapse" href="#regionhelp" aria-expanded="false" aria-controls="regionhelp") What's a region?
+            .collapse(id="regionhelp")
+                +helpRegion()                    
                     

@@ -10,8 +10,8 @@ const eventController = require('../controllers/eventController');
 
 const {catchErrors} = require('../handlers/errorHandlers');
 // Do work here
-router.get('/',  catchErrors(placeController.getPlaces));
-router.get('/places',  catchErrors(placeController.getPlaces));
+router.get('/', authController.loginIsOptional, catchErrors(placeController.getPlaces));
+router.get('/places', authController.loginIsOptional, catchErrors(placeController.getPlaces));
 router.get('/places/page/:page',  catchErrors(placeController.getPlaces));
 router.get('/places/:region',  catchErrors(placeController.getPlaces));
 router.get('/places/:region/page/:page',  catchErrors(placeController.getPlaces));
@@ -41,9 +41,6 @@ router.get('/events-add', authController.isLoggedIn, eventController.addEvent);
 router.post('/events-add', authController.isLoggedIn, eventController.createEvent);
 router.post('/events-add/:id', authController.isLoggedIn, eventController.createEvent);
 
-//old stuff after this
-router.get('/tags/', catchErrors(storeController.getStoresByTag));
-router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
 
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
@@ -68,6 +65,9 @@ router.post('/account/reset/:token',
 
 router.get('/map', storeController.mapPage);
 
+//old stuff after this
+router.get('/tags/', catchErrors(storeController.getStoresByTag));
+router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
 router.get('/hearts', authController.isLoggedIn,catchErrors(storeController.hearts));
 
 router.post('/reviews/:id', 

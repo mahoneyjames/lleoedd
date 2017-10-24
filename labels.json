@@ -199,7 +199,7 @@
     "en": "More details",
     "cy": "Mwy o wybodaeth"
   },
-  "page.place.show.editPlace": {
+  "page.place.show.edit": {
     "en": "edit",
     "cy": "edit [CY ar goll]"
   },
@@ -223,7 +223,7 @@
     "en": "",
     "cy": " [CY ar goll]"
   },
-  "page.place.edit.url": {
+  "page.place.edit.form.url": {
     "en": "Website?",
     "cy": "Wefan?"
   },
@@ -265,10 +265,14 @@
   },
   "page.place.edit.form.title": {
     "en": "Title",
-    "cy": "teitl"
+    "cy": "Teitl"
   },
   "page.place.edit.form.save": {
     "en": "Save",
     "cy": "Save [CY ar goll]"
+  },
+  "page.place.edit.location": {
+    "en": "Location",
+    "cy": "Location [CY ar goll]"
   }
 }

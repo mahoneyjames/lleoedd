@@ -1,11 +1,12 @@
 include _regionSelect
 include _bilingualText
+
 mixin placeFormFriendly(place ={})
     .main-card
         form(action=`/places-add/${place._id || ''}` method="POST" class="" enctype="multipart/form-data")
             .step
                 h1 #{label('page.place.add.step1')}
-                a(href="/help/address" target="_blank") Need help?
+                
                 .form-group 
                     label(for="address") #{label('page.place.add.location')}
                     input.form-control(type="text" id="address" name="location[address]" value=(place.location && place.location.address) placeholder="Start typing..." required)

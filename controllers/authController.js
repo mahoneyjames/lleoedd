@@ -14,8 +14,22 @@ exports.login = passport.authenticate('local', {
 
 exports.logout = (req, res)=>{
     req.logout();
-    req.flash('success', 'You hae been logged out successfully');
+    req.flash('success', 'You have been logged out successfully');
     res.redirect('/');
+};
+
+exports.loginIsOptional = (req, res, next) => {
+
+    //need this method for pages where login is not required
+    //It looks as though we have to call req.isAuthenticated to get any
+    //flash messages to appear on a public page...
+    if(req.isAuthenticated())
+    {
+        
+        
+    }
+
+    next();    
 };
 
 exports.isLoggedIn = (req, res, next) => {

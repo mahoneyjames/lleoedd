@@ -5,11 +5,20 @@ include mixins/_regionSelect
 
 block content
     
-    .filter.page-header
-        a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
-        each region in regions
-            a.badge(href=`/places/${region.id}` class=(currentRegion!=region.id ? 'badge-secondary' : '')) #{h.localise(region.shortName)}
-                                
+    //- .filter.page-header
+    //-     a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
+    //-     each region in regions
+    //-         a.badge(href=`/places/${region.id}` class=(currentRegion!=region.id ? 'badge-secondary' : '')) #{h.localise(region.shortName)}
+
+    .page-header.page-menu
+        .dropdown
+            button.btn.btn-secondary.dropdown-toggle(id="dropDownRegion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Region: #{currentRegion ? currentRegion : 'all'}
+            .dropdown-menu( aria-labelledby="dropdownMenuButton")
+                a.dropdown-item(href="/places") all
+                each region in regions
+                    a.dropdown-item(href=`/places/${region.id}`) #{h.localise(region.shortName)}
+        a.btn.btn-primary(href="/places-add" data-role="button") Add place
+
     .places.main-card
         table.table.table-striped
             thead

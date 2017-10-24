@@ -1,8 +1,6 @@
 extends ../layout
-
+include ../mixins/helpRegion
 block content
     .inner
-    h1 What are regions?
-    p These are a first go at providing a simple approach to reduce the list of places to a more manageable set of data when adding/editing stuff. 
-    p The list of regions has been shamelessly ripped off from the ones that the BBC use on their Wales section.
-    p As more data is added we'll likely wish to refine this list of regions, or think of other ways to manage the data
+        h1 What are regions?
+        +helpRegion()

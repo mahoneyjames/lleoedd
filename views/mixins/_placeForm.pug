@@ -1,24 +1,26 @@
 include _regionSelect
 include _bilingualText
 mixin placeForm(place ={})
+    .page-header
+        h1 #{place.name}
     .main-card
         -//pre=h.dump(place)
         form(action=`/places-add/${place._id || ''}` method="POST" class="" enctype="multipart/form-data")
-            h1 #{place.name}
-            .step
-                h2 Overview   
+            h2.form-section Overview
+            .step.form-section                   
                 .form-group 
                     h4 #{label('page.place.edit.form.title')}
                     input.form-control(type="text" name="name" value=place.name required)      
-                    
-                +bilingualText(label('page.place.edit.summary'),'summary',place.summary,label('page.place.edit.summary.hint'))
-                +regionSelect(place)
-
-
-                +bilingualText(label('page.place.edit.description'),'description',place.description,label('page.place.edit.description.hint'))
-                .form-group                
-                    h4 #{label('page.place.edit.form.url')}
-                    input.form-control(type="text" name="link" value=place.link)    
+                .form-section    
+                    +bilingualText(label('page.place.edit.summary'),'summary',place.summary,label('page.place.edit.summary.hint'))
+                .form-section
+                    +regionSelect(place)
+                .form-section
+                    +bilingualText(label('page.place.edit.description'),'description',place.description,label('page.place.edit.description.hint'))
+                .form-section
+                    .form-group                
+                        h4 #{label('page.place.edit.form.url')}
+                        input.form-control(type="text" name="link" value=place.link)    
                 input.btn.btn-primary(type="submit" value=`${label('page.place.edit.form.save')}` class="button")                    
             
             h1 #{label('page.place.edit.location')}
