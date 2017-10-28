@@ -78,8 +78,8 @@ app.use((req, res, next) => {
     return helpers.localiseLabel(language, what);    
   };
   
-  res.locals.localise = (what)=>{
-    return helpers.localiseString(language, what)
+  res.locals.localise = (what,options)=>{
+    return helpers.localiseString(language, what,options)
   };
   res.locals.currentPath = req.path;
   next();

@@ -18,7 +18,7 @@ mixin placeFormFriendly(place ={})
                 
                 .form-group 
                     label(for="name") #{label('page.place.add.title')}                             
-                    input.form-control(type="text" id="name" name="name" value=place.name required)
+                    +bilingualText(label('page.place.edit.name'),'name',place.name,label('page.place.edit.name.hint'))
                 +bilingualText(label('page.place.add.summary'),'summary',place.summary,label('page.place.add.summary.hint'))
 
             .step
@@ -31,13 +31,13 @@ mixin placeFormFriendly(place ={})
                 input.form-control(type="text" name="link" value=place.link)
                 
             
-            .step.dev
+            .step.devx
                 h1 #{label('page.place.add.dev')}
                     //-lat and long
                 label(for="lng") Address lng
-                input.form-control(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]) required)
+                input.form-control(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]))
                 label(for="lat") Address lat
-                input.form-control(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]) required)
+                input.form-control(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]))
                 label(for="google.url") Google Url
                 input.form-control.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
 

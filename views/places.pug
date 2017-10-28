@@ -5,7 +5,7 @@ include mixins/_regionSelect
 
 block content
 
-    
+    -//pre=h.dump(places)
     
     //- .filter.page-header
     //-     a.badge(href=`/places` class=(currentRegion!=null ? 'badge-secondary' : '')) #{label('page.places.regions.all')}
@@ -32,7 +32,7 @@ block content
                 each place in places
                     tr
                         td 
-                            a(href=`/place/${place.slug}`) #{place.name} 
+                            a(href=`/place/${localise(place.slug,{indicateFallbackLanguage:false})}`) #{localise(place.name)} 
                             //- if user                         
                             //-     a(href=`/places/${place._id}/edit`) edit                        
                         td #{localise(place.summary)}

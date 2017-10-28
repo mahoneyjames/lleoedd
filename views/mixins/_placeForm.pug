@@ -2,15 +2,15 @@ include _regionSelect
 include _bilingualText
 mixin placeForm(place ={})
     .page-header
-        h1 #{place.name}
+        h1 #{localise(place.name)}
     .main-card
-        -//pre=h.dump(place)
+        pre=h.dump(place)
         form(action=`/places-add/${place._id || ''}` method="POST" class="" enctype="multipart/form-data")
             h2.form-section Overview
             .step.form-section                   
                 .form-group 
-                    h4 #{label('page.place.edit.form.title')}
-                    input.form-control(type="text" name="name" value=place.name required)      
+                    h4 #{label('page.place.edit.form.title')}                    
+                    +bilingualText(label('page.place.edit.name'),'name',place.name,label('page.place.edit.name.hint'))      
                 .form-section    
                     +bilingualText(label('page.place.edit.summary'),'summary',place.summary,label('page.place.edit.summary.hint'))
                 .form-section

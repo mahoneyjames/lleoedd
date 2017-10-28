@@ -1,0 +1,72 @@
+POST http://localhost:7777/places-add/ HTTP/1.1
+Host: localhost:7777
+Connection: keep-alive
+Content-Length: 1698
+Cache-Control: max-age=0
+Origin: http://localhost.fiddler:7777
+Upgrade-Insecure-Requests: 1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryIlutqT1OICFQOwUE
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost.fiddler:7777/places-add
+Accept-Encoding: gzip, deflate
+Accept-Language: en-GB,en;q=0.8,en-US;q=0.6,cy;q=0.4
+Cookie: sweetsesh=s%3Az2c85211W37ePC75i58KPv5zbeJE3VYq.%2BpKuyrJXY9YvHaIyTU594YdIio7mo7IfbwcwedIVEco
+
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="location[address]"
+
+Yr Hen Lyfrgell, Cardiff, United Kingdom
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="location[postcode]"
+
+CF10 1BH
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="name[en]"
+
+The Old Library
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="name[cy]"
+
+Yr Hen Lyfrgell
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="summary[en]"
+
+Welsh language centre in Cardiff
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="summary[cy]"
+
+Canolfan cymraeg yng Gaerdydd
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="region"
+
+cardiff
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="description[en]"
+
+
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="description[cy]"
+
+
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="link"
+
+
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="location[coordinates][0]"
+
+-3.177366699999993
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="location[coordinates][1]"
+
+51.4801561
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="google[url]"
+
+https://maps.google.com/?cid=9834998669938989578
+------WebKitFormBoundaryIlutqT1OICFQOwUE
+Content-Disposition: form-data; name="google[placeId]"
+
+ChIJh0g64LAcbkgRChonqC7vfIg
+------WebKitFormBoundaryIlutqT1OICFQOwUE--

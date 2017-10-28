@@ -5,7 +5,7 @@ include mixins/_review
 block content   
     .page-header
         h2.title.title--single
-            a(href=`/place/${place.slug}`) #{place.name}
+            a(href=`/place/${localise(place.slug, {indicateFallbackLanguage:false})}`) #{localise(place.name)}
     if user
         a(href=`/places/${place._id}/edit`) #{label('page.place.show.edit')}
 

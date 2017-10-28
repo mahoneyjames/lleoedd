@@ -27,6 +27,7 @@ router.post('/places-add/:id', authController.isLoggedIn,
 router.get('/places/:id/edit',authController.isLoggedIn, catchErrors(placeController.editPlace));
 
 router.get('/place/:slug', catchErrors(placeController.displayPlace));
+router.get('/:lang/place/:slug', catchErrors(placeController.displayPlace));
 
 router.get('/api/places/near', catchErrors(placeController.mapPlaces));
 

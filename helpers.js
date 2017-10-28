@@ -62,12 +62,23 @@ exports.localiseLabel = (preferenceLanguage, what) =>
 }
 
 //Returns a single string out of one of our localisation objects
-exports.localiseString = (preferenceLanguage, what)=>
+exports.localiseString = (preferenceLanguage, what, options)=>
 {
+  if(options===undefined)
+  {
+    options = {indicateFallbackLanguage:true};
+  }
   const result = exports.localise(preferenceLanguage, what);
   if(result.found && result.fallback)
   {
-    return `${result.text} [${result.language}]`;
+    if(options.indicateFallbackLanguage)
+    {
+      return `${result.text} [${result.language}]`;
+    }
+    else
+    {
+      return `${result.text}`;
+    }
   }
   else
   {
@@ -81,8 +92,10 @@ exports.localiseString = (preferenceLanguage, what)=>
   { en: 'english', cy:'cymraeg'}
 
 */
-exports.localise = (preferenceLanguage, what, debug)=>
+exports.localise = (preferenceLanguage, what,debug)=>
 {
+
+
     if(what===undefined)
     {
       return {text:'', found:true, debug};
