@@ -78,11 +78,57 @@ exports.createPlace = async (req, res)=> {
 
     console.log(req.body);
 
-    const place = await( new Place(req.body).save());
-
+    const place = new Place(req.body);
+    //const result = await place.validate();
     
+place.save().then((place)=>{
+    
+    console.log(place);
     req.flash('success',`Successfully Created ${place.name}.`);        
     res.redirect(`/place/${place.slug}`);
+
+})
+.catch((err)=>{
+        console.log(err);
+        req.flash('error', "Failed to create place");
+        
+
+        const validationErrors = [];
+        for(var field in err.errors)
+        {
+            validationErrors.push({param:field, msg: err.errors[field].message });
+        }
+
+        req.flash('error', validationErrors.map(err=>err.msg));        
+        res.render('editPlace', {titleLabel: 'addPlace',wizardMode: true, regions: Region.listRegions(), body: req.body, flashes: req.flash(), validationErrors });
+
+});
+
+console.log("here");
+
+    // const place = await( new Place(req.body).save(async function error(err){
+    //     console.log("validation error");
+    //     console.log(err);
+        
+    //     return ;
+
+    // }));
+    // if(place)
+
+    // {
+    //     req.flash('success',`Successfully Created ${place.name}.`);        
+    //     res.redirect(`/place/${place.slug}`);
+    // }
+    // else
+    // {
+
+    //     req.flash('error', "Failed to create place");
+    //     res.redirect('/');
+    // }
+    
+
+    
+    
 };
 
 

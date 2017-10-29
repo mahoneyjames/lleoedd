@@ -31,7 +31,7 @@ exports.validateRegister = async (req, res, next)=>{
     if(errors)
     {
         req.flash('error', errors.map(err=>err.msg));
-        res.render('register', {titleLabel: 'register', body: req.body, flashes: req.flash()});
+        res.render('register', {titleLabel: 'register', body: req.body, flashes: req.flash(), errors});
         return;    
     }
 
