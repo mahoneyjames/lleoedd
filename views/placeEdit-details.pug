@@ -1,0 +1,12 @@
+extends layout
+include mixins/_placeDetails
+include mixins/_placeEditNav
+block content   
+    .page-header
+        h2.title.title--single #{localise(place.name)}
+    +placeEditNav(place,"details")
+    .main-card
+        -//        pre=h.dump(place)
+        form(action=`/places/${place._id}/editDetails` method="POST" class="" )                  
+            +placeDetails(place)
+            input.btn.btn-primary(type="submit" value=`${label('page.place.add.save')}` class="button")

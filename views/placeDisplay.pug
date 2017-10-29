@@ -1,13 +1,12 @@
 extends layout
 include mixins/_reviewForm
 include mixins/_review
-
+include mixins/_placeEditNav
 block content   
     .page-header
-        h2.title.title--single
-            a(href=`/place/${localise(place.slug, {indicateFallbackLanguage:false})}`) #{localise(place.name)}
-    if user
-        a(href=`/places/${place._id}/edit`) #{label('page.place.show.edit')}
+        h2.title.title--single #{localise(place.name)}
+    +placeEditNav(place,"summary")
+    
 
     .main-card
         p #{localise(place.summary)}

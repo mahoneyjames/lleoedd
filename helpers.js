@@ -30,7 +30,7 @@ exports.menu = [
   { slug: '/map', title: 'map', icon: 'map', },
   { slug: '/places', title: 'places', icon: 'store', },  
   //{ slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/places-add', title: 'add', icon: 'add', },
+  { slug: '/places/new/location', title: 'add', icon: 'add', },
   
 ];
 

@@ -2,20 +2,7 @@ const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
 const Region = mongoose.model('Region');
 const User = mongoose.model('User');
-const multer = require('multer');
 const moment = require('moment');
-const multerOptions = {
-    storage: multer.memoryStorage(),
-    fileFilter(req, file, next){
-        const isPhoto = file.mimetype.startsWith('image/');
-        if(isPhoto)
-            next(null, true);
-        else
-            next({message:"File type is not allowed"}, false);
-
-    }
-
-};
 
 const jimp = require('jimp');
 const uuid = require('uuid');
@@ -28,39 +15,79 @@ exports.homePage = (req, res) => {
     res.render("index");
 };
 
-exports.addPlace = (req, res)=> {
 
-    res.render('editPlace', {titleLabel: 'addPlace',wizardMode: true, regions: Region.listRegions() });
-};
+/*
 
-exports.upload = multer(multerOptions).single('photo');
-exports.resize = async (req, res, next)=>{
+Place creation
+ 1 - findNewPlace
+     Render map
+     Post selected address info
+ 2 - enterNewPlaceDetails
+     Send back address info
+     Render selection form 
+     Post selected address info and place details
+ 3 - create new place
 
-    if(!req.file)
-    {
-        next();
-        return;
-    }
-    else
-    {
+
+*/
+exports.findNewPlace = (req, res)=>{
+    res.render('placeNew-find',{titleLabel: 'placeNew-find'});
+}
+exports.enterNewPlaceDetails = (req, res)=>{
+    
+    /*
+        1 - Verify the submitted place info - if invalid, send back to newPlace-find
+        2 - TODO - see if any similar places already exist
+        3 - render out the edit place details form...
+    */
+    res.render('placeNew-details',{titleLabel: 'placeNew-details', place:req.body,regions: Region.listRegions()});
+}
+
+exports.createNewPlace = async (req, res)=>{
+
+    /*
         
-        const extension = req.file.mimetype.split('/')[1];
-        req.body.photo = `${uuid.v4()}.${extension}`;
+        1 Verify the details. If invalid, send back to newPlace-Details
+        2 Verify the submitted place info. If invalid, throw error (because they must have skipped a step)
+        3 Save the new place
+        4 Send them to the display place form...
+    */
+    
 
-        const photo = await jimp.read(req.file.buffer);
-        await photo.resize(800, jimp.AUTO);
-        await photo.write(`./public/uploads/${req.body.photo}`);
-
+    
+    insertNewPlace(req).then((place)=>{
         
-        next();
-        return;
-    }
-};
+        //Hooray, place created!
+        console.log(place);
+        req.flash('success',`Successfully Created ${place.name}.`);        
+        res.redirect(`/place/${place.slug}`);
 
-exports.createPlace = async (req, res)=> {
-    console.log("create called");
-    req.body.createdBy = req.user._id;
+    })
+    .catch((err)=>{
 
+        //failed to create place - for the moment this is because we failed mongo document validation
+            console.log(err);
+            
+            
+
+            const validationErrors = [];
+            for(var field in err.errors)
+            {
+                validationErrors.push({param:field, msg: err.errors[field].message });
+            }
+
+            req.flash('error', validationErrors.map(err=>err.msg));        
+            
+            res.render('placeNew-details',{titleLabel: 'placeNew-details', place:req.body,regions: Region.listRegions(),flashes: req.flash(), validationErrors});
+    });
+
+
+}
+
+
+function convertPostedPlaceIntoMongoDocumentPlace(req)
+{
+    
     req.body.summary_new=req.body.summary;
     req.body.summary=req.body.summary_new.en;
 
@@ -69,63 +96,51 @@ exports.createPlace = async (req, res)=> {
 
     req.body.name_new = req.body.name;
     req.body.name = req.body.name.en;
-    req.body.slug_new = {};
+    req.body.slug_new = null;
+}
+
+async function insertNewPlace(req)
+{
+    req.body.createdBy = req.user._id;
+
+    convertPostedPlaceIntoMongoDocumentPlace(req);
 
     if(req.body.name_new.cy===null || req.body.name_new.cy.trim()==='')
     {
         req.body.name_new.cy = req.body.name_new.en;
     }
 
-    console.log(req.body);
+    const mongoPlace = new Place(req.body);
 
-    const place = new Place(req.body);
-    //const result = await place.validate();
-    
-place.save().then((place)=>{
-    
-    console.log(place);
-    req.flash('success',`Successfully Created ${place.name}.`);        
-    res.redirect(`/place/${place.slug}`);
-
-})
-.catch((err)=>{
-        console.log(err);
-        req.flash('error', "Failed to create place");
+    return mongoPlace.save();
+}
+exports.createPlace = async (req, res)=> {
+    //old create place logic here...
         
-
-        const validationErrors = [];
-        for(var field in err.errors)
-        {
-            validationErrors.push({param:field, msg: err.errors[field].message });
-        }
-
-        req.flash('error', validationErrors.map(err=>err.msg));        
-        res.render('editPlace', {titleLabel: 'addPlace',wizardMode: true, regions: Region.listRegions(), body: req.body, flashes: req.flash(), validationErrors });
-
-});
-
-console.log("here");
-
-    // const place = await( new Place(req.body).save(async function error(err){
-    //     console.log("validation error");
-    //     console.log(err);
+    insertNewPlace(req).then((place)=>{
         
-    //     return ;
+        console.log(place);
+        req.flash('success',`Successfully Created ${place.name}.`);        
+        res.redirect(`/place/${place.slug}`);
 
-    // }));
-    // if(place)
+    })
+    .catch((err)=>{
+            console.log(err);
+            req.flash('error', "Failed to create place");
+            
 
-    // {
-    //     req.flash('success',`Successfully Created ${place.name}.`);        
-    //     res.redirect(`/place/${place.slug}`);
-    // }
-    // else
-    // {
+            const validationErrors = [];
+            for(var field in err.errors)
+            {
+                validationErrors.push({param:field, msg: err.errors[field].message });
+            }
 
-    //     req.flash('error', "Failed to create place");
-    //     res.redirect('/');
-    // }
-    
+            req.flash('error', validationErrors.map(err=>err.msg));        
+            res.render('editPlace', {titleLabel: 'addPlace',wizardMode: true, regions: Region.listRegions(), body: req.body, flashes: req.flash(), validationErrors });
+
+    });
+
+    console.log("here");
 
     
     
@@ -218,21 +233,71 @@ exports.getPlaces = async (req, res)=>{
 };
 
 
-exports.editPlace = async (req, res)=>{
-
-     //1 find the store based on the id
-     let place = await(Place.findOne({_id: req.params.id}));
-
-    console.log("dit" + place.summary_new);
+exports.editPlaceDetails = async(req,res)=>{        
+    let place = await(Place.findOne({_id: req.params.id}));
     place = handleSummaryLocalisation(place);
+    res.render('placeEdit-details',{titleLabel:"placeEdit-details",place, regions: Region.listRegions() });
+}
+exports.savePlaceDetails = async (req, res)=>{
+
+    console.log("sav");
+    convertPostedPlaceIntoMongoDocumentPlace(req);
+    req.body.lastModifiedBy = req.user._id;
+    req.body.modified = moment();
+    
+    //1 find the store based on the id
+     //Cannot use findOneAndUpdate, because it's not running the pre save method for our name...
+     const place = await Place.findOne({_id: req.params.id});
+
+     const updateCommand = req.body;
      
-     //2 render out the edit form so the user can update their store
 
-    res.render('editPlace',{titleLabel:"editPlace",place, regions: Region.listRegions() });
+     if(place.name_new)
+     {
+         //we are dealing with a place that has already moved to a localised title...
+         if(place.name_new.en!=req.body.name_new.en
+            ||place.name_new.cy!=req.body.name_new.cy)
+         {
+             //One of the titles has changed
+             //Update the slug
+             updateCommand.slug_new = {en:req.body.name_new.en, cy:req.body.name_new.cy};
+             updateCommand.slugs = place.slugs;             
+         }
+     }
+     else 
+     {
+         //Moving from the non-localised title to localised, so always update the slugs
+        updateCommand.slug_new = {en:req.body.name_new.en, cy:req.body.name_new.cy};        
+        updateCommand.slugs = place.slugs;             
+     }
+
+
+     await Place.setupCurrentSlug(updateCommand);
+          
+          console.log("yma");
+     await Place.findOneAndUpdate({_id: req.params.id},
+         updateCommand, 
+        {
+            new:true, //return the new store instead of the old one
+            runValidators:false
+        }).exec();
      
+    
+    //TODO - validate the document before save...
+
+     req.flash('success', `Successfully updated <strong>${place.name}</strong>.`);
+
+    res.redirect(`/places/${place._id}/editDetails`);
+     
+}
+
+exports.editPlaceLocation = async(req,res)=>{        
+    let place = await(Place.findOne({_id: req.params.id}));
+    place = handleSummaryLocalisation(place);
+    res.render('placeEdit-location',{titleLabel:"placeEdit-location",place});
+}
 
 
-};
 
 exports.updatePlace = async (req, res)=>{
     
@@ -309,7 +374,7 @@ exports.displayPlace = async (req, res, next) =>{
     place = handleSummaryLocalisation(place);
 
     //TODO - if the user requested a slug that is no longer current, redirect them to the latest slug...
-    res.render("displayPlace", {place, title: place.name});
+    res.render("placeDisplay", {place, title: place.name});
 };
 
 
@@ -334,51 +399,3 @@ exports.mapPlaces = async(req, res)=>{
 exports.mapPage = (req, res)=>{
     res.render('map',{titleLabel:'map'});
 };
-
-/*
-exports.getStoresByTag = async (req, res) =>{
-    const tag = req.params.tag;
-    const tagQuery = tag || { $exists: true};
-    const tagsPromise = Store.getTagsList();
-    const storesPromise = Store.find({tags: tagQuery });
-    
-    const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
-
-
-    res.render('tag', {tags, stores, title: 'Tags', selectedTag: tag});
-};
-
-exports.searchStores = async (req, res)=>{
-
-    const stores = await Store
-        .find({$text: {$search: req.query.q}}, {score: {$meta: 'textScore'}})
-        .sort({score: { $meta: 'textScore'}})
-        .limit(5);
-        res.json(stores);
-};
-
-
-exports.heartStore = async (req, res)=>{
-    console.log(req.user._id);
-    const hearts = req.user.hearts.map(obj=>obj.toString());
-    const operator = hearts.includes(req.params.id) ? '$pull' : '$addToSet';
-
-    const user = await User
-    .findByIdAndUpdate(req.user._id,
-        { [operator]: {hearts: req.params.id}},
-        {new:true}
-        );
-    res.json(user);
-};
-
-exports.hearts = async(req, res)=>{
-
-    const stores = await Store.find({_id: {$in: req.user.hearts}});
-    res.render('hearts', {title: 'Hearted places', stores});
-};
-
-exports.getTopStores = async(req, res)=>{
-    const stores = await Store.getTopStores();
-    res.render('top',{title: 'Top places', stores});
-    
-};*/

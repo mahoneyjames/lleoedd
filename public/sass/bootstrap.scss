@@ -13,7 +13,7 @@ body
 .main-card
 {
     background: white;
-    margin: 10px;
+    //margin: 10px;
     padding: 10px;
     box-shadow: $shad;
 }
@@ -69,4 +69,14 @@ body
 .form-section
 {
     margin-bottom:2rem;
+}
+
+.single
+{
+    &__map {
+    width: calc(100%);// + 6rem);
+    max-width: none;
+    //margin-top: -3rem;
+    //margin-left: -3rem;
+  }
 }

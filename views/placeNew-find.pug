@@ -1,0 +1,7 @@
+extends layout
+include mixins/_placeLocation
+block content   
+    .main-card
+        form(action=`/places/new/details` method="POST" class="")
+            +selectPlace(place)
+            input.btn.btn-primary(type="submit" value=`${label('page.place.add.save')}` class="button")

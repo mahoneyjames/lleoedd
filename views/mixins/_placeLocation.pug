@@ -1,0 +1,23 @@
+mixin selectPlace(place={})
+    section
+        .form-group 
+            label(for="address") #{label('page.place.add.location')}
+            input.form-control(type="text" id="address" name="location[address]" value=(place.location && place.location.address) placeholder="Start typing..." required)
+        .form-group 
+            label(for="postcode") #{label('page.place.add.postcode')}
+            input.form-control(type="text" id="postcode" name="location[postcode]" value=(place.location && place.location.postcode))
+
+    section.dev
+        h1 #{label('page.place.add.dev')}
+            //-lat and long
+        label(for="lng") Address lng
+        input.form-control(type="text" id="lng" name="location[coordinates][0]" value=(place.location && place.location.coordinates[0]))
+        label(for="lat") Address lat
+        input.form-control(type="text" id="lat" name="location[coordinates][1]" value=(place.location && place.location.coordinates[1]))
+        label(for="google.url") Google Url
+        input.form-control.googleUrl(type="text" id="google.url" name="google[url]" value=(place.google && place.google.url))
+
+
+        label(for="google.placeId")
+            a(href="https://developers.google.com/places/place-id#save-id" target="_blank") Google place id
+        input.form-control.googlePlaceId(type="text" id="google.placeId" name="google[placeId]" value=(place.google && place.google.placeId))

@@ -6451,7 +6451,6 @@ body {
 
 .main-card {
   background: white;
-  margin: 10px;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
 
@@ -6490,5 +6489,9 @@ body {
 
 .form-section {
   margin-bottom: 2rem; }
+
+.single__map {
+  width: calc(100%);
+  max-width: none; }
 
 /*# sourceMappingURL=style.css.map*/

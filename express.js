@@ -81,6 +81,10 @@ app.use((req, res, next) => {
   res.locals.localise = (what,options)=>{
     return helpers.localiseString(language, what,options)
   };
+
+  res.locals.localiseWithoutWarnings = (what)=>{
+    return helpers.localiseString(language, what,{indicateFallbackLanguage:false});
+  };
   res.locals.currentPath = req.path;
   next();
 });

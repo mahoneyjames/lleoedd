@@ -1,0 +1,19 @@
+include _regionSelect
+include _bilingualText
+mixin placeDetails(place ={})
+    h2.form-section Overview
+    .step.form-section                   
+        .form-group 
+            h4 #{label('page.place.edit.form.title')}                    
+            +bilingualText(label('page.place.edit.name'),'name',place.name,label('page.place.edit.name.hint'))      
+        .form-section    
+            +bilingualText(label('page.place.edit.summary'),'summary',place.summary,label('page.place.edit.summary.hint'))
+        .form-section
+            +regionSelect(place)
+        .form-section
+            +bilingualText(label('page.place.edit.description'),'description',place.description,label('page.place.edit.description.hint'))
+        .form-section
+            .form-group                
+                h4 #{label('page.place.edit.form.url')}
+                input.form-control(type="text" name="link" value=place.link)    
+    

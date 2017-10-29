@@ -15,17 +15,22 @@ router.get('/places', authController.loginIsOptional, catchErrors(placeControlle
 router.get('/places/page/:page',  catchErrors(placeController.getPlaces));
 router.get('/places/:region',  catchErrors(placeController.getPlaces));
 router.get('/places/:region/page/:page',  catchErrors(placeController.getPlaces));
-router.get('/places-add', authController.isLoggedIn, placeController.addPlace);
-router.post('/places-add', authController.isLoggedIn,
-                placeController.upload, 
-                catchErrors(placeController.resize) ,
-                catchErrors(placeController.createPlace));
-router.post('/places-add/:id', authController.isLoggedIn,
-                placeController.upload,    
-                catchErrors(placeController.resize) ,
-                catchErrors(placeController.updatePlace));
+
+
 router.get('/places/:id/edit',authController.isLoggedIn, catchErrors(placeController.editPlace));
 
+//New place create and edit stuff...
+router.get('/places/new/location',authController.isLoggedIn, placeController.findNewPlace);
+router.post('/places/new/details', authController.isLoggedIn,placeController.enterNewPlaceDetails);
+router.post('/places/new/save',authController.isLoggedIn, catchErrors(placeController.createNewPlace));
+
+router.get('/places/:id/editDetails',authController.isLoggedIn, catchErrors(placeController.editPlaceDetails));
+router.post('/places/:id/editDetails',authController.isLoggedIn, catchErrors(placeController.savePlaceDetails));
+
+router.get('/places/:id/editLocation',authController.isLoggedIn, catchErrors(placeController.editPlaceLocation));
+router.post('/places/:id/editLocation',authController.isLoggedIn, catchErrors(placeController.savePlaceLocation));
+
+//end new create and edit stuff
 router.get('/place/:slug', catchErrors(placeController.displayPlace));
 router.get('/:lang/place/:slug', catchErrors(placeController.displayPlace));
 

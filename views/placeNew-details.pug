@@ -1,0 +1,13 @@
+extends layout
+include mixins/_placeLocation
+include mixins/_placeDetails
+block content   
+    .main-card
+        pre=h.dump(place)
+        form(action=`/places/new/save` method="POST" class="" )
+            
+            +placeDetails(place)
+            -//Place location data (hidden on this page)
+            div.dev
+                +selectPlace(place)
+            input.btn.btn-primary(type="submit" value=`${label('page.place.add.save')}` class="button")
