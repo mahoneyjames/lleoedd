@@ -69,6 +69,7 @@ exports.localiseString = (preferenceLanguage, what, options)=>
     options = {indicateFallbackLanguage:true};
   }
   const result = exports.localise(preferenceLanguage, what);
+  console.log(result);
   if(result.found && result.fallback)
   {
     if(options.indicateFallbackLanguage)

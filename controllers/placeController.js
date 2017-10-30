@@ -299,6 +299,8 @@ exports.editPlaceLocation = async(req,res)=>{
 
 
 
+
+
 exports.updatePlace = async (req, res)=>{
     
     req.body.location.type = 'Point';

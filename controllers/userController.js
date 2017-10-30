@@ -8,36 +8,88 @@ exports.loginForm =  (req, res)=>{
 };
 
 exports.registerUserForm =  (req, res)=>{
-     res.render('register',{titleLabel:"register"});
+     res.render('register',{titleLabel:"register", registration: {}});
 };
 
+/*
+What                    Client   Server
+name - mandatory            X       X
+email - mandatory           X       X
+email - valid               X       X
+email - not used                    X
+password - mandatory        X       X
+passwords - match           X       X
+secret - mandatory          X       X
+secret - valid                      X
+
+*/
 exports.validateRegister = async (req, res, next)=>{
     req.sanitizeBody('name');
-    req.checkBody('name', 'You must supply a name').notEmpty();
-    req.checkBody('email', 'That email is not valid').isEmail();
+    req.checkBody('name', 'name.missing').notEmpty();
+    req.checkBody('email', 'email.invalid').isEmail();
+    
     req.sanitizeBody('email').normalizeEmail({
         remove_dots: false,
         remove_extension: false,
         gmail_remove_subaddress: false
     });
-    req.checkBody('password', 'Password cannot be blank').notEmpty();
-    req.checkBody('password-confirm', 'Confirm password cannot be blank').notEmpty();
-    req.checkBody('password-confirm', 'Your passwords do not match').equals(req.body.password);
+    req.checkBody('password', 'password.invalid').isLength({min:8});
+
+    
+    req.checkBody('passwordconfirm', 'confirm.mismatch').equals(req.body.password);
 
     //simple check to prevent joe public from trying to register
-    req.checkBody('secret', 'Invalid secret').equals(process.env.SECRET);
-    const errors = req.validationErrors();
+    req.checkBody('secret', 'secret.invalid').equals(process.env.SECRET);    
+
+    
+    let errors =validationErrorsToSimpleDoc(req.validationErrors());    
+
+    if(!errors)
+    {
+        //Check if the user already exists        
+        const existingUser = await User.findOne({email:req.body.email});
+        if(existingUser!=null)
+        {
+            errors = {email:[{error:'email.used'}]};
+        }
+    }
 
     if(errors)
     {
-        req.flash('error', errors.map(err=>err.msg));
-        res.render('register', {titleLabel: 'register', body: req.body, flashes: req.flash(), errors});
+        //req.flash('error', res.label('page.register.messages.registerfailed'));
+        res.render('register', {titleLabel: 'register', registration: req.body, flashes: req.flash(), errors});
         return;    
     }
 
     next();
     
 };
+
+function validationErrorsToSimpleDoc(errors)
+{
+    console.log(errors);
+    if(errors.length>0)
+    {
+        const simple = {};
+        errors.map(err=>{
+            if(simple[err.param])
+            {
+                simple[err.param].push({error:err.msg});
+            }
+            else
+            {
+                simple[err.param] =[{error:err.msg}];
+            }
+        });
+
+        return simple;
+    }
+
+   else
+   {
+       return null;
+   }
+}
 
 exports.registerUser = async (req, res, next)=>{
      const user = new User({

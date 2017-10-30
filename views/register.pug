@@ -1,28 +1,21 @@
 extends layout
 
-//-include mixins/_login
-
+include mixins/_errorFormElement
+include mixins/_form-input
 block content
-    pre=h.dump(errors)
+    -//pre=h.dump(errors)
     .page-header
-        h1 Register
+        h1 #{label('page.register.title')}
+        if(errors)
+            div.alert.alert-danger #{label('page.register.messages.registerfailed')}
+
     .main-card        
         form(action="/register" method="POST")
             h2=title
-            .form-group   
-                label(for="name") Name
-                input.form-control(type="text" name="name")
-            .form-group   
-                label(for="email") Email
-                input.form-control(type="email" name="email")
-            .form-group   
-                label(for="password") Password
-                input.form-control(type="password" name="password")
-            .form-group   
-                label(for="confirm-password") Confirm password
-                input.form-control(type="password" name="password-confirm")
-            .form-group   
-                label(for="secret") Secret...
-                input.form-control(type="password" name="secret")
+            +inputText('page.register', 'name', 'text', registration, errors)
+            +inputText('page.register', 'email', 'email', registration, errors)
+            +inputText('page.register', 'password', 'password', registration, errors)
+            +inputText('page.register', 'passwordconfirm', 'password', registration, errors)
+            +inputText('page.register', 'secret', 'password', registration, errors)
             
             input.btn.btn-primary(type="submit" value="Register")

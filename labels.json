@@ -282,5 +282,57 @@
   "page.place.edit.location": {
     "en": "Location",
     "cy": null
+  },
+  "page.register.name": {
+    "en": "Name",
+    "cy": "Enw"
+  },
+  "page.register.email": {
+    "en": "Email",
+    "cy": "Ebost"
+  },
+  "page.register.password": {
+    "en": "Password",
+    "cy": "Cyfrinair"
+  },
+  "page.register.passwordconfirm": {
+    "en": "Confirm password",
+    "cy": "Ail teipio cyfrinair"
+  },
+  "page.register.secret": {
+    "en": "Secret",
+    "cy": "Cyfrinach"
+  },
+  "page.register.errors.name.missing": {
+    "en": "Please enter a name",
+    "cy": null
+  },
+  "page.register.errors.email.invalid": {
+    "en": "That email address is invalid",
+    "cy": null
+  },
+  "page.register.errors.password.invalid": {
+    "en": "Please enter at least 8 characters for your password",
+    "cy": null
+  },
+  "page.register.errors.confirm.missing": {
+    "en": "Please enter your password again",
+    "cy": null
+  },
+  "page.register.errors.confirm.mismatch": {
+    "en": "Your passwords don't match",
+    "cy": null
+  },
+  "page.register.errors.secret.invalid": {
+    "en": "Invalid secret",
+    "cy": null
+  },
+  "page.register.errors.email.used": {
+    "en": "That email address has already been registered.",
+    "cy": null
+  },
+  "page.register.messages.registerfailed": {
+    "en": "Please correct any errors, then try again",
+    "cy": null
   }
 }

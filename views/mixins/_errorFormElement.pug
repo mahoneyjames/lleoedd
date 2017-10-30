@@ -1,0 +1,5 @@
+mixin showFieldError(pageid,fieldname, errors)
+    if errors && errors[fieldname]
+        div.invalid-feedback 
+            each error in errors[fieldname]
+                p #{label(pageid + '.errors.' + error.error)}

@@ -1,0 +1,5 @@
+mixin inputText(pageid, fieldname, fieldtype, data, errors)
+    .form-group   
+        label(for=fieldname) #{label(pageid + '.' + fieldname)}
+        input.form-control(type=fieldtype name=fieldname value=data[fieldname] class=`${errors && errors[fieldname] ? 'is-invalid' : 'is-valid'}`)
+        +showFieldError(pageid,fieldname, errors)
