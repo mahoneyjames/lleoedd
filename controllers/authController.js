@@ -5,17 +5,16 @@ const User = mongoose.model('User');
 const promisify = require('es6-promisify');
 const mail = require('../handlers/mail');
 
-exports.login = passport.authenticate('local', {
-    failureRedirect: '/login',
-    failureFlash: 'Failed login!',
-    successRedirect: '/',
-    successFlash: 'You are now logged in'
-});
+exports.login  =         passport.authenticate('local', {
+        failureRedirect: '/login',
+        failureFlash: 'Failed login!',
+        successFlash: 'You are now logged in'
+    });
 
 exports.logout = (req, res)=>{
     req.logout();
     req.flash('success', 'You have been logged out successfully');
-    res.redirect('/');
+    res.redirectLocalised('/');
 };
 
 exports.loginIsOptional = (req, res, next) => {
@@ -42,7 +41,7 @@ exports.isLoggedIn = (req, res, next) => {
     else
     {
         req.flash('error', 'You must be logged in!');
-        res.redirect('/login');
+        res.redirectLocalised('login');
     }
 
 };
@@ -54,7 +53,7 @@ exports.forgot = async (req, res)=>{
     if(!user)
     {
         req.flash('success','A password reset has been mailed to you if an account exists');
-        return res.redirect('/login');
+        return res.redirectLocalised('/login');
     }
 
     //2 - set reset tokens and expiry on their account

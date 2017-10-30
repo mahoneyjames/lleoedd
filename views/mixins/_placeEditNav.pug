@@ -2,8 +2,8 @@ mixin placeEditNav(place,currentPage)
     if user
         ul.nav.nav-tabs
             li.nav-item
-                a.nav-link(href=`/place/${localiseWithoutWarnings(place.slug)}` class=`${currentPage==="summary" ? 'active' : ''}`) Public view
+                a.nav-link(href=url(`/place/${localiseWithoutWarnings(place.slug)}`) class=`${currentPage==="summary" ? 'active' : ''}`) Public view
             li.nav-item
-                a.nav-link(href=`/places/${place._id}/editDetails` class=`${currentPage==="details" ? 'active' : ''}`) Edit details
+                a.nav-link(href=url(`/places/${place._id}/editDetails`) class=`${currentPage==="details" ? 'active' : ''}`) Edit details
             li.nav-item
-                a.nav-link(href=`/places/${place._id}/editLocation` class=`${currentPage==="location" ? 'active' : ''}`) Edit location                                
+                a.nav-link(href=url(`/places/${place._id}/editLocation`) class=`${currentPage==="location" ? 'active' : ''}`) Edit location                                

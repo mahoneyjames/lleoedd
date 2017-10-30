@@ -1,6 +1,6 @@
 mixin login()
     .main-card
-        form(action="/login" method="POST")
+        form(action=url("login") method="POST")
             
             .form-group        
                 label(for="email") Email

@@ -6494,4 +6494,7 @@ body {
   width: calc(100%);
   max-width: none; }
 
+footer {
+  margin: 30px; }
+
 /*# sourceMappingURL=style.css.map*/

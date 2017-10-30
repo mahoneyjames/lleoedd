@@ -8,6 +8,6 @@ block content
                 each s in logs
                     p #{s}
 
-        form(action=`/admin/manage` method="POST")
+        form(action=`${url('admin/manage')}` method="POST")
             p
                 input(type="submit" value="exportData" class="button")

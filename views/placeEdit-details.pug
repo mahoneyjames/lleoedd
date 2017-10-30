@@ -7,6 +7,6 @@ block content
     +placeEditNav(place,"details")
     .main-card
         -//        pre=h.dump(place)
-        form(action=`/places/${place._id}/editDetails` method="POST" class="" )                  
+        form(action=url(`places/${place._id}/editDetails`) method="POST" class="" )                  
             +placeDetails(place)
             input.btn.btn-primary(type="submit" value=`${label('page.place.add.save')}` class="button")

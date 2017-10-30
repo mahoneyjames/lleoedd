@@ -10,7 +10,7 @@ block content
             div.alert.alert-danger #{label('page.register.messages.registerfailed')}
 
     .main-card        
-        form(action="/register" method="POST")
+        form(action=url('register') method="POST")
             h2=title
             +inputText('page.register', 'name', 'text', registration, errors)
             +inputText('page.register', 'email', 'email', registration, errors)

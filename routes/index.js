@@ -49,7 +49,9 @@ router.post('/events-add/:id', authController.isLoggedIn, eventController.create
 
 
 router.get('/login', userController.loginForm);
-router.post('/login', authController.login);
+router.post('/login', authController.login, (req,res)=>res.redirectLocalised('/'));
+
+
 router.get('/register', userController.registerUserForm);
 router.post('/register', 
     userController.validateRegister,

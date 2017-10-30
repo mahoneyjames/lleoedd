@@ -6,7 +6,7 @@ block content
         h1 Edit profile
     .main-card
         h2=title
-        form(action="/account" method="POST")
+        form(action=url("account") method="POST")
             .form-group  
                 label(for="name") #{label('page.account.form.name')}
                 input.form-control(type="text" name="name" value=user.name)

@@ -4,7 +4,7 @@ include mixins/_placeDetails
 block content   
     .main-card
         pre=h.dump(place)
-        form(action=`/places/new/save` method="POST" class="" )
+        form(action=url(`/places/new/save`) method="POST" class="" )
             
             +placeDetails(place)
             -//Place location data (hidden on this page)

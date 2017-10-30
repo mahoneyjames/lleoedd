@@ -1,7 +1,7 @@
 mixin forgotForm()
     .mute-card
         p.centre Forgotten your password?
-        form(action="/account/forgot" method="POST")            
+        form(action=url("/account/forgot") method="POST")            
             .form-group
                 label(for="email") Email
                 input.form-control(type="email" name="email")

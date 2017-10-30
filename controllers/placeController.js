@@ -60,7 +60,7 @@ exports.createNewPlace = async (req, res)=>{
         //Hooray, place created!
         console.log(place);
         req.flash('success',`Successfully Created ${place.name}.`);        
-        res.redirect(`/place/${place.slug}`);
+        res.redirectLocalised(`/place/${place.slug}`);
 
     })
     .catch((err)=>{
@@ -121,7 +121,7 @@ exports.createPlace = async (req, res)=> {
         
         console.log(place);
         req.flash('success',`Successfully Created ${place.name}.`);        
-        res.redirect(`/place/${place.slug}`);
+        res.redirectLocalised(`/place/${place.slug}`);
 
     })
     .catch((err)=>{
@@ -225,7 +225,7 @@ exports.getPlaces = async (req, res)=>{
     if(!places.length && skip)
     {
         req.flash('info', `Hey! You asked for page ${page}.`)
-        res.redirect(`/places/page/${pages}`);
+        res.redirectLocalised(`/places/page/${pages}`);
         return;
     }
     res.render('places', {titleLabel:"places", places, count, page, pages, currentRegion: Region.getRegion(region), regions: Region.listRegions() });
@@ -287,7 +287,7 @@ exports.savePlaceDetails = async (req, res)=>{
 
      req.flash('success', `Successfully updated <strong>${place.name}</strong>.`);
 
-    res.redirect(`/places/${place._id}/editDetails`);
+    res.redirectLocalised(`/places/${place._id}/editDetails`);
      
 }
 
@@ -359,7 +359,7 @@ exports.updatePlace = async (req, res)=>{
 
      req.flash('success', `Successfully updated <strong>${place.name}</strong>.`);
 
-    res.redirect(`/places/${place._id}/edit`);
+    res.redirectLocalised(`/places/${place._id}/edit`);
      
 
 

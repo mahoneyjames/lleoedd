@@ -27,10 +27,10 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.siteName = `Admin - chat.cymru [${process.env.NODE_ENV}]`;
 
 exports.menu = [
-  { slug: '/map', title: 'map', icon: 'map', },
-  { slug: '/places', title: 'places', icon: 'store', },  
+  { slug: 'map', title: 'map', icon: 'map', },
+  { slug: 'places', title: 'places', icon: 'store', },  
   //{ slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/places/new/location', title: 'add', icon: 'add', },
+  { slug: 'places/new/location', title: 'add', icon: 'add', },
   
 ];
 
@@ -69,7 +69,7 @@ exports.localiseString = (preferenceLanguage, what, options)=>
     options = {indicateFallbackLanguage:true};
   }
   const result = exports.localise(preferenceLanguage, what);
-  console.log(result);
+  
   if(result.found && result.fallback)
   {
     if(options.indicateFallbackLanguage)

@@ -332,7 +332,19 @@
     "cy": null
   },
   "page.register.messages.registerfailed": {
-    "en": "Please correct any errors, then try again",
+    "en": "Oops, something didn't work. Please correct any errors, then try again",
     "cy": null
+  },
+  "page.register.title": {
+    "en": "Register",
+    "cy": null
+  },
+  "layout.language.current": {
+    "en": "Language: English",
+    "cy": "Iaith: Cymraeg"
+  },
+  "layout.language.change": {
+    "en": "Newid i Gymraeg",
+    "cy": "Change to English"
   }
 }

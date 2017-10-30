@@ -12,6 +12,7 @@ const expressValidator = require('express-validator');
 const routes = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+const { URL } = require('url');
 require('./handlers/passport.js');
 
 // create our Express app
@@ -51,11 +52,31 @@ app.use(passport.session());
 // // The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
 app.use(flash());
 
+app.all('/:language/*', (req,res,next)=>{
+  const url = req.originalUrl.toLowerCase();
+  if(url.startsWith('/en'))
+  {
+    req.language='en';
+  }
+  else if(url.startsWith('/cy'))
+  {
+    req.language = 'cy';
+  }
+  else
+  {
+    req.language='en';
+  }
+
+  next();
+
+});
+
 // pass variables to our templates + all requests
 app.use((req, res, next) => {
   
   res.locals.h = helpers;
   res.locals.flashes = req.flash();
+  res.locals.request = req;
   
   res.locals.user = req.user || null;
   //TODO support a cookie for the language?
@@ -67,12 +88,46 @@ app.use((req, res, next) => {
      - otherwise, default to en
 
   */
-  let language = 'en';
+  let language = req.language;
   
-  if(req.user && req.user.language)
+  if(!language && req.user && req.user.language)
   {
     language=req.user.language;
   }
+
+
+   if(req.originalUrl.toLowerCase().startsWith('/en'))
+   {
+     res.locals.languageSwitchUrl = '/cy' + req.originalUrl.slice(3);
+   }
+   else if(req.originalUrl.toLowerCase().startsWith('/cy'))
+   {
+      res.locals.languageSwitchUrl = '/en' + req.originalUrl.slice(3);
+   }
+   else if (language==="en")
+   {
+      res.locals.languageSwitchUrl = '/cy' + req.originalUrl;
+   }
+   else
+   {
+     res.locals.languageSwitchUrl = '/en' + req.originalUrl;
+   }
+
+   res.locals.url = (path)=>{
+     if(path.startsWith('/'))
+     {
+        return `/${language}${path}`;
+     }
+     else
+     {
+       return `/${language}/${path}`;
+     }
+   }
+
+   res.redirectLocalised = (url) =>
+   {
+     res.redirect(res.locals.url(url));
+   }
   res.locals.labels = helpers.labels;
   res.locals.label = (what)=>{    
     return helpers.localiseLabel(language, what);    
@@ -96,7 +151,8 @@ app.use((req, res, next) => {
 });
 
 // After allllll that above middleware, we finally handle our own routes!
-app.use('/', routes);
+//app.use('/', routes);
+app.use('/:language', routes);
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
