@@ -53,7 +53,9 @@ app.use(passport.session());
 app.use(flash());
 
 app.all('/:language/*', (req,res,next)=>{
+  
   const url = req.originalUrl.toLowerCase();
+  console.log(url);
   if(url.startsWith('/en'))
   {
     req.language='en';
@@ -70,6 +72,10 @@ app.all('/:language/*', (req,res,next)=>{
   next();
 
 });
+
+
+
+
 
 // pass variables to our templates + all requests
 app.use((req, res, next) => {

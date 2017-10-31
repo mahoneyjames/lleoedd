@@ -19,7 +19,7 @@ html(lang="en")
           ul.navbar-nav.mr-auto         
             each item in h.menu
               li.nav-item
-                a.nav-link(href=url(item.slug), class=(currentPath.startsWith(item.slug) ? 'active' : ''))
+                a.nav-link(href=url(item.slug), class=(currentPath.includes(item.slug) ? 'active' : ''))
                   -//!= h.icon(item.icon)
                   span #{label('nav.' + item.title)}
           
@@ -30,16 +30,16 @@ html(lang="en")
             //-   div.dropdown-menu.dropdown-menu-right(aria-labelledby="dropdownLanguage")
             //-     a.dropdown-item.active(href="/") English
             //-     a.dropdown-item(href="/") Welsh
-            li.nav-item: a.nav-link(href=url('about'),class=(currentPath.startsWith('/about') ? 'active' : '')) #{label('nav.about')} 
+            li.nav-item: a.nav-link(href=url('about'),class=(currentPath.includes('/about') ? 'active' : '')) #{label('nav.about')} 
             if user
-              li.nav-item: a.nav-link(href=url("logout"), class=(currentPath.startsWith('/logout') ? 'active' : ''))
+              li.nav-item: a.nav-link(href=url("logout"), class=(currentPath.includes('/logout') ? 'active' : ''))
                 -//!= h.icon('logout')
                 span #{label('nav.logout')} 
-              li.nav-item: a.nav-link(href=url("account"), class=(currentPath.startsWith('/account') ? 'active' : ''))
+              li.nav-item: a.nav-link(href=url("account"), class=(currentPath.includes('/account') ? 'active' : ''))
                 span #{label('nav.account')} 
             else
-              -//li.nav-item: a.nav-link(href="/register", class=(currentPath.startsWith('/register') ? 'active' : '')) #{label('nav.register')} 
-              li.nav-item: a.nav-link(href=url("login"), class=(currentPath.startsWith('/login') ? 'active' : '')) #{label('nav.login')} 
+              -//li.nav-item: a.nav-link(href="/register", class=(currentPath.includes('/register') ? 'active' : '')) #{label('nav.register')} 
+              li.nav-item: a.nav-link(href=url("login"), class=(currentPath.includes('/login') ? 'active' : '')) #{label('nav.login')} 
 
       
 

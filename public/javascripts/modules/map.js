@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { $} from './bling';
-
+import h from './helpers';
 const mapOptions = {
     center: {lat:51.590642, lng:-3.000698},
     zoom: 2
@@ -8,7 +8,7 @@ const mapOptions = {
 
 function loadPlaces(map, lat=51.590642, lng = -3.000698)
 {
-    axios.get(`/api/places/near?lat=${lat}&lng=${lng}`)
+    axios.get(h.localiseUrl(`/api/places/near?lat=${lat}&lng=${lng}`))
         .then(res=>{
             const places = res.data;
             if(!places.length)
@@ -35,7 +35,7 @@ function loadPlaces(map, lat=51.590642, lng = -3.000698)
             markers.forEach(marker => marker.addListener('click', function(){
                 const html = `
                     <div class="popup">
-                        <a href="/place/${this.place.slug}">                            
+                        <a href="${h.localiseUrl('/place/' + this.place.slug)}">                            
                             <h1>${this.place.name}</h1>
                         </a>
                         <p>${this.place.summary}</p>                        

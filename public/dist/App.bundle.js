@@ -1056,6 +1056,10 @@ var _axios2 = _interopRequireDefault(_axios);
 
 var _bling = __webpack_require__(1);
 
+var _helpers = __webpack_require__(41);
+
+var _helpers2 = _interopRequireDefault(_helpers);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapOptions = {
@@ -1067,7 +1071,7 @@ function loadPlaces(map) {
     var lat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 51.590642;
     var lng = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -3.000698;
 
-    _axios2.default.get('/api/places/near?lat=' + lat + '&lng=' + lng).then(function (res) {
+    _axios2.default.get(_helpers2.default.localiseUrl('/api/places/near?lat=' + lat + '&lng=' + lng)).then(function (res) {
         var places = res.data;
         if (!places.length) {
             //alert("no places found");
@@ -1095,7 +1099,7 @@ function loadPlaces(map) {
         //when someone clicks on a marker, show details
         markers.forEach(function (marker) {
             return marker.addListener('click', function () {
-                var html = '\n                    <div class="popup">\n                        <a href="/place/' + this.place.slug + '">                            \n                            <h1>' + this.place.name + '</h1>\n                        </a>\n                        <p>' + this.place.summary + '</p>                        \n                    </div>';
+                var html = '\n                    <div class="popup">\n                        <a href="' + _helpers2.default.localiseUrl('/place/' + this.place.slug) + '">                            \n                            <h1>' + this.place.name + '</h1>\n                        </a>\n                        <p>' + this.place.summary + '</p>                        \n                    </div>';
                 infoWindow.setContent(html);
                 infoWindow.open(map, marker);
             });
@@ -2878,9 +2882,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var heartForms = (0, _bling.$$)('form.heart');
 heartForms.on('submit', _heart2.default);
 
+console.log(window.location.pathname);
+
 module.exports = { bob: function bob() {
     console.log("library");
   } };
+
+/***/ }),
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var language = 'en';
+
+if (window.location.pathname.toLowerCase().startsWith('/cy')) {
+    language = 'cy';
+}
+
+exports.language = language;
+
+exports.localiseUrl = function (url) {
+    if (url.startsWith('/')) {
+        return '/' + language + url;
+    } else {
+        return '/' + language + '/' + url;
+    }
+};
 
 /***/ })
 /******/ ]);

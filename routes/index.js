@@ -49,7 +49,7 @@ router.post('/events-add/:id', authController.isLoggedIn, eventController.create
 
 
 router.get('/login', userController.loginForm);
-router.post('/login', authController.login, (req,res)=>res.redirectLocalised('/'));
+router.post('/login', authController.loginNew);
 
 
 router.get('/register', userController.registerUserForm);

@@ -7,6 +7,10 @@ exports.about =  (req, res)=>{
      res.render('about',{title:"About"});
 };
 
+exports.home = (req,res)=>
+{
+    res.redirectLocalised('');
+}
 
 exports.help = (req, res)=>{
 
