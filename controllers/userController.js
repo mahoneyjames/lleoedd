@@ -118,6 +118,6 @@ exports.updateAccount = async (req, res)=>{
         { new: true, runValidators:true, context: 'query'} );
 
     req.flash('success','Profile updated');
-    res.redirect('/account');
+    res.redirectLocalised('/account');
 
 };

@@ -1,99 +1,7 @@
 {
-  "titles.home": {
-    "en": "Home",
-    "cy": "Cartref"
-  },
-  "titles.places": {
-    "en": "Places",
-    "cy": "Lleoedd"
-  },
-  "nav.places": {
-    "en": "Places",
-    "cy": "Lleoedd"
-  },
-  "nav.map": {
-    "en": "Map",
-    "cy": "Map"
-  },
-  "nav.add": {
-    "en": "Add",
-    "cy": "Ychwanegu"
-  },
-  "nav.about": {
-    "en": "About",
-    "cy": "Amdani"
-  },
-  "nav.register": {
-    "en": "Register",
-    "cy": "Cofrestru"
-  },
-  "nav.login": {
-    "en": "Login",
-    "cy": "Login"
-  },
-  "nav.account": {
-    "en": "My Account",
-    "cy": "Cyfrif"
-  },
-  "titles.login": {
-    "en": "Login",
-    "cy": "Login"
-  },
-  "page.login.form.email": {
-    "en": "Email",
-    "cy": "Ebost"
-  },
-  "page.login.form.password": {
-    "en": "Password",
-    "cy": "Password"
-  },
-  "page.login.form.submit": {
-    "en": "Login",
-    "cy": "Login"
-  },
-  "message.notLoggedIn": {
-    "en": "You must be logged in!",
-    "cy": null
-  },
-  "nav.logout": {
-    "en": "Logout",
-    "cy": "Logout"
-  },
-  "page.account.form.language": {
-    "en": "Language/Iaith",
-    "cy": "Iaith/Language"
-  },
-  "page.account.form.language.cy": {
-    "en": "Welsh",
-    "cy": "Cymraeg"
-  },
-  "page.account.form.language.en": {
-    "en": "English",
-    "cy": "Saesneg"
-  },
-  "titles.edit": {
-    "en": "Edit place",
-    "cy": null
-  },
-  "titles.add": {
-    "en": "Add place",
-    "cy": null
-  },
-  "titles.map": {
-    "en": "Map",
-    "cy": null
-  },
-  "titles.account": {
-    "en": "Account",
-    "cy": null
-  },
-  "titles.register": {
-    "en": "Register",
-    "cy": null
-  },
-  "titles.about": {
-    "en": "About",
-    "cy": null
+  "forms.region": {
+    "en": "Region",
+    "cy": "Ardal"
   },
   "forms.language.en.long": {
     "en": "English",
@@ -111,6 +19,82 @@
     "en": "CY",
     "cy": "CY"
   },
+  "layout.language.current": {
+    "en": "Language: English",
+    "cy": "Iaith: Cymraeg"
+  },
+  "layout.language.change": {
+    "en": "Newid i Gymraeg",
+    "cy": "Change to English"
+  },
+  "message.notLoggedIn": {
+    "en": "You must be logged in!",
+    "cy": null
+  },
+  "nav.places": {
+    "en": "Places",
+    "cy": "Lleoedd"
+  },
+  "nav.map": {
+    "en": "Map",
+    "cy": "Map"
+  },
+  "nav.add": {
+    "en": "Add",
+    "cy": "Ychwanegu"
+  },
+  "nav.about": {
+    "en": "About",
+    "cy": "Amdanom ni"
+  },
+  "nav.register": {
+    "en": "Register",
+    "cy": "Cofrestru"
+  },
+  "nav.login": {
+    "en": "Login",
+    "cy": "Login"
+  },
+  "nav.account": {
+    "en": "My Account",
+    "cy": "Cyfrif"
+  },
+  "nav.logout": {
+    "en": "Logout",
+    "cy": "Logout"
+  },
+  "page.account.heading.main": {
+    "en": "Edit profile",
+    "cy": null
+  },
+  "page.account.form.name": {
+    "en": "Name",
+    "cy": "Enw"
+  },
+  "page.account.form.email": {
+    "en": "Email",
+    "cy": "Ebost"
+  },
+  "page.account.form.language": {
+    "en": "Language/Iaith",
+    "cy": "Language/Iaith"
+  },
+  "page.account.form.save": {
+    "en": "Update my account",
+    "cy": null
+  },
+  "page.account.form.language.cy": {
+    "en": "Welsh",
+    "cy": "Cymraeg"
+  },
+  "page.account.form.language.en": {
+    "en": "English",
+    "cy": "Saesneg"
+  },
+  "page.account.message.updated": {
+    "en": "Profile updated!",
+    "cy": null
+  },
   "page.event.name": {
     "en": "Name",
     "cy": "Enw"
@@ -119,29 +103,49 @@
     "en": "About",
     "cy": "Amdani"
   },
-  "page.places.regions.all": {
-    "en": "all",
-    "cy": "pob"
+  "page.login.heading.main": {
+    "en": "Login",
+    "cy": "Login"
   },
-  "page.places.th.name": {
-    "en": "Name",
-    "cy": "Enw"
+  "page.login.forgot.heading": {
+    "en": "Forgotten your password?",
+    "cy": null
   },
-  "page.places.th.summary": {
-    "en": "Summary",
-    "cy": "CY: Summary"
+  "page.login.forgot.submit": {
+    "en": "Send a reset",
+    "cy": null
   },
-  "page.places.th.region": {
-    "en": "Region",
-    "cy": "Ardal"
+  "page.login.forgot.form.email": {
+    "en": "Email",
+    "cy": "Ebost"
+  },
+  "page.login.form.email": {
+    "en": "Email",
+    "cy": "Ebost"
+  },
+  "page.login.form.password": {
+    "en": "Password",
+    "cy": "Cyfrinair"
+  },
+  "page.login.form.submit": {
+    "en": "Login",
+    "cy": "Login"
+  },
+  "page.login.noaccount.message": {
+    "en": "Don't have an account?",
+    "cy": null
+  },
+  "page.login.noaccount.link": {
+    "en": "Create one here",
+    "cy": null
   },
   "page.map.where": {
     "en": "Where would you like to go to siarad Cymraeg?",
     "cy": "Ble hoffet ti fynd er moyn siarad Cymraeg?"
   },
-  "pagetitle.map": {
-    "en": "Map",
-    "cy": "Map"
+  "page.map.loading": {
+    "en": "Loading...",
+    "cy": null
   },
   "page.place.add.step1": {
     "en": "Step 1 - find the place",
@@ -179,10 +183,6 @@
     "en": "Keep it brief - perhaps 15 words or less",
     "cy": null
   },
-  "forms.region": {
-    "en": "Region",
-    "cy": "Ardal"
-  },
   "page.place.add.step3": {
     "en": "Step 3 - Pick a region",
     "cy": null
@@ -203,12 +203,8 @@
     "en": "Website?",
     "cy": "Wefan?"
   },
-  "page.place.show.more": {
-    "en": "More details",
-    "cy": "Mwy o wybodaeth"
-  },
-  "page.place.show.edit": {
-    "en": "edit",
+  "page.place.add.save": {
+    "en": "Save",
     "cy": null
   },
   "page.place.edit.heading.main": {
@@ -228,7 +224,7 @@
     "cy": null
   },
   "page.place.edit.description.hint": {
-    "en": "",
+    "en": "Any other useful information?",
     "cy": null
   },
   "page.place.edit.form.url": {
@@ -238,38 +234,6 @@
   "page.place.edit.save": {
     "en": "Save",
     "cy": null
-  },
-  "page.account.form.name": {
-    "en": "Name",
-    "cy": "Enw"
-  },
-  "page.account.form.email": {
-    "en": "Email",
-    "cy": "Ebost"
-  },
-  "page.account.form.save": {
-    "en": "Update my account",
-    "cy": null
-  },
-  "page.account.message.updated": {
-    "en": "Profile updated!",
-    "cy": null
-  },
-  "page.place.add.save": {
-    "en": "Save",
-    "cy": null
-  },
-  "page.places.none": {
-    "en": "Aw, no places found!",
-    "cy": "Dim byd ar gael!"
-  },
-  "page.map.loading": {
-    "en": "Loading...",
-    "cy": null
-  },
-  "page.place.show.website": {
-    "en": "Website",
-    "cy": "Wefan"
   },
   "page.place.edit.form.title": {
     "en": "Title",
@@ -282,6 +246,62 @@
   "page.place.edit.location": {
     "en": "Location",
     "cy": null
+  },
+  "page.place.edit.name": {
+    "en": "Name",
+    "cy": "Enw"
+  },
+  "page.place.edit.name.hint": {
+    "en": "What the business or place calls itself. If it doesn't have a Welsh or English name, don't translate it.",
+    "cy": null
+  },
+  "page.place.show.more": {
+    "en": "More details",
+    "cy": "Mwy o wybodaeth"
+  },
+  "page.place.show.edit": {
+    "en": "edit",
+    "cy": null
+  },
+  "page.place.show.website": {
+    "en": "Website",
+    "cy": "Wefan"
+  },
+  "page.place.show.nav.public": {
+    "en": "Public view",
+    "cy": null
+  },
+  "page.place.show.nav.details": {
+    "en": "Edit details",
+    "cy": null
+  },
+  "page.place.show.nav.location": {
+    "en": "Edit location",
+    "cy": null
+  },
+  "page.places.regions.all": {
+    "en": "all",
+    "cy": "pob"
+  },
+  "page.places.th.name": {
+    "en": "Name",
+    "cy": "Enw"
+  },
+  "page.places.th.summary": {
+    "en": "Summary",
+    "cy": "CY: Summary"
+  },
+  "page.places.th.region": {
+    "en": "Region",
+    "cy": "Ardal"
+  },
+  "page.places.none": {
+    "en": "Aw, no places found!",
+    "cy": "Dim byd ar gael!"
+  },
+  "page.places.nav.add": {
+    "en": "Add place",
+    "cy": "Ychwanegu lle"
   },
   "page.register.name": {
     "en": "Name",
@@ -302,6 +322,10 @@
   "page.register.secret": {
     "en": "Secret",
     "cy": "Cyfrinach"
+  },
+  "page.register.title": {
+    "en": "Register",
+    "cy": null
   },
   "page.register.errors.name.missing": {
     "en": "Please enter a name",
@@ -335,16 +359,52 @@
     "en": "Oops, something didn't work. Please correct any errors, then try again",
     "cy": null
   },
-  "page.register.title": {
-    "en": "Register",
+  "pagetitle.map": {
+    "en": "Map",
+    "cy": "Map"
+  },
+  "titles.home": {
+    "en": "Home",
+    "cy": "Cartref"
+  },
+  "titles.places": {
+    "en": "Places",
+    "cy": "Lleoedd"
+  },
+  "titles.login": {
+    "en": "Login",
+    "cy": "Login"
+  },
+  "titles.placeEdit-details": {
+    "en": "Edit place details",
     "cy": null
   },
-  "layout.language.current": {
-    "en": "Language: English",
-    "cy": "Iaith: Cymraeg"
+  "titles.placeEdit-location": {
+    "en": "Edit place location",
+    "cy": null
   },
-  "layout.language.change": {
-    "en": "Newid i Gymraeg",
-    "cy": "Change to English"
+  "titles.placeNew-find": {
+    "en": "Add place",
+    "cy": null
+  },
+  "titles.placeNew-details": {
+    "en": "Enter details",
+    "cy": null
+  },
+  "titles.map": {
+    "en": "Map",
+    "cy": "Map"
+  },
+  "titles.account": {
+    "en": "Account",
+    "cy": "Cyfrif"
+  },
+  "titles.register": {
+    "en": "Register",
+    "cy": "Cofrestru"
+  },
+  "titles.about": {
+    "en": "About",
+    "cy": "Amdanom ni"
   }
 }

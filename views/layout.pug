@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
   head
-    title= `${title ? title: label('titles.' + titleLabel)} | ${h.siteName}`
+    title= `${title ? localise(title): label('titles.' + titleLabel)} | ${h.siteName}`
     link(rel='stylesheet', href='/dist/style.css')
 
     meta(charset="utf-8")

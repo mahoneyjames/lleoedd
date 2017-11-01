@@ -19,7 +19,7 @@ block content
                 a.dropdown-item(href=url("places")) all
                 each region in regions
                     a.dropdown-item(href=url(`places/${region.id}`)) #{localise(region.name)}
-        a.btn.btn-primary(href=url("places/new/location") data-role="button") Add place
+        a.btn.btn-primary(href=url("places/new/location") data-role="button") #{label('page.places.nav.add')}
 
     .places.main-card
         table.table.table-striped

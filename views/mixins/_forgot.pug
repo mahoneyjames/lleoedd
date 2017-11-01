@@ -1,9 +1,9 @@
 mixin forgotForm()
     .mute-card
-        p.centre Forgotten your password?
+        p.centre #{label('page.login.forgot.heading')}
         form(action=url("/account/forgot") method="POST")            
             .form-group
-                label(for="email") Email
+                label(for="email") #{label('page.login.forgot.form.email')}
                 input.form-control(type="email" name="email")
-            input.btn.btn-secondary(type="submit" value="Send a reset")
+            input.btn.btn-secondary(type="submit" value=label('page.login.forgot.submit'))
         

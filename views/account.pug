@@ -3,7 +3,7 @@ include mixins/_accountNav
 block content
     -//+accountNav()
     .page-header
-        h1 Edit profile
+        h1 #{label('page.account.heading.main')}
     .main-card
         h2=title
         form(action=url("account") method="POST")
@@ -13,7 +13,7 @@ block content
             .form-group  
                 label(for="email") #{label('page.account.form.email')}
                 input.form-control(type="email" name="email" value=user.email)
-            .form-group  
+            .form-group.dev
                 label(for="language") #{label('page.account.form.language')}
                 select.form-control(name="language" value=user.language)
                     option(value= selected=user.language==null)

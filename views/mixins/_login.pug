@@ -3,9 +3,9 @@ mixin login()
         form(action=url("login") method="POST")
             
             .form-group        
-                label(for="email") Email
+                label(for="email") #{label('page.login.form.email')}
                 input.form-control(type="email" name="email")
             .form-group
-                label(for="password") Password
+                label(for="password") #{label('page.login.form.password')}
                 input.form-control(type="password" name="password")
-            input.btn.btn-primary(type="submit" value="Login")
+            input.btn.btn-primary(type="submit" value=label('page.login.form.submit'))

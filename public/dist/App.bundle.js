@@ -64,7 +64,7 @@ var JsFunctions =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 34);
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1056,7 +1056,7 @@ var _axios2 = _interopRequireDefault(_axios);
 
 var _bling = __webpack_require__(1);
 
-var _helpers = __webpack_require__(41);
+var _helpers = __webpack_require__(34);
 
 var _helpers2 = _interopRequireDefault(_helpers);
 
@@ -2850,6 +2850,29 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 
 
+var language = 'en';
+
+if (window.location.pathname.toLowerCase().startsWith('/cy')) {
+    language = 'cy';
+}
+
+exports.language = language;
+
+exports.localiseUrl = function (url) {
+    if (url.startsWith('/')) {
+        return '/' + language + url;
+    } else {
+        return '/' + language + '/' + url;
+    }
+};
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 __webpack_require__(15);
 
 var _bling = __webpack_require__(1);
@@ -2887,35 +2910,6 @@ console.log(window.location.pathname);
 module.exports = { bob: function bob() {
     console.log("library");
   } };
-
-/***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var language = 'en';
-
-if (window.location.pathname.toLowerCase().startsWith('/cy')) {
-    language = 'cy';
-}
-
-exports.language = language;
-
-exports.localiseUrl = function (url) {
-    if (url.startsWith('/')) {
-        return '/' + language + url;
-    } else {
-        return '/' + language + '/' + url;
-    }
-};
 
 /***/ })
 /******/ ]);

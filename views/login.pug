@@ -6,11 +6,11 @@ include mixins/_forgot
 block content
     .login
         .page-header
-            h1 Login
+            h1 #{label('page.login.heading.main')}
         +login()
-        div.centre
-            p Don't have an account?
-            a(href=url("register")) Create one here
+        div.centre.nocard
+            p #{label('page.login.noaccount.message')}
+            a(href=url("register")) #{label('page.login.noaccount.link')}
         
         
         +forgotForm()

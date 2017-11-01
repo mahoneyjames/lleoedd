@@ -4,7 +4,7 @@ mixin placeDetails(place ={})
     h2.form-section Overview
     .step.form-section                   
         .form-group 
-            h4 #{label('page.place.edit.form.title')}                    
+            -//h4 #{label('page.place.edit.form.title')}                    
             +bilingualText(label('page.place.edit.name'),'name',place.name,label('page.place.edit.name.hint'))      
         .form-section    
             +bilingualText(label('page.place.edit.summary'),'summary',place.summary,label('page.place.edit.summary.hint'))
