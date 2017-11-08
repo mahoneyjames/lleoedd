@@ -4,4 +4,12 @@ block content
     .main-card
         form(action=url(`/places/new/details`) method="POST" class="")
             +selectPlace(place)
+
+            div.googleAutocompleteResults
+
             input.btn.btn-primary(type="submit" value=`${label('page.place.add.save')}` class="button")
+
+block pageScripts
+    script.
+        -//$(document).ready(function(){JsFunctions.selectPlacesByRegion();});
+        

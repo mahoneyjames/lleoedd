@@ -988,6 +988,18 @@ function autoComplete(input, latInput, lngInput, googleUrlInput, googlePlaceIdIn
                 }
             });
         }
+
+        var helperDiv = $('.googleAutocompleteResults');
+        if (helperDiv) {
+            var mapOptions = {
+                center: { lat: 51.590642, lng: -3.000698 },
+                zoom: 2
+            };
+            console.log(helperDiv);
+            //alert("found autocomplete helper div!");
+            var map = new google.maps.Map(helperDiv, mapOptions);
+            helperDiv.show();
+        }
     });
 
     input.on('keydown', function (e) {
@@ -2907,9 +2919,9 @@ heartForms.on('submit', _heart2.default);
 
 console.log(window.location.pathname);
 
-module.exports = { bob: function bob() {
-    console.log("library");
-  } };
+//module.exports = {bob: function(){console.log("library");}}
+
+module.exports.selectPlacesByRegion = _pagePlaces2.default;
 
 /***/ })
 /******/ ]);

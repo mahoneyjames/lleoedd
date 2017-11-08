@@ -46,7 +46,7 @@ router.post('/admin/manage',authController.isLoggedIn, catchErrors( siteControll
 router.get('/events-add', authController.isLoggedIn, eventController.addEvent);
 router.post('/events-add', authController.isLoggedIn, eventController.createEvent);
 router.post('/events-add/:id', authController.isLoggedIn, eventController.createEvent);
-
+router.get('/events',catchErrors(eventController.getEventList));
 
 router.get('/login', userController.loginForm);
 router.post('/login', authController.loginNew);

@@ -16,4 +16,6 @@ heartForms.on('submit', ajaxHeart);
 
 console.log(window.location.pathname);
 
-module.exports = {bob: function(){console.log("library");}}
+//module.exports = {bob: function(){console.log("library");}}
+
+module.exports.selectPlacesByRegion = pagePlaces;

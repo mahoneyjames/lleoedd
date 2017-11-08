@@ -6500,4 +6500,8 @@ body {
 footer {
   margin: 30px; }
 
+.googleAutocompleteResults {
+  height: 100px;
+  background-color: red; }
+
 /*# sourceMappingURL=style.css.map*/

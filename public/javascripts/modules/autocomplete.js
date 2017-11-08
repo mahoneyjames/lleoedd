@@ -32,6 +32,19 @@ function autoComplete(input, latInput, lngInput,googleUrlInput, googlePlaceIdInp
 
         }  
 
+const helperDiv =$('.googleAutocompleteResults'); 
+        if(helperDiv)
+        {
+            const mapOptions = {
+    center: {lat:51.590642, lng:-3.000698},
+    zoom: 2
+};
+console.log(helperDiv)
+            //alert("found autocomplete helper div!");
+            const map = new google.maps.Map(helperDiv, mapOptions);
+            helperDiv.show();
+        }
+
   
     });
 

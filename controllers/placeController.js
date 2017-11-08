@@ -6,7 +6,7 @@ const moment = require('moment');
 
 const jimp = require('jimp');
 const uuid = require('uuid');
-
+const mongoHelper = require('../handlers/mongodb.js');
 
 
 exports.homePage = (req, res) => {
@@ -64,21 +64,7 @@ exports.createNewPlace = async (req, res)=>{
 
     })
     .catch((err)=>{
-
-        //failed to create place - for the moment this is because we failed mongo document validation
-            console.log(err);
-            
-            
-
-            const validationErrors = [];
-            for(var field in err.errors)
-            {
-                validationErrors.push({param:field, msg: err.errors[field].message });
-            }
-
-            req.flash('error', validationErrors.map(err=>err.msg));        
-            
-            res.render('placeNew-details',{titleLabel: 'placeNew-details', place:req.body,regions: Region.listRegions(),flashes: req.flash(), validationErrors});
+        mongoHelper.handleMongoError(req,res,err, 'placeNew-details',{titleLabel: 'placeNew-details',regions: Region.listRegions(), body: req.body })
     });
 
 
@@ -114,37 +100,6 @@ async function insertNewPlace(req)
 
     return mongoPlace.save();
 }
-exports.createPlace = async (req, res)=> {
-    //old create place logic here...
-        
-    insertNewPlace(req).then((place)=>{
-        
-        console.log(place);
-        req.flash('success',`Successfully Created ${place.name}.`);        
-        res.redirectLocalised(`/place/${place.slug}`);
-
-    })
-    .catch((err)=>{
-            console.log(err);
-            req.flash('error', "Failed to create place");
-            
-
-            const validationErrors = [];
-            for(var field in err.errors)
-            {
-                validationErrors.push({param:field, msg: err.errors[field].message });
-            }
-
-            req.flash('error', validationErrors.map(err=>err.msg));        
-            res.render('editPlace', {titleLabel: 'addPlace',wizardMode: true, regions: Region.listRegions(), body: req.body, flashes: req.flash(), validationErrors });
-
-    });
-
-    console.log("here");
-
-    
-    
-};
 
 
 function handleSummaryLocalisation(place)
@@ -273,21 +228,29 @@ exports.savePlaceDetails = async (req, res)=>{
 
 
      await Place.setupCurrentSlug(updateCommand);
-          
-          console.log("yma");
-     await Place.findOneAndUpdate({_id: req.params.id},
+                    
+      Place.findOneAndUpdate({_id: req.params.id},
          updateCommand, 
         {
             new:true, //return the new store instead of the old one
-            runValidators:false
-        }).exec();
+            runValidators:true
+        }).exec()
+        .then((place)=>{
+            req.flash('success', `Successfully updated <strong>${place.name}</strong>.`);
+            res.redirectLocalised(`/places/${place._id}/editDetails`);            
+        })
+        .catch((err)=>{
+            mongoHelper.handleMongoError(req,res,err, 'placeEdit-details',
+                {
+                    titleLabel:"placeEdit-details",
+                    regions: Region.listRegions(), 
+                    place: updateCommand })            
+        });
      
     
     //TODO - validate the document before save...
 
-     req.flash('success', `Successfully updated <strong>${place.name}</strong>.`);
 
-    res.redirectLocalised(`/places/${place._id}/editDetails`);
      
 }
 
@@ -297,74 +260,6 @@ exports.editPlaceLocation = async(req,res)=>{
     res.render('placeEdit-location',{titleLabel:"placeEdit-location",place});
 }
 
-
-
-
-
-exports.updatePlace = async (req, res)=>{
-    
-    req.body.location.type = 'Point';
-    req.body.lastModifiedBy = req.user._id;
-    req.body.modified = moment();
-    req.body.summary_new=req.body.summary;
-    req.body.summary=req.body.summary_new.en;
-
-    req.body.description_new = req.body.description;
-    req.body.description = req.body.description_new.en;
-
-    req.body.name_new = req.body.name;
-    req.body.name = req.body.name.en;
-
-    //console.log(req.body);
-     //1 find the store based on the id
-     //Cannot use findOneAndUpdate, because it's not running the pre save method for our name...
-     const place = await Place.findOne({_id: req.params.id});
-
-    console.log("database");
-     console.log(place);
-     console.log("req.body");
-     console.log(req.body);
-     const updateCommand = req.body;
-     
-
-     if(place.name_new)
-     {
-         //we are dealing with a place that has already moved to a localised title...
-         if(place.name_new.en!=req.body.name_new.en
-            ||place.name_new.cy!=req.body.name_new.cy)
-         {
-             //One of the titles has changed
-             //Update the slug
-             updateCommand.slug_new = {en:req.body.name_new.en, cy:req.body.name_new.cy};
-             updateCommand.slugs = place.slugs;             
-         }
-     }
-     else 
-     {
-         //Moving from the non-localised title to localised, so always update the slugs
-        updateCommand.slug_new = {en:req.body.name_new.en, cy:req.body.name_new.cy};        
-        updateCommand.slugs = place.slugs;             
-     }
-
-     await Place.setupCurrentSlug(updateCommand);
-          
-     await Place.findOneAndUpdate({_id: req.params.id},
-         updateCommand, 
-        {
-            new:true, //return the new store instead of the old one
-            runValidators:false
-        }).exec();
-     
-    
-
-     req.flash('success', `Successfully updated <strong>${place.name}</strong>.`);
-
-    res.redirectLocalised(`/places/${place._id}/edit`);
-     
-
-
-};
- 
 exports.displayPlace = async (req, res, next) =>{
 
     let place = await(Place.findOne({$or:[{slug: req.params.slug},

@@ -1,0 +1,24 @@
+extends ../layout
+
+
+block content
+    .page-header
+        h1 #{label('page.events.heading.main')}
+    .main-card
+        table.table.table-striped
+                thead
+                    tr
+                        th(scope="col") #{label('page.events.th.name')}
+                        th(scope="col") #{label('page.events.th.about')}
+                        th(scope="col") #{label('page.events.th.region')}
+                tbody
+                    each event in events
+                        tr
+                            td 
+                                a(href=url(`events/${localise(event.slug)}`)) #{localise(event.name)}                   
+                            td #{localise(event.about)}
+                            td 
+                                a(href=url(`events?region=${event.region}`)) #{event.region}
+
+        if events.length===0
+            p #{label('page.events.none')}                  
