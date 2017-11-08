@@ -20,6 +20,8 @@ const eventSchema = new mongoose.Schema({
     slug:  {en: {type:String, trim:true, required:true},
            cy: {type:String, trim:true, required:false}}
 
+    
+
 
     /*
         Title

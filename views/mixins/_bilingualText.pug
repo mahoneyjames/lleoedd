@@ -1,12 +1,10 @@
-mixin bilingualText(heading,name, field={en:"", cy: ""}, hint)
+mixin bilingualText(heading,name, field, hint)
     .form-section
         h4 #{heading} 
         if hint                           
             p.hint.form-text.text-muted #{hint}
-        .input-group.form-group
-            span.input-group-addon #{label('forms.language.en.short')}
-            input.form-control(type="text" id=`${name}.en` name=`${name}[en]` value=(field && field.en))                    
-        .input-group.form-group
-            span.input-group-addon #{label('forms.language.cy.short')}
-            input.form-control(type="text" id=`${name}.cy` name=`${name}[cy]` value=(field && field.cy))
+        each language in languages
+            .input-group.form-group
+                span.input-group-addon #{label(`forms.language.${language}.short`)}
+                input.form-control(type="text" id=`${name}.${language}` name=`${name}[${language}]` value=(field && field[language]))                    
                     

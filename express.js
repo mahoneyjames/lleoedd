@@ -84,6 +84,7 @@ app.use((req, res, next) => {
   res.locals.flashes = req.flash();
   res.locals.request = req;
   
+  res.locals.languages = ['en','cy'];
   res.locals.user = req.user || null;
   //TODO support a cookie for the language?
 
