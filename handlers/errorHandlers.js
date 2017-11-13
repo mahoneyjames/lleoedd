@@ -75,3 +75,30 @@ exports.productionErrors = (err, req, res, next) => {
     error: {}
   });
 };
+
+
+exports.validationErrorsToSimpleDoc = (errors) =>
+{
+    console.log(errors);
+    if(errors.length>0)
+    {
+        const simple = {};
+        errors.map(err=>{
+            if(simple[err.param])
+            {
+                simple[err.param].push({error:err.msg});
+            }
+            else
+            {
+                simple[err.param] =[{error:err.msg}];
+            }
+        });
+
+        return simple;
+    }
+
+   else
+   {
+       return null;
+   }
+}

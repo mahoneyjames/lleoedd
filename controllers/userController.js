@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 //const Store = mongoose.model('Store');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
-
+const errorHandlers = require('../handlers/errorHandlers');
 exports.loginForm =  (req, res)=>{
      res.render('login',{titleLabel:"login"});
 };
@@ -42,7 +42,7 @@ exports.validateRegister = async (req, res, next)=>{
     req.checkBody('secret', 'secret.invalid').equals(process.env.SECRET);    
 
     
-    let errors =validationErrorsToSimpleDoc(req.validationErrors());    
+    let errors =errorHandlers.validationErrorsToSimpleDoc(req.validationErrors());    
 
     if(!errors)
     {
@@ -65,31 +65,7 @@ exports.validateRegister = async (req, res, next)=>{
     
 };
 
-function validationErrorsToSimpleDoc(errors)
-{
-    console.log(errors);
-    if(errors.length>0)
-    {
-        const simple = {};
-        errors.map(err=>{
-            if(simple[err.param])
-            {
-                simple[err.param].push({error:err.msg});
-            }
-            else
-            {
-                simple[err.param] =[{error:err.msg}];
-            }
-        });
 
-        return simple;
-    }
-
-   else
-   {
-       return null;
-   }
-}
 
 exports.registerUser = async (req, res, next)=>{
      const user = new User({

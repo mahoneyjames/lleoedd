@@ -1,0 +1,534 @@
+[{
+	"slug": "asdf",
+	"name": "Yr Hen Lew Du",
+	"summary": "Lively pub with loadsa Cymraeg!",
+	"region": "mid",
+	"description": "",
+	"link": "",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-4.08558400000004,
+		52.4135633],
+		"address": "Yr Hen Lew Du, Bridge Street, Aberystwyth, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-09-28T14:24:53.563Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"googleUrl": "https://maps.google.com/?cid=4318659963009543837"
+},
+{
+	"slug": "the-upper-cock",
+	"name": "The Upper Cock",
+	"summary": "Tuesday nights are Welsh night!",
+	"region": "south-east",
+	"description": "A small group of learners meet here once every Tuesday evening - from 1900",
+	"link": "https://forum.saysomethingin.com/t/torfaen-meetup-tuesdays-1900-the-upper-cock-inn-croesyceiliog/247",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-3.0042256000000407,
+		51.66151439999999],
+		"postcode": "",
+		"address": "The Upper Cock, The Highway, Cwmbran, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-09-28T14:28:52.958Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"googleUrl": "https://maps.google.com/?cid=18151669886158962773",
+	"google": {
+		"placeId": "",
+		"url": ""
+	},
+	"lastModifiedBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"modified": {
+		"$date": "2017-10-24T16:51:55.333Z"
+	},
+	"summary_new": {
+		"cy": "Cymraeg yng Gwmbran",
+		"en": "Tuesday nights are Welsh night!"
+	},
+	"description_new": {
+		"cy": "",
+		"en": "A small group of learners meet here once every Tuesday evening - from 1900"
+	}
+},
+{
+	"slug": "cwtsh---old-stow-hill-library",
+	"name": "Cwtsh - Old Stow Hill Library",
+	"summary": "Welsh language drop in centre",
+	"region": "south-east",
+	"description": "EN - description",
+	"link": "http://www.cwtsh.org/",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-3.0091092999999773,
+		51.5832021],
+		"postcode": "",
+		"address": "Cwtsh, Stow Hill, Newport, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-09-28T14:57:56.627Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"google": {
+		"placeId": "",
+		"url": ""
+	},
+	"lastModifiedBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"modified": {
+		"$date": "2017-10-23T16:31:41.420Z"
+	},
+	"summary_new": {
+		"cy": "Cymraeg: Welsh language drop in centre",
+		"en": "Welsh language drop in centre"
+	},
+	"description_new": {
+		"cy": "CY - description",
+		"en": "EN - description"
+	}
+},
+{
+	"slug": "hanbury-arms",
+	"name": "Hanbury Arms",
+	"summary": "A small group of Welsh speakers meet every Tuesday from 1130",
+	"region": "south-east",
+	"description": "",
+	"link": "",
+	"googleUrl": "https://maps.google.com/?cid=7706012345257013113",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"address": "The Hanbury Arms, High Street, Caerleon, United Kingdom",
+		"coordinates": [-2.9520496000000094,
+		51.6083959],
+		"type": "Point"
+	},
+	"created": {
+		"$date": "2017-09-28T15:38:24.006Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "cant-a-mil-vintage",
+	"name": "Cant A Mil Vintage",
+	"summary": "Welsh language vintage shop - learners warmly welcomed!",
+	"region": "cardiff",
+	"description": "",
+	"link": "https://www.cantamilvintage.com/",
+	"googleUrl": "https://maps.google.com/?cid=214503337776229007",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"address": "Cant A Mil Vintage, Whitchurch Road, Cardiff, United Kingdom",
+		"coordinates": [-3.187555599999996,
+		51.5008844],
+		"type": "Point"
+	},
+	"created": {
+		"$date": "2017-09-28T15:41:30.039Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "lime-tree",
+	"name": "Lime Tree",
+	"summary": "SSiW learners meet here once a month",
+	"region": "south-east",
+	"description": "",
+	"link": "",
+	"googleUrl": "https://maps.google.com/?cid=12852022225629841663",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-2.67411560000005,
+		51.6425376],
+		"postcode": "NP16 5EU",
+		"address": "Lime Tree, Chepstow, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-09-28T16:07:53.858Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"google": {
+		"placeId": "ChIJF60sC3CVcUgR_4gXDB-OW7I",
+		"url": "https://maps.google.com/?cid=12852022225629841663"
+	}
+},
+{
+	"slug": "menter-iaith-casnewydd",
+	"name": "Menter Iaith Casnewydd",
+	"summary": "Enabling the communities of Newport to live and work in Welsh.",
+	"region": "south-east",
+	"description": "",
+	"link": "http://www.mentercasnewydd.cymru/",
+	"googleUrl": "https://maps.google.com/?q=Newport+Civic+Centre\u0026ftid=0x4871e6ccc9540a03:0x64206c34cfde1a50",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-3.0052782000000207,
+		51.588613],
+		"postcode": "",
+		"address": "Newport Civic Centre, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-09-28T16:10:57.722Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"google": {
+		"placeId": "ChIJAwpUyczmcUgRUBrezzRsIGQ",
+		"url": "https://maps.google.com/?q=Newport+Civic+Centre\u0026ftid=0x4871e6ccc9540a03:0x64206c34cfde1a50"
+	}
+},
+{
+	"slug": "sdfsf",
+	"name": "Sophie Bach",
+	"summary": "Tea and Welsh - what more could you want?",
+	"region": "mid",
+	"description": "",
+	"link": "",
+	"googleUrl": "https://maps.google.com/?cid=2621007473866124660",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-4.082913299999973,
+		52.4145872],
+		"postcode": "SY23 1NT",
+		"address": "Sophie Bach Tea \u0026 Coffee Room, Cambrian Place, Aberystwyth, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-10-09T20:02:58.174Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"google": {
+		"placeId": "ChIJ7RoR61V2b0gRdC1vKWmwXyQ",
+		"url": "https://maps.google.com/?cid=2621007473866124660"
+	}
+},
+{
+	"slug": "amgueddfa-wln---wool-museum",
+	"name": "Amgueddfa Wlân - Wool Museum",
+	"summary": "Experience the museum, enjoy the café, all in Welsh",
+	"region": "south-west",
+	"description": "",
+	"link": "https://amgueddfa.cymru/gwlan/",
+	"createdBy": {
+		"$oid": "59e3ab2893824c14cdd68705"
+	},
+	"google": {
+		"placeId": "ChIJbRGfg_ghb0gRC3Ah1HH9CHA",
+		"url": "https://maps.google.com/?q=Dre-fach,+Felindre,+Llandysul+SA44+5UL,+UK\u0026ftid=0x486f21f8839f116d:0x7008fd71d421700b"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-4.399294999999938,
+		52.024106],
+		"postcode": "SA44 5UP",
+		"address": "Dre-fach, Felindre, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-10-15T19:05:23.200Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "gwestyr-porth",
+	"name": "Gwesty'r Porth",
+	"summary": "Historical inn on the banks of the River Teifi",
+	"region": "south-west",
+	"description": "There is a CYD group - new Welsh speakers and first-language Welsh speakers - that meets in Y Porth at 7.45 pm on the 3rd Thursday of each month.",
+	"link": "http://www.porthhotel.co.uk/",
+	"createdBy": {
+		"$oid": "59e3ab2893824c14cdd68705"
+	},
+	"google": {
+		"placeId": "ChIJ31H-xZcQb0gRLjIlkxVa8FE",
+		"url": "https://maps.google.com/?q=Llandysul+SA44,+UK\u0026ftid=0x486f1097c5fe51df:0x51f05a159325322e"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-4.309198000000038,
+		52.04167500000001],
+		"postcode": "SA44 4QS",
+		"address": "Llandysul, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-10-15T19:11:51.582Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "llangollen-library",
+	"name": "Llangollen Library",
+	"summary": "Most library staff speak Welsh and love helping learners",
+	"region": "north-east",
+	"description": "Most staff are either Welsh speakers or learners. Notice the opening hours, which are fairly restrictive if you have a day job.",
+	"link": "https://www.denbighshire.gov.uk/en/resident/contact-us/visit-us/find-a-council-building-or-office/llangollen-one-stop-shop.aspx",
+	"createdBy": {
+		"$oid": "59e4820793824c14cdd68709"
+	},
+	"google": {
+		"url": "https://maps.google.com/?cid=15849207837586160283",
+		"placeId": "ChIJteMQXNC1ekgRm_qoOo6y89s"
+	},
+	"location": {
+		"address": "Llangollen Library and One Stop Shop, Heol Y Castell, Llangollen, United Kingdom",
+		"postcode": "LL20 8NU",
+		"coordinates": [-3.17049499999996,
+		52.9699783],
+		"type": "Point"
+	},
+	"created": {
+		"$date": "2017-10-16T09:59:15.055Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "cyfnod-cafe",
+	"name": "Cyfnod Cafe",
+	"summary": "Cafe on the high street. Good selection of food, all staff speak Welsh.",
+	"region": "north-west",
+	"description": "They don't have a website, but are on TripAdvisor; https://www.tripadvisor.co.uk/Restaurant_Review-g672155-d3250353-Reviews-Y_Cyfnod-Bala_Snowdonia_National_Park_North_Wales_Wales.html",
+	"link": "",
+	"createdBy": {
+		"$oid": "59e4820793824c14cdd68709"
+	},
+	"google": {
+		"url": "https://maps.google.com/?q=Cyfnod+Cafe\u0026ftid=0x4865415e7e610783:0xe4635ef358717c7c",
+		"placeId": "ChIJgwdhfl5BZUgRfHxxWPNeY-Q"
+	},
+	"location": {
+		"address": "Cyfnod Cafe, Y Stryd Fawr, Bala, United Kingdom",
+		"postcode": "LL23 7AB",
+		"coordinates": [-3.5975588999999673,
+		52.91071580000001],
+		"type": "Point"
+	},
+	"created": {
+		"$date": "2017-10-16T10:10:08.278Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "siop-cwlwm",
+	"name": "Siop Cwlwm",
+	"summary": "Welsh shop in the market hall",
+	"region": "north-east",
+	"description": "Actually in England, but pretty close to the border!",
+	"link": "http://www.siopcwlwm.co.uk",
+	"createdBy": {
+		"$oid": "59e4820793824c14cdd68709"
+	},
+	"google": {
+		"placeId": "ChIJkzZRI3KwekgROGKe2hceAcU",
+		"url": "https://maps.google.com/?cid=14195660588249408056"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-3.0542950000000246,
+		52.86078699999999],
+		"postcode": "SY11 1PZ",
+		"address": "Siop Cwlwm, Oswestry, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-10-16T10:45:18.381Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "maes-carafanau-a-phebyll-dwyros",
+	"name": "Maes Carafanau a Phebyll Dwyros",
+	"summary": "Great campsite with Welsh speaking owners, happy to chat with learners",
+	"region": "north-west",
+	"description": "Friendly owner keen to chat and encourage learners.",
+	"link": "",
+	"createdBy": {
+		"$oid": "59e4820793824c14cdd68709"
+	},
+	"google": {
+		"placeId": "ChIJc4zBMpDvZUgRCPtKqWs7v7I",
+		"url": "https://maps.google.com/?cid=12880078792890710792"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-4.719550000000027,
+		52.805101],
+		"postcode": "LL53 8BS",
+		"address": "Maes Carafanau a Phebyll Dwyros, Aberdaron, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-10-16T14:38:03.929Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"lastModifiedBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"modified": {
+		"$date": "2017-10-23T12:45:58.801Z"
+	},
+	"summary_new": {
+		"cy": "",
+		"en": "Great campsite with Welsh speaking owners, happy to chat with learners"
+	},
+	"description_new": {
+		"cy": "",
+		"en": "Friendly owner keen to chat and encourage learners."
+	}
+},
+{
+	"slug": "london-welsh-centre",
+	"name": "London Welsh Centre",
+	"summary": "Centre for Welsh culture in London",
+	"region": "uk",
+	"description": "Most of the bar staff speak Welsh. Well attended Welsh classes of different levels. Three or four Welsh classes on Saturdays each year.",
+	"link": "http://www.londonwelsh.org/",
+	"createdBy": {
+		"$oid": "59e6584c7f448509327363ac"
+	},
+	"google": {
+		"placeId": "ChIJqbVnAUgbdkgRgLjKUz8_-QQ",
+		"url": "https://maps.google.com/?q=157-163+Grays+Inn+Rd,+London+WC1X+8UE,+UK\u0026ftid=0x48761b480167b5a9:0x4f93f3f53cab880"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-0.11690469999996367,
+		51.5250038],
+		"postcode": "WC1X 8UE",
+		"address": "157-163 Gray's Inn Road, London, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-10-17T19:29:14.399Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "yr-hen-lyfrgell",
+	"name": "Yr Hen Lyfrgell",
+	"summary": "Welsh centre in cardiff",
+	"region": "cardiff",
+	"description": "desc -en ",
+	"link": "https://www.yrhenlyfrgell.cymru",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"google": {
+		"placeId": "ChIJh0g64LAcbkgRChonqC7vfIg",
+		"url": "https://maps.google.com/?cid=9834998669938989578"
+	},
+	"location": {
+		"type": "Point",
+		"coordinates": [-3.177366699999993,
+		51.4801561],
+		"postcode": "CF10 1BH",
+		"address": "Yr Hen Lyfrgell, Cardiff, United Kingdom"
+	},
+	"created": {
+		"$date": "2017-10-18T18:52:10.920Z"
+	},
+	"tags": [],
+	"__v": 0,
+	"lastModifiedBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"modified": {
+		"$date": "2017-10-20T16:32:47.189Z"
+	},
+	"summary_new": {
+		"cy": "Canolfan cymraeg yng Gaerdydd",
+		"en": "Welsh centre in cardiff"
+	},
+	"description_new": {
+		"cy": "desc - cy",
+		"en": "desc -en "
+	}
+},
+{
+	"slug": "dewi-james",
+	"name": "Dewi James",
+	"summary": "Super friendly butchers in Newcastle Emlyn",
+	"region": "south-west",
+	"description": "",
+	"link": "",
+	"createdBy": {
+		"$oid": "597f5068f99ea601d160bc52"
+	},
+	"google": {
+		"url": "https://maps.google.com/?cid=6099840794649469984",
+		"placeId": "ChIJMT1jEcIjb0gRIKSEZ-L8plQ"
+	},
+	"location": {
+		"address": "Dewi James, Emlyn Square, Newcastle Emlyn, United Kingdom",
+		"postcode": "SA38 9BQ",
+		"coordinates": [-4.469213399999944,
+		52.0369383],
+		"type": "Point"
+	},
+	"created": {
+		"$date": "2017-10-18T18:56:38.328Z"
+	},
+	"tags": [],
+	"__v": 0
+},
+{
+	"slug": "siop-elfair",
+	"name": "Siop Elfair",
+	"summary": "Welsh shop in Ruthin",
+	"region": "north-east",
+	"description": "Elfair Welsh Books and Crafts in Ruthin. Large shop split over two floors.",
+	"link": "https://www.facebook.com/media/set/?set=a.648331751895484.1073741838.205196106209053\u0026type=3",
+	"createdBy": {
+		"$oid": "59e4820793824c14cdd68709"
+	},
+	"google": {
+		"url": "https://maps.google.com/?cid=17553558518345947302",
+		"placeId": "ChIJgS5I9RYzZUgRptgKPnjEmvM"
+	},
+	"location": {
+		"address": "Elfair, Heol Clwyd, Ruthin, United Kingdom",
+		"postcode": "LL15 1HW",
+		"coordinates": [-3.3122568999999658,
+		53.1142877],
+		"type": "Point"
+	},
+	"created": {
+		"$date": "2017-10-23T09:45:48.211Z"
+	},
+	"tags": [],
+	"__v": 0
+}]

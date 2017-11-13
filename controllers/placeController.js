@@ -7,7 +7,7 @@ const moment = require('moment');
 const jimp = require('jimp');
 const uuid = require('uuid');
 const mongoHelper = require('../handlers/mongodb.js');
-
+const errorHandlers = require('../handlers/errorHandlers');
 
 exports.homePage = (req, res) => {
 
@@ -70,87 +70,15 @@ exports.createNewPlace = async (req, res)=>{
 
 }
 
-
-function convertPostedPlaceIntoMongoDocumentPlace(req)
-{
-    
-    req.body.summary_new=req.body.summary;
-    req.body.summary=req.body.summary_new.en;
-
-    req.body.description_new = req.body.description;
-    req.body.description = req.body.description_new.en;
-
-    req.body.name_new = req.body.name;
-    req.body.name = req.body.name.en;
-    req.body.slug_new = null;
-}
-
 async function insertNewPlace(req)
 {
     req.body.createdBy = req.user._id;
-
-    convertPostedPlaceIntoMongoDocumentPlace(req);
-
-    if(req.body.name_new.cy===null || req.body.name_new.cy.trim()==='')
-    {
-        req.body.name_new.cy = req.body.name_new.en;
-    }
-
     const mongoPlace = new Place(req.body);
-
+    mongoPlace.slug = {en:req.body.name.en, cy:req.body.name.cy};
+    await Place.setupCurrentSlug(mongoPlace);
     return mongoPlace.save();
 }
 
-
-function handleSummaryLocalisation(place)
-{
-    place = place.toObject();
-
-     if(place.summary_new!=undefined && place.summary_new.en!=undefined)
-    {
-        place.summary = undefined;
-        place.summary = place.summary_new;
-    }
-    else
-    {         
-         const summary_new = {en:place.summary};         
-         place.summary = summary_new;  
-    }
-
-     if(place.description_new!=undefined && place.description_new.en!=undefined)
-    {
-        place.description=undefined;
-        place.description = place.description_new;
-    }
-    else
-    {         
-         const _new = {en:place.description};
-         place.description = _new;  
-    }
-
-     if(place.name_new!=undefined && place.name_new.en!=undefined)
-    {
-        place.name=undefined;
-        place.name = place.name_new;
-    }
-    else
-    {         
-         const _new = {en:place.name};
-         place.name = _new;  
-    }
-
-    if(place.slug_new!=undefined && place.slug_new.en!=undefined)
-    {
-        place.slug=undefined;
-        place.slug = place.slug_new;
-    }
-    else
-    {         
-         const _new = {en:place.slug};
-         place.slug = _new;  
-    }
-    return place;
-}
 exports.getPlaces = async (req, res)=>{
 
     const page = req.params.page || 1;
@@ -163,7 +91,7 @@ exports.getPlaces = async (req, res)=>{
     
      const promise = Place
      .find(regionQuery)     
-     .select('slug name summary summary_new region slug_new name_new')
+     .select('summary region slug name')
      .skip(skip)
      //.limit(limit)
      .sort({created: 'desc'});
@@ -171,9 +99,6 @@ exports.getPlaces = async (req, res)=>{
 
     let [places,count] = await Promise.all([promise, countPromise]);
     //query the db for a list of all stores
-
-
-    places = places.map((place)=>handleSummaryLocalisation(place));
     
     const pages =Math.ceil(count/limit);
 
@@ -189,42 +114,47 @@ exports.getPlaces = async (req, res)=>{
 
 
 exports.editPlaceDetails = async(req,res)=>{        
-    let place = await(Place.findOne({_id: req.params.id}));
-    place = handleSummaryLocalisation(place);
+    let place = await(Place.findOne({_id: req.params.id}));    
+    console.log(place);
     res.render('placeEdit-details',{titleLabel:"placeEdit-details",place, regions: Region.listRegions() });
 }
 exports.savePlaceDetails = async (req, res)=>{
 
-    console.log("sav");
-    convertPostedPlaceIntoMongoDocumentPlace(req);
+
+    
     req.body.lastModifiedBy = req.user._id;
     req.body.modified = moment();
+
+
+    const updateCommand = req.body;
+
+    const validationErrors = Place.getDocumentErrors(updateCommand);
+
+    if(validationErrors!=null)
+    {
+        console.log("errors");
+        console.log(validationErrors);
+
+        res.render('placeEdit-details',
+                {
+                    titleLabel:"placeEdit-details",
+                    regions: Region.listRegions(), 
+                    place: updateCommand, validationErrors }   ); 
+        return;
+    }
     
     //1 find the store based on the id
      //Cannot use findOneAndUpdate, because it's not running the pre save method for our name...
      const place = await Place.findOne({_id: req.params.id});
-
-     const updateCommand = req.body;
      
-
-     if(place.name_new)
-     {
-         //we are dealing with a place that has already moved to a localised title...
-         if(place.name_new.en!=req.body.name_new.en
-            ||place.name_new.cy!=req.body.name_new.cy)
-         {
-             //One of the titles has changed
-             //Update the slug
-             updateCommand.slug_new = {en:req.body.name_new.en, cy:req.body.name_new.cy};
-             updateCommand.slugs = place.slugs;             
-         }
-     }
-     else 
-     {
-         //Moving from the non-localised title to localised, so always update the slugs
-        updateCommand.slug_new = {en:req.body.name_new.en, cy:req.body.name_new.cy};        
+    if(place.name.en!=req.body.name.en
+        || place.name.cy!=req.body.name.cy)
+    {
+        //One of the titles has changed
+        //Update the slug
+        updateCommand.slug = {en:req.body.name.en, cy:req.body.name.cy};
         updateCommand.slugs = place.slugs;             
-     }
+    }
 
 
      await Place.setupCurrentSlug(updateCommand);
@@ -256,7 +186,6 @@ exports.savePlaceDetails = async (req, res)=>{
 
 exports.editPlaceLocation = async(req,res)=>{        
     let place = await(Place.findOne({_id: req.params.id}));
-    place = handleSummaryLocalisation(place);
     res.render('placeEdit-location',{titleLabel:"placeEdit-location",place});
 }
 
@@ -268,7 +197,6 @@ exports.displayPlace = async (req, res, next) =>{
     {
         return next();        
     }    
-    place = handleSummaryLocalisation(place);
 
     //TODO - if the user requested a slug that is no longer current, redirect them to the latest slug...
     res.render("placeDisplay", {place, title: place.name});
